@@ -1,7 +1,7 @@
   :root {
     /* COLORS */
-    --clr-sky-blue: rgb(0, 171, 240);
-    --clr-dark-gray: #474747;
+    --clr-sky-blue: #00abf0;
+    --clr-dark-gray: #565B61;
     --clr-dim-gray: dimgray;
     --clr-border: #e3e3e3;
     --clr-light-gray: #c5c5c5;
@@ -11,7 +11,7 @@
     --clr-black: #0e0e0e;
     --clr-hot-pink: #ff2d7d;
     --clr-almost-white: #fffff;
-    --clr-sky-blue2: rgb(0, 171, 240, 0.1);
+    --clr-sky-blue2: #00abf01a;
     --clr-lightier-gray: #f5f5f5;
     --clr-gray-bg: #eee;
     --clr-footer-p: #9b9b9b;

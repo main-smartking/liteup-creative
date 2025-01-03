@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="assets/css/breakpoint.css">
     <link rel="stylesheet" href="assets/css/mabry.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="icon" href="assets/image/favicon.png" type="image/png">
+    <link rel="icon" href="assets/images/favicon.png" type="image/png">
     <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.35/build/spline-viewer.js"></script>
     <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 </head>
@@ -45,7 +45,7 @@
         <div class="homepage">
 
                     <div class="hero-content">
-                        <h1 class="mb20">Digital Agency <br>In Building Growth</h1>
+                        <h1 class="mb20">Digital Agency<br>That Drive's Growth</h1>
                         
                         <p>Expand your reach, boost sales, and unlock growth with compelling offers that deliver results. Drive customer engagement and success with strategies designed to grow your brand.</p>
                     </div>
@@ -66,10 +66,10 @@
                     <p>Features</p>
                 </div>
                 <div class="header-title">
-                    <h1>See What Makes The Great Unique</h1>
+                    <h1>See What Makes Our Service Unique</h1>
                 </div>
                 <div class="header-subtitle">
-                    <p>Below are the listing features that you can take off your eye off it</p>
+                    <p>Features that you can take off eyes over it</p>
                 </div>
             </div>
         </div>
