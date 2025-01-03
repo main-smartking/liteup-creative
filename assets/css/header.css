@@ -1,0 +1,62 @@
+@import url("/assets/css/variables.css");
+@import url("/assets/css/utilities.css");
+@import url("/assets/css/components.css");
+@import url("/assets/css/animations.css");
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  transition: top 0.3s ease-in-out;
+}
+
+.sticky {
+  top: 20px;
+  z-index: 1000;
+}
+
+.navbar-container {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-header {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  padding: 16px 30px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo {
+  width: 2.25rem;
+}
+
+.navbar-menu {
+  display: flex;
+  gap: 30px;
+}
+
+.navbar-link {
+  color: var(--clr-dim-gray);
+  font-size: .95rem;
+  padding: 2px 0;
+  transition: 0.2s;
+}
+
+.navbar-btn a {
+  font-size: .95rem;
+  color: var(--clr-sky-blue);
+}
+
+#menu-icon {
+  font-size: 2.8rem;
+  color: var(--clr-sky-blue);
+  cursor: pointer;
+  display: none;
+}

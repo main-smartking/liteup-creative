@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'outfit', sans-serif;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: auto;
+}
+
+html {
+    font-size: 100%;
+    line-height: normal;
+    word-spacing: 1px;
+  }
+
+body {
+    color: var(--clr-black);
+    background: var(--clr-white);
+    overflow-x: hidden;
+    line-height: normal;
+  }
+
+h1 {
+  font-size: 32px;
+}
+section {
+    margin: 0 auto;
+    margin-bottom: 140px;
+    scroll-margin-top: 100px;
+  }
+.main-wrapper {
+  max-width: 1140px;
+}
+.mb20 {
+  margin-bottom: 20px;
+}
+.mb15 {
+  margin-bottom: 15px;
+}
+.font20 h2 {
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.15;
+}
+  
