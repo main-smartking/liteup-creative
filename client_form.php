@@ -9,18 +9,9 @@
 </head>
 <body> 
     <main>
-     <div class="main-container">
-      <div class="left-sidebar">
-        <div class="left-sidebar wrapper">
-          <div class="content">
-            <!-- Sidebar content goes here -->
-          </div>
-        </div>
-      </div>
-      
-      <div class="right-content">
+     <div class="main-container">      
         <div class="form-container">
-          <p class="description mb20">Kindly fill in the your details below and 
+          <p class="description mb20">Kindly fill your details below and 
             select the appropriate service
           </p>
           <form method="post">
@@ -69,7 +60,8 @@
                 <label for="gender">Female</label>
               </div>
             </div>
-            <select name="source" id="">
+
+            <!-- <select name="source" id="">
               <option value selected disabled> &nbsp;&nbsp; How did you hear of this training?</option>
               <option value="Radio Advertisement"> &nbsp;&nbsp; Radio Advertisement </option>
               <option value="TV Advertisement"> &nbsp;&nbsp; TV Advertisement </option>
@@ -80,14 +72,14 @@
               <option value="Tiktok"> &nbsp;&nbsp; Tiktok </option>
               <option value="Banner/Flyer"> &nbsp;&nbsp; Banner/Flyer </option>
               <option value="Others"> &nbsp;&nbsp; Others </option>
-            </select>
-            <p class="success-msg"> Thank you for reaching out to us, kindly wait for our responds</p>
+            </select> -->
+
+            <!-- <p class="success-msg"> Thank you for reaching out to us, kindly wait for our responds</p> -->
             <input type="submit" name="submit" class="btn w100 mb20 mt10" value="Click to Submit">
             <a href="index.html" target="_blank">Back to main site</a>
           </form>
         </div>
       </div>
-     </div>
     </main>
     <script src="assets/js/scripts.js"></script>  <!-- JavaScript file -->
 </body>

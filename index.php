@@ -51,7 +51,7 @@
                     </div>
 
                     <div>
-                        <button class="btn" onclick="window.location.href='apply.php';">Let's Get Started</button>
+                        <button class="btn" onclick="window.location.href='client_form.php';">Let's Get Started</button>
                     </div>
 
         </div>
