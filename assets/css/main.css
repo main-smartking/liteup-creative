@@ -37,20 +37,18 @@
 }
 
 .navbar-logo {
-	width: 2.5rem;
+	width: 2.35rem;
+	cursor: pointer;
 }
 
 .navbar-menu {
 	display: flex;
-	gap: 1.5em;
+	gap: 25px;
 	align-items: center;
 }
 
 .navbar-link {
 	color: var(--clr-black);
-	font-size: 1rem;
-	padding: 2px 0;
-	transition: 0.2s;
 }
 
 .navbar-link:hover {
@@ -98,11 +96,12 @@
 }
 
 .hero-content h1 {
-	font-size: 85px;
+	font-size: 80px;
 	color: var(--clr-sky-blue);
-	font-family: 'Playfair', sans-serif;
-	letter-spacing: -4.5px;
+	font-family: 'Outfit', sans-serif;
+	letter-spacing: normal;
 	line-height: 1.05;
+	font-weight: 500;
 }
 
 .hero-content p {
@@ -196,7 +195,7 @@ spline-viewer {
 }
 
 .cta-link a {
-	color: var(--clr-hot-pink);
+	color: var(--clr-sky-blue);
 	font-size: 17px;
 	text-align: center;
 	vertical-align: middle;
@@ -233,28 +232,26 @@ spline-viewer {
 .box .content {
 	display: block;
 	border: 1px solid var(--clr-border);
-	padding: 40px;
-	margin: 5px;
+	padding: 35px;
+	margin: 10px;
 	border-radius: 10px;
 	height: calc(100% - 10px);
 }
 
 .box .content i {
-	font-size: 3rem;
-	margin-bottom: 20px;
+	font-size: 2.5em;
+	margin-bottom: 120px;
 	color: var(--clr-sky-blue);
 }
 
-.box .content h3 {
-	font-size: 1.5rem;
+.box .content h2 {
 	margin-bottom: 10px;
 	color: var(--clr-sky-blue);
 	font-weight: 500;
 }
 
 .box .content p {
-	color: var(--clr-dark-gray);
-	/* font-weight: 250; */
+	color: var(--clr-dim-gray);
 }
 
 /* BLOG SECTION */
@@ -275,6 +272,11 @@ spline-viewer {
 }
 
 /* Blog Styling */
+.blog-container .row {
+	display: flex;
+	margin-top: 100px;
+}
+
 .blog .blog-item {
 	flex: 0 0 33.33%;
 	max-width: 33.33%;
@@ -356,8 +358,8 @@ spline-viewer {
 
 .container {
 	width: 100%;
-	padding-right: 15px;
-	padding-left: 15px;
+	padding-right: -15px;
+	padding-left: -15px;
 	margin-right: auto;
 	margin-left: auto;
 }

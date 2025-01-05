@@ -10,10 +10,8 @@
     <title>Digital Marketing Agency</title>
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/breakpoint.css">
-    <link rel="stylesheet" href="assets/css/mabry.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="icon" href="assets/images/favicon.png" type="image/png">
-    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.35/build/spline-viewer.js"></script>
     <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 </head>
 <body>
@@ -27,7 +25,7 @@
                         <a href="#about" class="navbar-link">Who we are</a>
                         <a href="blog.php" class="navbar-link">Our Blog</a>
                         <div>
-                            <button class="btn btn-sm ml20">Get Started</i>
+                            <button class="btn btn-sm">Get Started</i>
                             </button>
                          </div>
                     </nav>            
@@ -244,7 +242,7 @@
                                     <div class="icon">
                                         <i class='bx bxl-html5'></i>
                                     </div>
-                                    <h3>Web Development</h3>
+                                    <h2>Web Development</h2>
                                     <p>Build responsive, user-friendly websites that deliver an exceptional experience. We create sites that are both visually appealing and optimized for performance and SEO.</p>
                               </a>
                         </div>
@@ -254,7 +252,7 @@
                                     <div class="icon">
                                         <i class='bx bx-search-alt-2'></i>
                                     </div>
-                                    <h3>Search Engine Optimization</h3>
+                                    <h2>Search Engine Optimization</h2>
                                     <p>Optimize your website to rank higher on search engines. We use proven SEO strategies to drive organic traffic, enhance visibility, and boost conversions.</p>
                                 </a>
                         </div>
@@ -264,7 +262,7 @@
                                     <div class="icon">
                                         <i class='bx bx-store'></i>
                                     </div>
-                                    <h3>Digital Marketing</h3>
+                                    <h2>Digital Marketing</h2>
                                     <p>Maximize your brand’s online presence with tailored digital marketing strategies. From paid ads to social media, we help you connect with your ideal customers and grow.</p>
                                 </a>
                         </div>
@@ -277,7 +275,7 @@
                                     <div class="icon">
                                         <i class='bx bx-mail-send'></i>
                                     </div>
-                                    <h3>SMM</h3>
+                                    <h2>SMM</h2>
                                     <p>Grow your brand’s presence with targeted social media campaigns. We engage your audience across platforms to drive traffic, increase brand loyalty, and boost conversions.</p>
                                 </a>
                         </div>
@@ -287,7 +285,7 @@
                                     <div class="icon">
                                         <i class='bx bxs-pen'></i>
                                     </div>
-                                    <h3>Graphic Design</h3>
+                                    <h2>Graphic Design</h2>
                                     <p>Create impactful, custom designs that reflect your brand identity. From logos to marketing materials, we ensure your visuals resonate with your audience.</p>
                              </a>
                         </div>
@@ -297,7 +295,7 @@
                                     <div class="icon">
                                         <i class='bx bxs-message-alt-check'></i>
                                     </div>
-                                    <h3>Content Marketing</h3>
+                                    <h2>Content Marketing</h2>
                                     <p>Craft engaging, high-quality content tailored to your audience. We produce blogs, videos, social media posts, and more to boost engagement and brand awareness.</p>
                               </a>
                         </div>
@@ -323,7 +321,7 @@
             </div>
         </div>
 
-        <div class="container">
+        <div class="blog-container">
             <div class="row">
                 <div class="blog-item padd-15">
                     <div class="blog-item-inner shadow-dark">

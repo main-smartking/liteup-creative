@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liteup Creative Say Thank you For Trust</title>
-    <link rel="stylesheet" href="assets/css/apply.css">   
-    <link rel="icon" href="/assets/image/favicon.png" type="image/png">
+    <title>Client Form</title>
+    <link rel="stylesheet" href="assets/css/apply.css">
+    <link rel="icon" href="assets/images/favicon.png" type="image/png">
 </head>
 <body> 
     <main>
      <div class="main-container">      
         <div class="form-container">
+          <h1 class="title-header mb10">Welcome to The Result Driven Agency</h1>
           <p class="description mb20">Kindly fill your details below and 
             select the appropriate service
           </p>
@@ -76,7 +77,7 @@
 
             <!-- <p class="success-msg"> Thank you for reaching out to us, kindly wait for our responds</p> -->
             <input type="submit" name="submit" class="btn w100 mb20 mt10" value="Click to Submit">
-            <a href="index.html" target="_blank">Back to main site</a>
+            <a href="index.php" target="_blank">Back to main site</a>
           </form>
         </div>
       </div>

@@ -9,24 +9,13 @@ main {
   margin: 0 auto;
 }
 .main-container {
-  display: flex;
+  margin-top: 60px;
 }
-.left-sidebar {
-  width: 450px;
-  height: 100vh;
-  background: var(--clr-black);
-}
-.right-content {
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 .form-container {
-  background: transparent;
   width: 100%;
-  max-width: 500px; 
+  max-width: 350px;
+  margin: 0 auto;
 }
 .description {
     margin-bottom: 10px;
