@@ -296,7 +296,7 @@
                                         <i class='bx bxs-message-alt-check'></i>
                                     </div>
                                     <h2>Content Marketing</h2>
-                                    <p>Craft engaging, high-quality content tailored to your audience. We produce blogs, videos, social media posts, and more to boost engagement and brand awareness.</p>
+                                    <p>Craft engaging, high-quality content tailored to your audience.</p>
                               </a>
                         </div>
 
