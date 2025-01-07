@@ -225,10 +225,10 @@
                         <p>Services</p>
                     </div>
                     <div class="header-title">
-                        <h1>What We Can Do and Beyond</h1>
+                        <h1>What We Can Provide and Beyond</h1>
                     </div>
                     <div class="header-subtitle">
-                        <p>Kicking off every of the services for your greatness</p>
+                        <p>The greatest of our deed unto business</p>
                     </div>
                 </div>
             </div>
