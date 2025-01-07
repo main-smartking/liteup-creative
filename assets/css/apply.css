@@ -9,7 +9,7 @@ main {
   margin: 0 auto;
 }
 .main-container {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .form-container {
@@ -19,7 +19,7 @@ main {
 }
 
 .form-container img {
-  max-width: 80px;
+  max-width: 70px;
   margin-bottom: 20px;
 }
 .description {
@@ -140,10 +140,15 @@ input[type="checkbox"], input[type="radio"] {
     width: 100%;
 }
 
-a {
+  a {
     text-decoration: none;
     color: var(--clr-sky-blue);
     transition: var(--transition-short);
+  }
+
+  .back-to-homepage {
+    text-align: center;
+    margin-bottom: 40px;
   }
   
   a.link:hover {

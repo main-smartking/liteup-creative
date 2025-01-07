@@ -77,8 +77,10 @@
             </select> -->
 
             <!-- <p class="success-msg"> Thank you for reaching out to us, kindly wait for our responds</p> -->
-            <input type="submit" name="submit" class="btn w100 mb20 mt10" value="Click to Submit">
-            <a href="index.php" target="_blank">Back to main site</a>
+            <input type="submit" name="submit" class="btn w100 mb20 mt20" value="Click to Submit">
+            <div class="back-to-homepage">
+            <a href="index.php" target="_blank" mt20 >Back to main site</a>
+            </div>
           </form>
         </div>
       </div>
