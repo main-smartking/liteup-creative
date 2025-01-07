@@ -17,6 +17,11 @@ main {
   max-width: 350px;
   margin: 0 auto;
 }
+
+.form-container img {
+  max-width: 40px;
+  font-size: 3rem;
+}
 .description {
     margin-bottom: 10px;
     font-size: 1.025rem;

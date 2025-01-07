@@ -11,7 +11,8 @@
     <main>
      <div class="main-container">      
         <div class="form-container">
-          <h1 class="title-header mb10">Welcome to The Result Driven Agency</h1>
+          <img src="assets/images/logo.png" alt="logo">
+          <h1 class="title-header">Welcome to The Result Driven Agency</h1>
           <p class="description mb20">Kindly fill your details below and 
             select the appropriate service
           </p>

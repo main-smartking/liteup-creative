@@ -43,7 +43,7 @@
         <div class="homepage">
 
                     <div class="hero-content">
-                        <h1 class="mb20">Digital Agency<br>That Drive's Growth</h1>
+                        <h1 class="mb20">Your Businesses<br>Our Perfect Customers</h1>
                         
                         <p>Expand your reach, boost sales, and unlock growth with compelling offers that deliver results. Drive customer engagement and success with strategies designed to grow your brand.</p>
                     </div>
@@ -243,7 +243,7 @@
                                         <i class='bx bxl-html5'></i>
                                     </div>
                                     <h2>Web Development</h2>
-                                    <p>Build responsive, user-friendly websites that deliver an exceptional experience. We create sites that are both visually appealing and optimized for performance and SEO.</p>
+                                    <p>Create websites that are easy to use, look great, work fast, and are optimized for SEO.</p>
                               </a>
                         </div>
 
@@ -253,7 +253,7 @@
                                         <i class='bx bx-search-alt-2'></i>
                                     </div>
                                     <h2>Search Engine Optimization</h2>
-                                    <p>Optimize your website to rank higher on search engines. We use proven SEO strategies to drive organic traffic, enhance visibility, and boost conversions.</p>
+                                    <p>Improve your website’s search engine ranking with proven SEO</p>
                                 </a>
                         </div>
 
@@ -263,7 +263,7 @@
                                         <i class='bx bx-store'></i>
                                     </div>
                                     <h2>Digital Marketing</h2>
-                                    <p>Maximize your brand’s online presence with tailored digital marketing strategies. From paid ads to social media, we help you connect with your ideal customers and grow.</p>
+                                    <p>Grow your brand online with custom digital marketing strategies, including ads and social media.</p>
                                 </a>
                         </div>
                         
@@ -276,7 +276,7 @@
                                         <i class='bx bx-mail-send'></i>
                                     </div>
                                     <h2>SMM</h2>
-                                    <p>Grow your brand’s presence with targeted social media campaigns. We engage your audience across platforms to drive traffic, increase brand loyalty, and boost conversions.</p>
+                                    <p>Grow your brand’s presence with targeted social media campaigns with boosting conversions.</p>
                                 </a>
                         </div>
 
@@ -286,7 +286,7 @@
                                         <i class='bx bxs-pen'></i>
                                     </div>
                                     <h2>Graphic Design</h2>
-                                    <p>Create impactful, custom designs that reflect your brand identity. From logos to marketing materials, we ensure your visuals resonate with your audience.</p>
+                                    <p>Design custom visuals that reflect your brand identity, from logos to marketing materials.</p>
                              </a>
                         </div>
 

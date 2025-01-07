@@ -241,12 +241,12 @@ spline-viewer {
 
 .box .content i {
 	font-size: 2.5em;
-	margin-bottom: 120px;
+	margin-bottom: 140px;
 	color: var(--clr-sky-blue);
 }
 
 .box .content h2 {
-	margin-bottom: 10px;
+	/* margin-bottom: 10px; */
 	color: var(--clr-sky-blue);
 	font-weight: 500;
 }
