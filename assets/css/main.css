@@ -18,15 +18,15 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: rgba(255, 255, 255, 0.118);
+	background-color: rgba(255, 255, 255, 0.068);
 	max-width: 720px;
 	margin: 60px auto 0 auto;
 	padding: 0px 10px;
 	height: 60px;
 	border-radius: 50px;
-	backdrop-filter: blur(8px);
+	backdrop-filter: blur(10px);
 	border-bottom: 1px solid var(--clr-sky-blue);
-	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.0999);
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.0399);
 }
 
 .navbar-header {

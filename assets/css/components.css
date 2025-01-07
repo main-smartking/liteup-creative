@@ -1,6 +1,6 @@
 .btn {
     padding: 18px 40px;
-    border-radius: 40px;
+    border-radius: 10px;
     cursor: pointer;
     border: 0;
     color: var(--clr-white);
@@ -31,7 +31,7 @@
 
 .btn-sm {
     padding: 10px 18px;
-    border-radius: 30px;
+    border-radius: 10px;
     cursor: pointer;
     color: var(--clr-white);
     background-color: var(--clr-sky-blue);
@@ -40,6 +40,10 @@
     transition: all 0.5s ease;
     border: 1px solid var(--clr-sky-blue);
   }
+
+.btn-sm.menu {
+  border-radius: 30px;
+}
   
 .btn-sm:hover {
     background-color: transparent;

@@ -25,7 +25,7 @@
                         <a href="#about" class="navbar-link">Who we are</a>
                         <a href="blog.php" class="navbar-link">Our Blog</a>
                         <div>
-                            <button class="btn btn-sm">Get Started</i>
+                            <button class="btn btn-sm menu">Get Started</i>
                             </button>
                          </div>
                     </nav>            
@@ -394,7 +394,7 @@
                             <p>Contact us for any of your promotions and services, we are ready to pilots your brand to it brim</p>
                         </div>   
                         <div class="mb20">
-                            <a class="btn" href="#starting" > <span>Join us</span></a>
+                            <a class="btn btn-sm" href="#starting" > <span>Join us</span></a>
                         </div>
                     </div>
                 </div>
