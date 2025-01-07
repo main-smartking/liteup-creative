@@ -46,6 +46,10 @@
         }
     
         .btn-sm {
+            display: inline-flex;
+        }
+
+        .btn-sm.menu {
             display: none;
         }
 
@@ -187,7 +191,7 @@
     }
 
     .hero-content h1 {
-        font-size: 50px;    
+        font-size: 55px;    
     }
 
     .box .content {

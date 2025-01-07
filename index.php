@@ -43,7 +43,7 @@
         <div class="homepage">
 
                     <div class="hero-content">
-                        <h1 class="mb20">Your Businesses<br>Our Perfect Customers</h1>
+                        <h1 class="mb20">Your Businesses,<br>Our Perfect Customers</h1>
                         
                         <p>Expand your reach, boost sales, and unlock growth with compelling offers that deliver results. Drive customer engagement and success with strategies designed to grow your brand.</p>
                     </div>
