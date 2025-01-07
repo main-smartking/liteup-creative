@@ -14,8 +14,9 @@
             background-color: rgba(255, 255, 255, 0.118);
             max-width: 1024px;
             margin: 0 auto;
-            border-bottom: none;
+            border-bottom: var(--clr-border);
             box-shadow: none;
+            border-radius: 0;
         }
 
         .navbar-menu {
@@ -75,7 +76,7 @@
         }
         
         .boxes-container {
-            max-width: 720px;
+            max-width: 740px;
         }
 
         .box .content {
@@ -83,8 +84,8 @@
         }
 
         .boxes-container .box {
-            flex: 0 0 50%;
-            max-width: 50%;
+            flex: 0 0 33.3333%;
+            max-width: 33.3333%;
         }
 
         .contact {
@@ -148,8 +149,8 @@
         }
 
         .blog .blog-item {
-            flex: 0 0 33.3333%;
-            max-width: 33.3333%;
+            flex: 0 0 50%;
+            max-width: 50%;
         }
     
         .blog .blog-img img {

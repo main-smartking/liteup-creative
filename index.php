@@ -67,7 +67,7 @@
                     <h1>See What Makes Our Service Unique</h1>
                 </div>
                 <div class="header-subtitle">
-                    <p>Features that you can take off eyes over it</p>
+                    <p>Features that you can't take off eyes over it</p>
                 </div>
             </div>
         </div>
@@ -242,7 +242,7 @@
                                     <div class="icon">
                                         <i class='bx bxl-html5'></i>
                                     </div>
-                                    <h2>Web Development</h2>
+                                    <h2>Website Development</h2>
                                     <p>Create websites that are easy to use, look great, work fast, and are optimized for SEO.</p>
                               </a>
                         </div>
@@ -313,10 +313,10 @@
                     <p>blog</p>
                 </div>
                 <div class="header-title">
-                    <h1>Read Latest Digital Marketing Blog</h1>
+                    <h1>Read Our Latest Digital Marketing Blog</h1>
                 </div>
                 <div class="header-subtitle">
-                    <p>The latest blog is made from the digital marketing expertise</p>
+                    <p>Blogs made for digital marketing expertise</p>
                 </div>
             </div>
         </div>
