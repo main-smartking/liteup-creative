@@ -227,13 +227,13 @@ spline-viewer {
 
 .boxes-container .box {
 	display: flex;
-	width: 33.3333%;
+	width: 25%;
 }
 
 .box .content {
 	display: block;
 	border: 1px solid var(--clr-border);
-	padding: 40px;
+	padding: 30px;
 	margin: 5px;
 	border-radius: 10px;
 	height: calc(100% - 10px);
