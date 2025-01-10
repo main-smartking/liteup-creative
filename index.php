@@ -16,23 +16,28 @@
 </head>
 <body>
    <header class="navbar" id="navbar-section">
-            <div class="navbar-container">
-                <div class="navbar-header main-wrapper">
-                    <img src="assets/images/logo.png" class="navbar-logo" alt="Liteup Creative logo">
-                    <nav class="navbar-menu">
-                        <a href="#starting" class="navbar-link active">Starting</a>
-                        <a href="#services" class="navbar-link">What we do</a>
-                        <a href="#about" class="navbar-link">Who we are</a>
-                        <a href="blog.php" class="navbar-link">Our Blog</a>
-                        <div>
-                            <button class="btn btn-sm menu">Get Started</i>
-                            </button>
-                         </div>
-                    </nav>            
-                    <div class="bx bx-menu" id="menu-icon"></div>
+    <div class="navbar-container">
+        <div class="navbar-header main-wrapper">
+            <a href="index.php">
+                <img src="assets/images/logo.png" class="navbar-logo" alt="Liteup Creative logo">
+            </a>
+            
+            <nav class="navbar-menu" aria-label="Main navigation">
+                <a href="#starting" class="navbar-link active">Starting</a>
+                <a href="#services" class="navbar-link">What we do</a>
+                <a href="#about" class="navbar-link">Who we are</a>
+                <a href="blog.php" class="navbar-link">Our Blog</a>
+                <div class="nav-cta">
+                    <button class="btn btn-sm menu" aria-label="Get Started">
+                        Get Started
+                    </button>
                 </div>
-            </div>
-    </header>
+            </nav>
+            
+            <button class="bx bx-menu" id="menu-icon" aria-label="Toggle menu"></button>
+        </div>
+    </div>
+</header>
 
     <!-- Hero Section -->
     <section class="homepage-container main-wrapper" id="starting">

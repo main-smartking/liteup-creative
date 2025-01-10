@@ -1,69 +1,16 @@
-document.getElementById('menu-icon').addEventListener('click', function () {
-  const navbarMenu = document.querySelector('.navbar-menu');
-  navbarMenu.classList.toggle('active');
-  this.classList.toggle('bx-x');
-});
-
-// Scroll functionality
+// Initialize variables
 let lastScrollTop = 0;
 const navbar = document.getElementById("navbar-section");
+const menuIcon = document.getElementById("menu-icon");
+const menu = document.querySelector('.navbar-menu');
 const SCROLL_THRESHOLD = 5;
 
-function throttle(func, limit) {
-  let inThrottle;
-  return function() {
-    const args = arguments;
-    const context = this;
-    if (!inThrottle) {
-      func.apply(context, args);
-      inThrottle = true;
-      setTimeout(() => inThrottle = false, limit);
-    }
-  }
-}
-
-window.addEventListener('scroll', throttle(function() {
-  const currentScroll = window.scrollY;
-  
-  if (Math.abs(currentScroll - lastScrollTop) <= SCROLL_THRESHOLD) {
-    return;
-  }
-  
-  if (currentScroll > lastScrollTop) {
-    // Scrolling down
-    navbar.classList.add("nav-hidden");
-  } else {
-    // Scrolling up
-    navbar.classList.remove("nav-hidden");
-  }
-  
-  if (currentScroll > SCROLL_THRESHOLD) {
-    navbar.classList.add("sticky");
-  } else {
-    navbar.classList.remove("sticky");
-  }
-  
-  lastScrollTop = currentScroll;
-}, 150));
-
-
-// TOGGLE NAVBAR ICON
-// Select the menu icon and the navigation menu
-let menuIcon = document.querySelector('#menu-icon');
-let menu = document.querySelector('.menu');
-
-// Toggle the active class on the menu and icon when the menu icon is clicked
-menuIcon.addEventListener('click', () => {
-  menu.classList.toggle('active'); // Show or hide the menu
-  menuIcon.classList.toggle('bx-x'); // Change the menu icon to 'X' when active
-});
-
-// Close the menu when a link is clicked
-document.querySelectorAll('.navbar-menu a').forEach(link => {
-  link.addEventListener('click', () => {
-    menu.classList.remove('active'); // Hide the menu
-    menuIcon.classList.remove('bx-x'); // Change the icon back to hamburger
-  });
+// Menu toggle
+menuIcon.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    menu.classList.toggle('active');
+    menuIcon.classList.toggle('bx-x');
 });
 
 // Close menu when clicking outside
@@ -75,6 +22,38 @@ document.addEventListener('click', (e) => {
         menu.classList.remove('active');
         menuIcon.classList.remove('bx-x');
     }
+});
+
+// Scroll handler with throttling
+let ticking = false;
+
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (currentScroll > lastScrollTop && currentScroll > SCROLL_THRESHOLD) {
+                // Scrolling down
+                navbar.classList.add('nav-hidden');
+            } else {
+                // Scrolling up
+                navbar.classList.remove('nav-hidden');
+            }
+            
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+            ticking = false;
+        });
+        
+        ticking = true;
+    }
+});
+
+// Close menu when clicking links
+document.querySelectorAll('.navbar-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        menu.classList.remove('active');
+        menuIcon.classList.remove('bx-x');
+    });
 });
 
 // HANDLING SCROLLING SECTION
