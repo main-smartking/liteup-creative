@@ -34,30 +34,31 @@
             </div>
     </header>
 
+    <!-- Hero Section -->
     <section class="homepage-container main-wrapper" id="starting">
-            
-        <div id="particles-js">
-            <!-- particles use as background -->
-        </div>
+        <!-- Particle.js Background Container -->
+        <div id="particles-js"></div>
         
         <div class="homepage">
+            <!-- Hero Content -->
+            <div class="hero-content">
+                <h1 class="mb20">Your Businesses,<br>Our Perfect Customers</h1>
+                <p>Expand your reach, boost sales, and unlock growth with compelling offers 
+                   that deliver results. Drive customer engagement and success with strategies 
+                   designed to grow your brand.</p>
+            </div>
 
-                    <div class="hero-content">
-                        <h1 class="mb20">Your Businesses,<br>Our Perfect Customers</h1>
-                        
-                        <p>Expand your reach, boost sales, and unlock growth with compelling offers that deliver results. Drive customer engagement and success with strategies designed to grow your brand.</p>
-                    </div>
-
-                    <div>
-                        <button class="btn" onclick="window.location.href='client_form.php';">Let's Get Started</button>
-                    </div>
-
+            <!-- CTA Button -->
+            <div>
+                <button class="btn" onclick="window.location.href='client_form.php';">
+                    Let's Get Started
+                </button>
+            </div>
         </div>
-    
     </section>
 
+    <!-- Features Section -->
     <section class="feature-section main-wrapper">   
-
         <div class="section-header">
             <div class="header-box">
                 <div class="header-label">
@@ -412,5 +413,11 @@
 </footer>
 <script src="assets/js/main.js"></script>
 <script src="assets/js/particles.js"></script>
+<script src="assets/js/particles.min.js"></script>
+<script>
+    particlesJS.load('particles-js', 'assets/js/particles.json', function() {
+        console.log('particles.js loaded');
+    });
+</script>
 </body>
 </html>

@@ -1,3 +1,63 @@
+<?php
+require_once 'includes/db.php';
+
+// Initialize variables
+$success_message = '';
+$error_message = '';
+
+// Process form submission
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get form data and sanitize inputs
+    $firstname = filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_STRING);
+    $lastname = filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_STRING);
+    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+    $phone = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_STRING);
+    $service = filter_input(INPUT_POST, 'services', FILTER_SANITIZE_STRING);
+    $gender = filter_input(INPUT_POST, 'gender', FILTER_SANITIZE_STRING);
+
+    // Validate inputs
+    if (empty($firstname) || empty($lastname) || empty($email) || empty($phone) || empty($service) || empty($gender)) {
+        $error_message = "All fields are required";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error_message = "Invalid email format";
+    } else {
+        try {
+            // Check for existing email
+            $stmt = $pdo->prepare("SELECT email FROM clients WHERE email = ?");
+            $stmt->execute([$email]);
+            if ($stmt->rowCount() > 0) {
+                $error_message = "Email already exists";
+            } else {
+                // Check for existing phone
+                $stmt = $pdo->prepare("SELECT phone FROM clients WHERE phone = ?");
+                $stmt->execute([$phone]);
+                if ($stmt->rowCount() > 0) {
+                    $error_message = "Phone number already exists";
+                } else {
+                    // Insert new client
+                    $sql = "INSERT INTO clients (firstname, lastname, email, phone, service, gender) 
+                           VALUES (:firstname, :lastname, :email, :phone, :service, :gender)";
+                    
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->execute([
+                        ':firstname' => $firstname,
+                        ':lastname' => $lastname,
+                        ':email' => $email,
+                        ':phone' => $phone,
+                        ':service' => $service,
+                        ':gender' => $gender
+                    ]);
+                    
+                    $success_message = "Form submitted successfully!";
+                }
+            }
+        } catch(PDOException $e) {
+            $error_message = "Error submitting form. Please try again.";
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +65,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Client Form</title>
     <link rel="stylesheet" href="assets/css/apply.css">
-    <link rel="icon" href="assets/images/favicon.png" type="image/png">
+    <link rel="icon" href="assets/images/favicon.png" type="images/png">
 </head>
 <body> 
     <main>
@@ -76,7 +136,18 @@
               <option value="Others"> &nbsp;&nbsp; Others </option>
             </select> -->
 
-            <!-- <p class="success-msg"> Thank you for reaching out to us, kindly wait for our responds</p> -->
+            <?php if (!empty($error_message)): ?>
+                <div class="error-message mb20">
+                    <?php echo htmlspecialchars($error_message); ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if (!empty($success_message)): ?>
+                <div class="success-msg mb20">
+                    <?php echo htmlspecialchars($success_message); ?>
+                </div>
+            <?php endif; ?>
+
             <input type="submit" name="submit" class="btn w100 mb20 mt20" value="Click to Submit">
             <div class="back-to-homepage">
             <a href="index.php" target="_blank" mt20 >Back to main site</a>

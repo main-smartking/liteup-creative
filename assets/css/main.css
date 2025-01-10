@@ -56,6 +56,26 @@
 	color: var(--clr-hot-pink);
 }
 
+/* Navbar Animation Styles */
+.nav-hidden {
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+#navbar-section {
+    transform: translateY(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--clr-white);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
 #menu-icon {
 	color: var(--clr-sky-blue);
 	cursor: pointer;

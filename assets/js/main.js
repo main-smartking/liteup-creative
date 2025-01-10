@@ -1,53 +1,51 @@
-
-
 document.getElementById('menu-icon').addEventListener('click', function () {
   const navbarMenu = document.querySelector('.navbar-menu');
   navbarMenu.classList.toggle('active');
   this.classList.toggle('bx-x');
 });
 
+// Scroll functionality
+let lastScrollTop = 0;
+const navbar = document.getElementById("navbar-section");
+const SCROLL_THRESHOLD = 5;
 
-
-  // STICKY HEADER SCROLL Y
-  window.onscroll = function() {myFunction()};
-    var header = document.getElementById("navbar-section");
-    var sticky = header.offsetTop;
-
-    function myFunction(){
-      
-    if (window.pageYOffset > sticky - 50) {
-      header.classList.add("sticky");
-    } else {
-      header.classList.remove("sticky");
+function throttle(func, limit) {
+  let inThrottle;
+  return function() {
+    const args = arguments;
+    const context = this;
+    if (!inThrottle) {
+      func.apply(context, args);
+      inThrottle = true;
+      setTimeout(() => inThrottle = false, limit);
     }
   }
+}
 
-//   window.onscroll = function() { myFunction() };
+window.addEventListener('scroll', throttle(function() {
+  const currentScroll = window.scrollY;
+  
+  if (Math.abs(currentScroll - lastScrollTop) <= SCROLL_THRESHOLD) {
+    return;
+  }
+  
+  if (currentScroll > lastScrollTop) {
+    // Scrolling down
+    navbar.classList.add("nav-hidden");
+  } else {
+    // Scrolling up
+    navbar.classList.remove("nav-hidden");
+  }
+  
+  if (currentScroll > SCROLL_THRESHOLD) {
+    navbar.classList.add("sticky");
+  } else {
+    navbar.classList.remove("sticky");
+  }
+  
+  lastScrollTop = currentScroll;
+}, 150));
 
-// var header = document.getElementById("navbar-section");
-// var sticky = header.offsetTop;
-
-// function myFunction() {
-//   if (window.pageYOffset > sticky + 5) { // After scrolling more than 40px
-//     header.classList.add("sticky");
-//     header.style.top = '2rem';  // Move the header to 2rem from the top
-//   } else if (window.pageYOffset > sticky) { // When scrolling past the sticky point but less than 40px
-//     header.classList.add("sticky");
-//     header.style.top = '4.5rem';  // Default position when it's sticky but before moving up
-//   } else {
-//     header.classList.remove("sticky");
-//     header.style.top = '4.5rem';  // Reset to initial position when not sticky
-//   }
-// }
-
-
-// HOME PAGE AUTO TYPE STYLE
-var typed = new Typed('.auto-type', {    
-  strings: ['Digital Growth'],
-  typeSpeed: 120,
-  backSpeed: 100,
-  loop: true,
-});
 
 // TOGGLE NAVBAR ICON
 // Select the menu icon and the navigation menu
@@ -61,16 +59,28 @@ menuIcon.addEventListener('click', () => {
 });
 
 // Close the menu when a link is clicked
-document.querySelectorAll('.menu a').forEach(link => {
+document.querySelectorAll('.navbar-menu a').forEach(link => {
   link.addEventListener('click', () => {
     menu.classList.remove('active'); // Hide the menu
     menuIcon.classList.remove('bx-x'); // Change the icon back to hamburger
   });
 });
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+    const isMenuClick = menu.contains(e.target);
+    const isMenuIconClick = menuIcon.contains(e.target);
+    
+    if (!isMenuClick && !isMenuIconClick) {
+        menu.classList.remove('active');
+        menuIcon.classList.remove('bx-x');
+    }
+});
+
 // HANDLING SCROLLING SECTION
 window.addEventListener('scroll', function() {
     const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.menu a');
+    const navLinks = document.querySelectorAll('.navbar-menu a');
   
     let current = '';
   
