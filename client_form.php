@@ -39,20 +39,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                            VALUES (:firstname, :lastname, :email, :phone, :service, :gender)";
                     
                     $stmt = $pdo->prepare($sql);
-                    $stmt->execute([
+                    
+                    if ($stmt->execute([
                         ':firstname' => $firstname,
                         ':lastname' => $lastname,
                         ':email' => $email,
                         ':phone' => $phone,
                         ':service' => $service,
                         ':gender' => $gender
-                    ]);
-                    
-                    $success_message = "Form submitted successfully!";
+                    ])) {
+                        // Redirect to thank you page after successful submission
+                        header("Location: thank_you.php");
+                        exit();
+                    } else {
+                        $error_message = "Error submitting form. Please try again.";
+                    }
                 }
             }
         } catch(PDOException $e) {
-            $error_message = "Error submitting form. Please try again.";
+            $error_message = "Database error. Please try again.";
         }
     }
 }
@@ -69,92 +74,95 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body> 
     <main>
-     <div class="main-container">      
-        <div class="form-container">
-          <img src="assets/images/logo.png" alt="logo">
-          <h1 class="title-header mb10">Welcome to The Result Driven Agency</h1>
-          <p class="description mb20">Kindly fill your details below and 
-            select the appropriate service
-          </p>
-          <form method="post">
-            <div class="input-group mb10">
-              <div class="input-wrapper">
-                <input class="input-field" type="text" name="firstname" placeholder autocomplete="given-name" autocapitalize="word" required>
-                <label class="field-label" for="firstname">First Name</label>
-              </div>
-              <div class="input-wrapper">
-                <input class="input-field" type="text" name="lastname" placeholder autocomplete="given-name" autocapitalize="word" required>
-                <label class="field-label" for="lastname">Last Name</label>
-              </div>
-            </div>
-            <div class="input-group mb10">
-              <div class="input-wrapper">
-                <input class="input-field" name="email" placeholder required>
-                <label class="field-label" for="email">Email Address</label>
-              </div>
-              <div class="input-wrapper">
-                <input class="input-field" type="tel" name="phone" placeholder inputmode="tel" required>
-                <label class="field-label" for="phone">Phone Number</label>
-              </div>
-            </div>
-            <select name="services" class="mb20 mt20" id="" required>
-              <option selected disabled> &nbsp;&nbsp; Select Services </option>
-              <option value="Graphic Design"> &nbsp;&nbsp; Graphic Design </option>
-              <option value="UI/UX Design"> &nbsp;&nbsp; UI/UX Design </option>
-              <option value="Facebook Ads"> &nbsp;&nbsp; Facebook Ads </option>
-              <option value="Youtube SEO"> &nbsp;&nbsp; Youtube SEO </option>
-              <option value="Website Management"> &nbsp;&nbsp; Website Management </option>
-              <option value="Social Media Marketting"> &nbsp;&nbsp; Social Media Marketing </option>
-              <option value="Content Marketing"> &nbsp;&nbsp; Content Marketing </option>
-              <option value="Email Marketting"> &nbsp;&nbsp; Email Marketing </option>
-              <option value="Per-Per-Click Ads"> &nbsp;&nbsp; Per-Per-Click Ads </option>
-              <option value="Affiliate Marketing"> &nbsp;&nbsp; Affiliate Marketing </option>
-              <option value="Analytics and Reporting"> &nbsp;&nbsp; Analytics and Reporting </option>
-            </select>
-            <p class="mb10">Select Gender:</p>
-            <div class="input-group mb10">
-              <div class="radio-checkbox-wrapper">
-                <input type="radio" name="gender" value="Male">
-                <label for="gender">Male</label>
-              </div>
-              <div class="radio-checkbox-wrapper">
-                <input type="radio" name="gender" value="Female">
-                <label for="gender">Female</label>
-              </div>
-            </div>
+        <div class="main-container">
+            <!-- <div class="logo-container">
+                <img src="assets/images/logo.png" alt="logo">
+            </div>       -->
+            <div class="form-container">
+                <h1 class="title-header mb10">Welcome to The Result Driven Agency</h1>
+                <p class="description mb20">Kindly fill your details below and 
+                    select the appropriate service
+                </p>
 
-            <!-- <select name="source" id="">
-              <option value selected disabled> &nbsp;&nbsp; How did you hear of this training?</option>
-              <option value="Radio Advertisement"> &nbsp;&nbsp; Radio Advertisement </option>
-              <option value="TV Advertisement"> &nbsp;&nbsp; TV Advertisement </option>
-              <option value="Whatsapp"> &nbsp;&nbsp; Whatsapp </option>
-              <option value="Twitter"> &nbsp;&nbsp; Twitter </option>
-              <option value="Facebook"> &nbsp;&nbsp; Facebook </option>
-              <option value="Instagram"> &nbsp;&nbsp; Instagram </option>
-              <option value="Tiktok"> &nbsp;&nbsp; Tiktok </option>
-              <option value="Banner/Flyer"> &nbsp;&nbsp; Banner/Flyer </option>
-              <option value="Others"> &nbsp;&nbsp; Others </option>
-            </select> -->
+                <?php if (!empty($error_message)): ?>
+                    <div class="error-message mb20">
+                        <?php echo htmlspecialchars($error_message); ?>
+                    </div>
+                <?php endif; ?>
 
-            <?php if (!empty($error_message)): ?>
-                <div class="error-message mb20">
-                    <?php echo htmlspecialchars($error_message); ?>
-                </div>
-            <?php endif; ?>
+                <?php if (!empty($success_message)): ?>
+                    <div class="success-msg mb20">
+                        <?php echo htmlspecialchars($success_message); ?>
+                    </div>
+                <?php endif; ?>
 
-            <?php if (!empty($success_message)): ?>
-                <div class="success-msg mb20">
-                    <?php echo htmlspecialchars($success_message); ?>
-                </div>
-            <?php endif; ?>
+                <form method="post">
+                    <div class="input-group mb10">
+                        <div class="input-wrapper">
+                            <input class="input-field" type="text" name="firstname" placeholder autocomplete="given-name" autocapitalize="word" required>
+                            <label class="field-label" for="firstname">First Name</label>
+                        </div>
+                        <div class="input-wrapper">
+                            <input class="input-field" type="text" name="lastname" placeholder autocomplete="given-name" autocapitalize="word" required>
+                            <label class="field-label" for="lastname">Last Name</label>
+                        </div>
+                    </div>
+                    <div class="input-group mb10">
+                        <div class="input-wrapper">
+                            <input class="input-field" name="email" placeholder required>
+                            <label class="field-label" for="email">Email Address</label>
+                        </div>
+                        <div class="input-wrapper">
+                            <input class="input-field" type="tel" name="phone" placeholder inputmode="tel" required>
+                            <label class="field-label" for="phone">Phone Number</label>
+                        </div>
+                    </div>
+                    <select name="services" class="mb20 mt20" id="" required>
+                        <option selected disabled> &nbsp;&nbsp; Select Services </option>
+                        <option value="Graphic Design"> &nbsp;&nbsp; Graphic Design </option>
+                        <option value="UI/UX Design"> &nbsp;&nbsp; UI/UX Design </option>
+                        <option value="Facebook Ads"> &nbsp;&nbsp; Facebook Ads </option>
+                        <option value="Youtube SEO"> &nbsp;&nbsp; Youtube SEO </option>
+                        <option value="Website Management"> &nbsp;&nbsp; Website Management </option>
+                        <option value="Social Media Marketting"> &nbsp;&nbsp; Social Media Marketing </option>
+                        <option value="Content Marketing"> &nbsp;&nbsp; Content Marketing </option>
+                        <option value="Email Marketting"> &nbsp;&nbsp; Email Marketing </option>
+                        <option value="Per-Per-Click Ads"> &nbsp;&nbsp; Per-Per-Click Ads </option>
+                        <option value="Affiliate Marketing"> &nbsp;&nbsp; Affiliate Marketing </option>
+                        <option value="Analytics and Reporting"> &nbsp;&nbsp; Analytics and Reporting </option>
+                    </select>
+                    <p class="mb10">Select Gender:</p>
+                    <div class="input-group mb10">
+                        <div class="radio-checkbox-wrapper">
+                            <input type="radio" name="gender" value="Male">
+                            <label for="gender">Male</label>
+                        </div>
+                        <div class="radio-checkbox-wrapper">
+                            <input type="radio" name="gender" value="Female">
+                            <label for="gender">Female</label>
+                        </div>
+                    </div>
 
-            <input type="submit" name="submit" class="btn w100 mb20 mt20" value="Click to Submit">
-            <div class="back-to-homepage">
-            <a href="index.php" target="_blank" mt20 >Back to main site</a>
+                    <!-- <select name="source" id="">
+                        <option value selected disabled> &nbsp;&nbsp; How did you hear of this training?</option>
+                        <option value="Radio Advertisement"> &nbsp;&nbsp; Radio Advertisement </option>
+                        <option value="TV Advertisement"> &nbsp;&nbsp; TV Advertisement </option>
+                        <option value="Whatsapp"> &nbsp;&nbsp; Whatsapp </option>
+                        <option value="Twitter"> &nbsp;&nbsp; Twitter </option>
+                        <option value="Facebook"> &nbsp;&nbsp; Facebook </option>
+                        <option value="Instagram"> &nbsp;&nbsp; Instagram </option>
+                        <option value="Tiktok"> &nbsp;&nbsp; Tiktok </option>
+                        <option value="Banner/Flyer"> &nbsp;&nbsp; Banner/Flyer </option>
+                        <option value="Others"> &nbsp;&nbsp; Others </option>
+                    </select> -->
+
+                    <input type="submit" name="submit" class="btn w100 mb20 mt20" value="Click to Submit">
+                    <div class="back-to-homepage">
+                        <a href="index.php" target="_blank" mt20 >Back to main site</a>
+                    </div>
+                </form>
             </div>
-          </form>
         </div>
-      </div>
     </main>
     <script src="assets/js/scripts.js"></script>  <!-- JavaScript file -->
 </body>
