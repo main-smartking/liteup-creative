@@ -26,7 +26,7 @@
 
 .nav-hidden {
 	display: none;
-    transform: translateY(-150%);
+    transform: translateY(-200%);
 }
 
 /* Menu icon styles */
