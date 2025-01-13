@@ -89,7 +89,7 @@
             <div class="feature-details wrapper">
                 <div class="details-wrapper">
                     <div class="details-content">
-                        <div class="details-title mb20 font20">
+                        <div class="details-title mb10 font20">
                             <h2>Content Management</h2>
                         </div>
     
@@ -117,7 +117,7 @@
             <div class="feature-details wrapper">
                 <div class="details-wrapper">
                     <div class="details-content">
-                        <div class="details-title mb20 font20">
+                        <div class="details-title mb10 font20">
                             <h2>The Holistic Marketing Approach</h2>
                         </div>
     
@@ -145,7 +145,7 @@
             <div class="feature-details wrapper">
                 <div class="details-wrapper">
                     <div class="details-content">
-                        <div class="details-title mb20 font20">
+                        <div class="details-title mb10 font20">
                             <h2>Relationship-Driven Success</h2>
                         </div>
     
@@ -173,7 +173,7 @@
             <div class="feature-details wrapper">
                 <div class="details-wrapper">
                     <div class="details-content">
-                        <div class="details-title mb20 font20">
+                        <div class="details-title mb10 font20">
                             <h2>Targeted Audience Engagement</h2>
                         </div>
     
@@ -201,7 +201,7 @@
             <div class="feature-details wrapper">
                 <div class="details-wrapper">
                     <div class="details-content">
-                        <div class="details-title mb20 font20">
+                        <div class="details-title mb10 font20">
                             <h2>Brand Positioning</h2>
                         </div>
     
@@ -272,8 +272,6 @@
                                     <p>Grow your brand online with custom digital marketing strategies, including ads and social media.</p>
                                 </a>
                         </div>
-                        
-                        <!-- SECOND ROW SERVICE ITEMS -->
                         
                         <div class="box">
 

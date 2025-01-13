@@ -3,7 +3,10 @@ let lastScrollTop = 0;
 const navbar = document.getElementById("navbar-section");
 const menuIcon = document.getElementById("menu-icon");
 const menu = document.querySelector('.navbar-menu');
-const SCROLL_THRESHOLD = 5;
+const SCROLL_THRESHOLD = 150; // Increased threshold
+const SCROLL_DELAY = 200; // Delay in milliseconds
+
+let scrollTimeout;
 
 // Menu toggle
 menuIcon.addEventListener('click', (e) => {
@@ -24,28 +27,23 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// Scroll handler with throttling
-let ticking = false;
-
+// Scroll handler with throttling and delay
 window.addEventListener('scroll', () => {
-    if (!ticking) {
-        window.requestAnimationFrame(() => {
-            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-            
-            if (currentScroll > lastScrollTop && currentScroll > SCROLL_THRESHOLD) {
-                // Scrolling down
-                navbar.classList.add('nav-hidden');
-            } else {
-                // Scrolling up
-                navbar.classList.remove('nav-hidden');
-            }
-            
-            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-            ticking = false;
-        });
+    const currentScroll = window.pageYOffset;
+    
+    clearTimeout(scrollTimeout);
+    
+    scrollTimeout = setTimeout(() => {
+        if (currentScroll > lastScrollTop && currentScroll > SCROLL_THRESHOLD) {
+            // Scrolling down
+            navbar.classList.add("nav-hidden");
+        } else {
+            // Scrolling up
+            navbar.classList.remove("nav-hidden");
+        }
         
-        ticking = true;
-    }
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    }, SCROLL_DELAY);
 });
 
 // Close menu when clicking links
@@ -84,6 +82,6 @@ window.addEventListener('scroll', function() {
 
   isScrolling = setTimeout(function() {
     // Your scroll handling code
-  }, 100); // 100ms delay
+  }, 1000); // 100ms delay
 });
 
