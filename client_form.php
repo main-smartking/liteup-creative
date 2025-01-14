@@ -158,7 +158,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     <input type="submit" name="submit" class="btn w100 mb20 mt20" value="Click to Submit">
                     <div class="back-to-homepage">
-                        <a href="index.php" target="_blank" mt20 >Back to main site</a>
+                        <a href="index.php" mt20 >Back to main site</a>
                     </div>
                 </form>
             </div>

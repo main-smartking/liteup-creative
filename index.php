@@ -408,7 +408,7 @@ ini_set('error_log', 'errors.log');
                             <p>Contact us for any of your promotions and services, we are ready to pilots your brand to it brim</p>
                         </div>   
                         <div class="mb20">
-                            <a class="btn" href="#about-us" > <span>Join us</span></a>
+                            <button class="btn" href="#about-us">Join us</button>
                         </div>
                     </div>
                 </div>

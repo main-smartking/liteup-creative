@@ -1,3 +1,4 @@
+/* Large Screens */
 @media (max-width: 1300px) {       
         .navbar.global {
             top: 0;
@@ -7,6 +8,7 @@
         }
     }
 
+/* Laptop & Small Screens */
 @media (max-width: 1024px) {       
         .navbar-container {
             background: rgba(255, 255, 255, 0.8);
@@ -107,6 +109,7 @@
         }
     }
 
+/* Tablet & Medium Screens */
 @media (max-width: 768px) {
         .navbar-container {
             margin: 0 auto;
@@ -216,6 +219,7 @@
     }
   
 
+/* Mobile Landscape */
 @media (max-width: 430px) {
     html {
         font-size: 95%;
@@ -272,6 +276,7 @@
 
 
 
+/* Mobile Portrait */
 @media (max-width: 400px) {
 
     .feature-details .details-wrapper {
@@ -280,6 +285,7 @@
 
 }
 
+/* Small Mobile Devices */
 @media (max-width: 325px) {
     .boxes-container .box {
         -ms-flex: 0 0 100%;
