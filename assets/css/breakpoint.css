@@ -7,8 +7,7 @@
         }
     }
 
-@media (max-width: 1024px) {
-                
+@media (max-width: 1024px) {       
         .navbar-container {
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
@@ -105,7 +104,6 @@
         .services-main-container,
         .boxes-container {
             max-width: 100%;
-            padding: 0 20px;
         }
     }
 
@@ -214,7 +212,6 @@
         .services-main-container,
         .boxes-container {
             max-width: 100%;
-            padding: 0 15px;
         }
     }
   
@@ -248,12 +245,12 @@
     }
 
     .box .content {
-        padding: 15px;
+        padding: 25px;
         margin: 5px;
     }
 
     .feature-details .details-wrapper {
-        padding: 20px;
+        padding: 0px;
     }
 
     .boxes-container .box {
@@ -278,7 +275,7 @@
 @media (max-width: 400px) {
 
     .feature-details .details-wrapper {
-        padding: 15px;
+        padding: 10px;
     }
 
 }

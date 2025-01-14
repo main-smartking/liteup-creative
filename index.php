@@ -1,5 +1,9 @@
 <?php
-
+// Add error handling at the top
+error_reporting(E_ALL);
+ini_set('display_errors', 0);
+ini_set('log_errors', 1);
+ini_set('error_log', 'errors.log');
 ?>
 
 <!DOCTYPE html>
@@ -12,23 +16,29 @@
     <link rel="stylesheet" href="assets/css/breakpoint.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="icon" href="assets/images/favicon.png" type="image/png">
-    <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <meta name="description" content="Digital Marketing Agency specializing in business growth and customer engagement">
+    <meta name="keywords" content="digital marketing, SEO, web development, social media marketing">
+    <meta name="author" content="LiteUp Creative">
+    <meta property="og:title" content="Digital Marketing Agency">
+    <meta property="og:description" content="Your digital marketing solution">
+    <meta property="og:image" content="assets/images/logo.png">
 </head>
 <body>
    <header class="navbar" id="navbar-section">
     <div class="navbar-container">
         <div class="navbar-header main-wrapper">
             <a href="index.php">
-                <img src="assets/images/logo.png" class="navbar-logo" alt="Liteup Creative logo">
+                <img src="assets/images/logo.png" class="navbar-logo" alt="Liteup Creative logo" loading="lazy">
             </a>
             
             <nav class="navbar-menu" aria-label="Main navigation">
                 <a href="#starting" class="navbar-link active">Starting</a>
                 <a href="#services" class="navbar-link">What we do</a>
                 <a href="#about" class="navbar-link">Who we are</a>
-                <a href="blog.php" class="navbar-link">Our Blog</a>
+                <a href="#our-blog" class="navbar-link">Our Blog</a>
                 <div class="nav-cta">
-                    <button class="btn btn-sm menu" aria-label="Get Started">
+                    <button class="btn btn-sm menu" aria-label="Get Started" onclick="window.location.href='client_form.php';">
                         Get Started
                     </button>
                 </div>
@@ -366,14 +376,14 @@
                 </div> <!-- End Blog-item -->
             </div>
         </div>
-        <div class="bottom-button">
-            <a class="btn" href="blog.php">Load More ...</a>
+        <div class="section-button">
+            <button class="btn">Load More...</button>
         </div>
     </section>
 
  
     <section class="contact-us contact" id="contact">
-        <div class="container main-wrapper">
+        <div class="contact-container main-wrapper">
             <div class="row no-gutters">
                 <div class="col-md-4">
                     <div class="map">
@@ -398,7 +408,7 @@
                             <p>Contact us for any of your promotions and services, we are ready to pilots your brand to it brim</p>
                         </div>   
                         <div class="mb20">
-                            <a class="btn btn-sm" href="#starting" > <span>Join us</span></a>
+                            <a class="btn" href="#about-us" > <span>Join us</span></a>
                         </div>
                     </div>
                 </div>
@@ -414,8 +424,8 @@
         <li><a href="">Compliances</a></li>
     </ul>
 </footer>
-<script src="assets/js/main.js"></script>
-<script src="assets/js/particles.js"></script>
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/particles.js" defer></script>
 <script src="assets/js/particles.min.js"></script>
 <script>
     particlesJS.load('particles-js', 'assets/js/particles.json', function() {
