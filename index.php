@@ -38,7 +38,7 @@ ini_set('error_log', 'errors.log');
                 <a href="#about" class="navbar-link">Who we are</a>
                 <a href="#our-blog" class="navbar-link">Our Blog</a>
                 <div class="nav-cta">
-                    <button class="btn btn-sm menu" aria-label="Get Started" onclick="window.location.href='client_form.php';">
+                    <button class="btn btn-sm menu" aria-label="Get Started" href="client_form.php";>
                         Get Started
                     </button>
                 </div>
@@ -57,7 +57,7 @@ ini_set('error_log', 'errors.log');
         <div class="homepage">
             <!-- Hero Content -->
             <div class="hero-content">
-                <h1 class="mb20">Connecting Businesses,<br>With Perfect Customers</h1>
+                <h1 class="mb20">Digital Agency Responsible<br>In Driven Growth</h1>
                 <p>Expand your reach, boost sales, and unlock growth with compelling offers 
                    that deliver results. Drive customer engagement and success with strategies 
                    designed to grow your brand.</p>
@@ -319,6 +319,60 @@ ini_set('error_log', 'errors.log');
         </div>
  </section>
 
+ <section class="about-section" id="about">
+
+<div class="about-container main-wrapper">
+    <div class="about-content">
+        <div class="about-image">
+            <img src="assets/images/about-team.png" alt="Our Team">
+        </div>
+        
+        <div class="about-details">
+            <h3>Your Digital Growth Partner</h3>
+            <p class="main-text">
+                At Liteup Creative, we transform businesses through innovative digital solutions. 
+                With years of experience and a passionate team, we've helped numerous brands achieve 
+                their digital transformation goals.
+            </p>
+            
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span class="stat-number">150+</span>
+                    <p>Projects Completed</p>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <p>Happy Clients</p>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5+</span>
+                    <p>Years Experience</p>
+                </div>
+            </div>
+
+            <div class="about-features">
+                <div class="feature-item">
+                    <i class='bx bx-check-circle'></i>
+                    <span>Result-Driven Strategies</span>
+                </div>
+                <div class="feature-item">
+                    <i class='bx bx-check-circle'></i>
+                    <span>Innovative Solutions</span>
+                </div>
+                <div class="feature-item">
+                    <i class='bx bx-check-circle'></i>
+                    <span>Dedicated Support</span>
+                </div>
+            </div>
+
+            <button class="btn" onclick="window.location.href='client_form.php';">
+                Start Your Project
+            </button>
+        </div>
+    </div>
+</div>
+</section>
+
     <section class="blog section main-wrapper" id="our-blog">
     
         <div class="section-header">
@@ -381,8 +435,7 @@ ini_set('error_log', 'errors.log');
         </div>
     </section>
 
- 
-    <section class="contact-us contact" id="contact">
+<section class="contact-us contact" id="contact">
         <div class="contact-container main-wrapper">
             <div class="row no-gutters">
                 <div class="col-md-4">
