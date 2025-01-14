@@ -57,7 +57,7 @@ ini_set('error_log', 'errors.log');
         <div class="homepage">
             <!-- Hero Content -->
             <div class="hero-content">
-                <h1 class="mb20">Digital Agency Responsible<br>In Driven Growth</h1>
+                <h1 class="mb20">Where Businesses<br>Meet Ready Customers</h1>
                 <p>Expand your reach, boost sales, and unlock growth with compelling offers 
                    that deliver results. Drive customer engagement and success with strategies 
                    designed to grow your brand.</p>

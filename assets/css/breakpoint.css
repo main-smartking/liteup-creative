@@ -132,14 +132,12 @@
             max-width: 33.3333%;
         }
 
-        .contact {
+        .contact-container {
             padding: 30px 0;
-        }
-
-        .contact .container {
+            display: block;
             max-width: 720px;
         }
-        .contact .container .row {
+        .contact-container .row {
             flex-direction: column;
         }
         .col-md-4 {

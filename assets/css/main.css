@@ -626,7 +626,7 @@ spline-viewer {
 .btn {
     background-color: var(--clr-sky-blue);
     color: #fff;
-    padding: 12px 35px;
+    padding: 16px 30px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
