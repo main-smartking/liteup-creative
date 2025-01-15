@@ -24,11 +24,11 @@
     justify-content: center;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.068);
-    max-width: 880px;
+    max-width: 680px;
     margin: 60px auto 0 auto;
     padding: 0px 10px;
     height: 60px;
-    border-radius: 5px;
+    border-radius: 50px;
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--clr-sky-blue);
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.0399);
@@ -617,21 +617,6 @@ spline-viewer {
 
 .feature-item:hover i {
     color: var(--clr-hot-pink);
-}
-
-.btn {
-    background-color: var(--clr-sky-blue);
-    color: #fff;
-    padding: 16px 30px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-    font-size: 1rem;
-}
-
-.btn:hover {
-    background-color: var(--clr-hot-pink);
 }
 
 /* CONTACT US STYLE */

@@ -1,11 +1,13 @@
-/* Base Button Styles */
+/* Base Link Button Styles */
 .btn {
-    padding: 18px 40px;
+    display: inline-block;
+    padding: 16px 40px;
     border-radius: 50px;
     cursor: pointer;
     color: var(--clr-white);
     background-color: var(--clr-sky-blue);
-    font-size: 16px;
+    font-size: .9rem;
+    text-decoration: none;
     border: 1px solid var(--clr-sky-blue);
     transition: all 0.3s ease;
     position: relative;
@@ -16,12 +18,11 @@
 /* Small Button Variation */
 .btn.btn-sm {
     padding: 12px 24px;
-    font-size: 14px;
+    font-size: .9rem;
 }
 
-/* Button Before Element */
-.btn::before,
-.btn.btn-sm::before {
+/* Button Hover Effect */
+.btn::before {
     content: '';
     position: absolute;
     top: 0;
@@ -29,30 +30,24 @@
     width: 0;
     height: 100%;
     background: var(--clr-white);
-    transition: all 0.3s ease;
+    transition: width 0.3s ease;
     z-index: -1;
 }
 
-/* Button Hover States */
-.btn:hover,
-.btn.btn-sm:hover {
+.btn:hover {
     color: var(--clr-sky-blue);
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0,171,240,0.2);
 }
 
-.btn:hover::before,
-.btn.btn-sm:hover::before {
+.btn:hover::before {
     width: 100%;
 }
 
-/* Button Active States */
-.btn:active,
-.btn.btn-sm:active {
+.btn:active {
     transform: translateY(-1px);
     box-shadow: 0 5px 10px rgba(0,171,240,0.2);
 }
-
 
 .btn-sm a {
     font-size: .95rem;

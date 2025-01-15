@@ -38,9 +38,10 @@ ini_set('error_log', 'errors.log');
                 <a href="#about" class="navbar-link">Who we are</a>
                 <a href="#our-blog" class="navbar-link">Our Blog</a>
                 <div class="nav-cta">
-                    <button class="btn btn-sm menu" aria-label="Get Started" href="client_form.php";>
-                        Get Started
-                    </button>
+                <a class="btn btn-sm menu" aria-label="Get Started" href="client_form.php">
+    Get Started
+                </a>
+
                 </div>
             </nav>
             
@@ -65,9 +66,7 @@ ini_set('error_log', 'errors.log');
 
             <!-- CTA Button -->
             <div>
-                <button class="btn" onclick="window.location.href='client_form.php';">
-                    Let's Get Started
-                </button>
+                <a class="btn" href="client_form.php">Let's Get Started</a>
             </div>
         </div>
     </section>
@@ -347,8 +346,8 @@ ini_set('error_log', 'errors.log');
                     <span>Dedicated Support</span>
                 </div>
             </div>
-            <button class="btn" href="#about.php">Learn More
-            </button>
+            <a class="btn" href="#about.php">Learn More
+</a>
         </div>
     </div>
 </div>
@@ -412,7 +411,7 @@ ini_set('error_log', 'errors.log');
             </div>
         </div>
         <div class="section-button">
-            <button href="blog.php" class="btn">Load More...</button>
+            <a href="blog.php" class="btn">Load More...</a>
         </div>
     </section>
 
@@ -441,8 +440,9 @@ ini_set('error_log', 'errors.log');
                             <h4>The News Letter</h4>
                             <p>Contact us for any of your promotions and services, we are ready to pilots your brand to it brim</p>
                         </div>   
-                        <div class="mb20">
-                            <button class="btn" href="#about-us">Join us</button>
+                        <div>
+                        <a class="btn" aria-label="Get Started" href="client_form.php">Join Us
+                        </a>
                         </div>
                     </div>
                 </div>
