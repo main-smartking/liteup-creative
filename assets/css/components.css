@@ -53,10 +53,7 @@
     box-shadow: 0 5px 10px rgba(0,171,240,0.2);
 }
 
-.btn-sm.menu {
-  border-radius: 30px;
-}
-  
+
 .btn-sm a {
     font-size: .95rem;
     color: var(--clr-sky-blue);
@@ -67,10 +64,10 @@
   }
 
 .section-button {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 180px;
-    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
   }
 
 

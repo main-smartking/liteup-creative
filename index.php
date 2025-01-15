@@ -33,7 +33,7 @@ ini_set('error_log', 'errors.log');
             </a>
             
             <nav class="navbar-menu" aria-label="Main navigation">
-                <a href="#starting" class="navbar-link active">Starting</a>
+                <a href="#starting" class="navbar-link active">Start</a>
                 <a href="#services" class="navbar-link">What we do</a>
                 <a href="#about" class="navbar-link">Who we are</a>
                 <a href="#our-blog" class="navbar-link">Our Blog</a>
@@ -45,7 +45,7 @@ ini_set('error_log', 'errors.log');
             </nav>
             
             <button class="bx bx-menu" id="menu-icon" aria-label="Toggle menu"></button>
-        </div>
+        </div> 
     </div>
 </header>
 
@@ -328,28 +328,11 @@ ini_set('error_log', 'errors.log');
         </div>
         
         <div class="about-details">
-            <h3>Your Digital Growth Partner</h3>
+            <h3>About Us!</h3>
             <p class="main-text">
-                At Liteup Creative, we transform businesses through innovative digital solutions. 
-                With years of experience and a passionate team, we've helped numerous brands achieve 
+                We are your growth companion. At Liteup Creative, we transform businesses through innovative digital solutions, we've also helped numerous brands achieve 
                 their digital transformation goals.
             </p>
-            
-            <div class="stats-container">
-                <div class="stat-item">
-                    <span class="stat-number">150+</span>
-                    <p>Projects Completed</p>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">50+</span>
-                    <p>Happy Clients</p>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">5+</span>
-                    <p>Years Experience</p>
-                </div>
-            </div>
-
             <div class="about-features">
                 <div class="feature-item">
                     <i class='bx bx-check-circle'></i>
@@ -364,9 +347,7 @@ ini_set('error_log', 'errors.log');
                     <span>Dedicated Support</span>
                 </div>
             </div>
-
-            <button class="btn" onclick="window.location.href='client_form.php';">
-                Start Your Project
+            <button class="btn" href="#about.php">Learn More
             </button>
         </div>
     </div>
@@ -431,7 +412,7 @@ ini_set('error_log', 'errors.log');
             </div>
         </div>
         <div class="section-button">
-            <button class="btn">Load More...</button>
+            <button href="blog.php" class="btn">Load More...</button>
         </div>
     </section>
 

@@ -28,9 +28,10 @@
             left: 0;
             width: 100%;
             height: 100vh;
+            gap: 10px;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            padding: 80px 40px;
+            margin-top: -100px;
             transition: 0.5s ease;
             border-left: 1px solid rgba(0,171,240,0.1);
             box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
@@ -176,7 +177,7 @@
         }
 
         .feature-details .details-wrapper {
-            padding: 34px;
+            padding: 0px;
         }
 
         .blog .blog-img img {
@@ -200,6 +201,16 @@
             height: auto;  
         }
 
+        .about-content {
+           flex-direction: column;
+           margin: 10px;
+        }
+
+        .about-details {
+            max-width: 100%;
+        }
+
+
          /* global footer breakpoints */
 
         .footer ul {
@@ -220,22 +231,27 @@
 /* Mobile Landscape */
 @media (max-width: 430px) {
     html {
-        font-size: 95%;
+        font-size: 100%;
     }
     .navbar {
         position: absolute;
     }
     
     .homepage {
-        top: 15%;
+        top: 8%;
     }
 
     .navbar-menu {
-        width: 50vw;
+        width: 100vw;
+    }
+
+    .hero-content {
+        padding: 25px;
+        margin: auto auto 0;
     }
 
     .hero-content h1 {
-        font-size: 55px;    
+        font-size: 60px;    
     }
 
     .box .content {
@@ -251,8 +267,8 @@
         margin: 5px;
     }
 
-    .feature-details .details-wrapper {
-        padding: 0px;
+    .feature-details {
+        padding: 10px;
     }
 
     .boxes-container .box {
