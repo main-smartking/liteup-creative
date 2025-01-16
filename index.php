@@ -28,7 +28,7 @@ ini_set('error_log', 'errors.log');
    <header class="navbar" id="navbar-section">
     <div class="navbar-container">
         <div class="navbar-header main-wrapper">
-            <a href="index.php">
+            <a href="/index.php">
                 <img src="assets/images/logo.png" class="navbar-logo" alt="Liteup Creative logo" loading="lazy">
             </a>
             
@@ -411,7 +411,7 @@ ini_set('error_log', 'errors.log');
             </div>
         </div>
         <div class="section-button">
-            <a href="blog.php" class="btn">Load More...</a>
+            <a href="./pages/blog.php" class="btn">Load More...</a>
         </div>
     </section>
 

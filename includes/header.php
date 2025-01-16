@@ -14,6 +14,7 @@ ini_set('error_log', 'errors.log');
     <title>Digital Marketing Agency</title>
     <link rel="stylesheet" href="../assets/css/header.css">
     <link rel="stylesheet" href="../assets/css/blog.css">
+    <link rel="stylesheet" href="../assets/css/post.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
     <!-- <link rel="stylesheet" href="../assets/css/breakpoint.css"> -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -34,7 +35,7 @@ ini_set('error_log', 'errors.log');
             </a>
             
             <nav class="navbar-menu" aria-label="Main navigation">
-                <a href="#starting" class="navbar-link active">Start</a>
+                <a href="#starting" class="navbar-link active">Home</a>
                 <a href="#services" class="navbar-link">What we do</a>
                 <a href="#about" class="navbar-link">Who we are</a>
                 <a href="#our-blog" class="navbar-link">Our Blog</a>

@@ -6,8 +6,12 @@
     background: linear-gradient(135deg, var(--clr-white) 0%, var(--clr-sky-blue2) 100%);
     padding: 200px 20px 60px 20px;
     text-align: center;
-    margin-bottom: 0px;
+    margin: 0px;
+}
+
+.blog-hero .title {
     max-width: 1140px;
+    margin: 0 auto;
 }
 
 .blog-hero h1 {
@@ -36,7 +40,7 @@
 }
 
 .search-container button {
-    padding: 15px 25px;
+    padding: 15px 20px;
     border: none;
     border-radius: 50px;
     background: var(--clr-sky-blue);
@@ -45,8 +49,12 @@
     transition: all 0.3s ease;
 }
 
+.submit i {
+    font-size: 1.5rem;
+}
+
 .blog-grid {
-    padding: 80px 20px;
+    padding: 80px 10px;
 }
 
 .blog-posts {
@@ -75,7 +83,7 @@
 }
 
 .blog-content {
-    padding: 30px;
+    padding: 20px;
 }
 
 .blog-meta {
@@ -146,4 +154,9 @@
     .blog-hero .title {
         text-align: left;
     }
+    
+    .blog-hero {
+    padding: 150px 20px 60px 20px;
+}
+
 }
