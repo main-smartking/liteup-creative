@@ -149,11 +149,6 @@
         .contact .text {
             padding: 20px;
         }
-
-        .col-md-4 .text p {
-            font-size: 16px;    
-        }
-
         .btn {
             padding: 20px 30px;
             font-size: 14px;
@@ -230,9 +225,6 @@
 
 /* Mobile Landscape */
 @media (max-width: 430px) {
-    html {
-        font-size: 100%;
-    }
     .navbar {
         position: absolute;
     }
