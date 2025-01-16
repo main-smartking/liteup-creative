@@ -1,15 +1,5 @@
-/* Large Screens */
-@media (max-width: 1300px) {       
-        .navbar.global {
-            top: 0;
-        }
-        .navbar-container.global {
-            margin: 0;
-        }
-    }
-
 /* Laptop & Small Screens */
-@media (max-width: 1024px) {       
+@media (max-width: 991px) {       
         .navbar-container {
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
