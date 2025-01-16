@@ -13,6 +13,7 @@ ini_set('error_log', 'errors.log');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Marketing Agency</title>
     <link rel="stylesheet" href="../assets/css/header.css">
+    <link rel="stylesheet" href="../assets/css/blog.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
     <!-- <link rel="stylesheet" href="../assets/css/breakpoint.css"> -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -49,9 +50,3 @@ ini_set('error_log', 'errors.log');
         </div> 
     </div>
 </header>
-
-<?php
-require_once '../includes/footer.php';
-
-?>
-<!-- <script src="../assets/js/main.js" defer></script> -->
