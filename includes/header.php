@@ -30,7 +30,7 @@ ini_set('error_log', 'errors.log');
    <header class="navbar" id="navbar-section">
     <div class="navbar-container">
         <div class="navbar-header main-wrapper">
-            <a href="index.php">
+            <a href="https://www.liteupcreative.com">
                 <img src="../assets/images/logo.png" class="navbar-logo" alt="Liteup Creative logo" loading="lazy">
             </a>
             

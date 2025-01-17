@@ -30,7 +30,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 }
 ?>
 
-<main class="single-post-page">
+<main class="single-post-page main-wrapper">
     <?php if ($post): ?>
     <article class="post-content">
         <div class="post-header">
