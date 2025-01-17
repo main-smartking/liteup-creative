@@ -8,7 +8,7 @@
 }
 
 .post-content {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 0 20px;
     animation: fadeIn 0.8s ease-out;
@@ -87,7 +87,7 @@
 
 .related-posts {
     padding: 80px 0;
-    max-width: 800px;
+    max-width: 900px;
     /* background: linear-gradient(135deg, var(--clr-white) 0%, var(--clr-sky-blue2) 100%); */
 }
 
@@ -100,7 +100,7 @@
 
 .related-grid {
     display: grid;
-    margin: 0 10px;
+    margin: 0 5px;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
 }
@@ -146,7 +146,7 @@
 
 .related-content h3 {
     color: var(--clr-dim-gray);
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 15px;
     line-height: 1.4;
 }

@@ -23,9 +23,12 @@
     justify-content: center;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.068);
-    margin: auto 0;
+    /* margin: auto 0; */
+    margin: 60px auto 0 auto;
+    max-width: 780px;
+    border-radius: 50px;
     padding: 0px 10px;
-    height: 80px;
+    height: 60px;
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(0,171,240,0.1);
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);

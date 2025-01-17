@@ -24,7 +24,7 @@
     justify-content: center;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.068);
-    max-width: 680px;
+    max-width: 780px;
     margin: 60px auto 0 auto;
     padding: 0px 10px;
     height: 60px;
@@ -703,10 +703,10 @@ iframe {
     height: 100%;
 }
 
-/* FOOTER SECTION DESIGN */
+/* footer styling */
 .footer {
-    padding-top: 30px;
-    padding-bottom: 50px;
+    padding-top: 80px;
+    padding-bottom: 80px;
     text-align: center;
     background-color: var(--clr-lightier-gray);
 }
