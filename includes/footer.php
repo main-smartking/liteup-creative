@@ -1,7 +1,4 @@
-<?php
-
-
-?>
+<?php require_once __DIR__ . '/path_helper.php'; ?>
 
 <footer class="footer">
     <ul>
@@ -11,8 +8,10 @@
         <li><a href="">Compliances</a></li>
     </ul>
 </footer>
-<script src="../assets/js/main.js" defer></script>
-<script src="assets/js/particles.js" defer></script>
+
+<!-- Scripts -->
+<script src="<?php echo getAssetPath('assets/js/main.js'); ?>"></script>
+<script src="<?php echo getAssetPath('assets/js/particles.js'); ?>"></script>
 <script src="assets/js/particles.min.js"></script>
 <script>
     particlesJS.load('particles-js', 'assets/js/particles.json', function() {

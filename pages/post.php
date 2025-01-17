@@ -50,7 +50,21 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         </div>
 
         <div class="featured-image">
-            <img src="<?php echo htmlspecialchars($post['featured_image'] ?? ''); ?>" alt="<?php echo htmlspecialchars($post['title'] ?? ''); ?>">
+            <?php 
+                $imagePath = $post['featured_image'] ?? '';
+                $defaultImage = '../assets/images/default-blog.jpg';
+
+                // Remove '../' if present and ensure correct path
+                $imagePath = str_replace('../', '', $imagePath);
+                $imagePath = '../' . $imagePath;  // Add back ../ since we're in pages/
+
+                // Verify image exists
+                if (empty($imagePath) || !file_exists($imagePath)) {
+                    $imagePath = $defaultImage;
+                }
+            ?>
+            <img src="<?php echo htmlspecialchars($imagePath); ?>" 
+                 alt="<?php echo htmlspecialchars($post['title'] ?? ''); ?>">
         </div>
 
         <div class="post-body">
@@ -65,9 +79,42 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     </div>
     <?php endif; ?>
     <section class="related-posts">
-        <h2>Related Articles</h2>
-        <div class="related-grid">
-            <!-- Similar blog cards -->
+        <div class="main-wrapper">
+            <h2>Related Articles</h2>
+            <div class="related-grid">
+                <?php
+                try {
+                    $stmt = $pdo->prepare("
+                        SELECT id, title, content, category 
+                        FROM blog_posts 
+                        WHERE category = ? AND id != ? 
+                        ORDER BY RAND() 
+                        LIMIT 3
+                    ");
+                    $stmt->execute([$post['category'], $post['id']]);
+                    $related_posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                    foreach($related_posts as $related): 
+                ?>
+                    <article class="related-card">
+                        <div class="related-content">
+                            <span class="related-category">
+                                <?php echo htmlspecialchars($related['category']); ?>
+                            </span>
+                            <h3><?php echo htmlspecialchars($related['title']); ?></h3>
+                            <p><?php echo substr(htmlspecialchars($related['content']), 0, 100) . '...'; ?></p>
+                            <a href="post.php?id=<?php echo $related['id']; ?>" class="read-more">
+                                Read Article <i class='bx bx-right-arrow-alt'></i>
+                            </a>
+                        </div>
+                    </article>
+                <?php 
+                    endforeach;
+                } catch(PDOException $e) {
+                    error_log("Database Error: " . $e->getMessage());
+                }
+                ?>
+            </div>
         </div>
     </section>
 </main>

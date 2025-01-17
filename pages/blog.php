@@ -46,7 +46,21 @@ try {
                 <?php foreach($blog_posts as $post): ?>
                     <article class="blog-card">
                         <div class="blog-image">
-                            <img src="<?php echo htmlspecialchars($post['featured_image']); ?>" 
+                            <?php 
+                                // Fix image path handling
+                                $imagePath = $post['featured_image'] ?? '';
+                                $defaultImage = '../assets/images/default-blog.jpg';
+                                
+                                // Clean path - remove any existing '../' and add it back properly
+                                $imagePath = trim($imagePath, '/');
+                                $imagePath = str_replace('../', '', $imagePath);
+                                $imagePath = '../' . $imagePath;
+                                
+                                if (empty($imagePath) || !file_exists($imagePath)) {
+                                    $imagePath = $defaultImage;
+                                }
+                            ?>
+                            <img src="<?php echo htmlspecialchars($imagePath); ?>" 
                                  alt="<?php echo htmlspecialchars($post['title']); ?>">
                         </div>
                         <div class="blog-content">

@@ -6,6 +6,19 @@ ini_set('log_errors', 1);
 ini_set('error_log', 'errors.log');
 ?>
 
+<?php
+require_once 'includes/blog_function.php';
+
+try {
+    // Get latest 3 blog posts
+    $stmt = $pdo->query("SELECT * FROM blog_posts ORDER BY created_at DESC LIMIT 3");
+    $featured_posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch(PDOException $e) {
+    error_log("Database Error: " . $e->getMessage());
+    $featured_posts = [];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -353,67 +366,72 @@ ini_set('error_log', 'errors.log');
 </div>
 </section>
 
-    <section class="blog section main-wrapper" id="our-blog">
-    
-        <div class="section-header">
-            <div class="header-box">
-                <div class="header-label">
-                    <p>blog</p>
-                </div>
-                <div class="header-title">
-                    <h1>Read Our Latest Digital Marketing Blog</h1>
-                </div>
-                <div class="header-subtitle">
-                    <p>Blogs made for digital marketing expertise</p>
-                </div>
+<section class="blog section main-wrapper" id="our-blog">
+    <div class="section-header">
+        <div class="header-box">
+            <div class="header-label">
+                <p>blog</p>
+            </div>
+            <div class="header-title">
+                <h1>Read Our Latest Digital Marketing Blog</h1>
+            </div>
+            <div class="header-subtitle">
+                <p>Blogs made for digital marketing expertise</p>
             </div>
         </div>
+    </div>
 
-        <div class="blog-container">
-            <div class="row">
-                <div class="blog-item padd-15">
-                    <div class="blog-item-inner shadow-dark">
-                        <div class="blog-img">
-                            <img src="https://cdn.pixabay.com/photo/2023/06/30/10/19/man-8098085_1280.jpg" alt="Blog">
-                        </div>
-                        <div class="blog-info">
-                            <h3 class="blog-title">Maximizing ROI: Proven Strategies for Business to Business Success</h3>
-                            <p class="blog-description">Discover actionable strategies that can boost your return on investment and elevate your B2B marketing efforts.</p>
-                            <a href="#">Read More</a>
+    <div class="blog-container">
+        <div class="row">
+            <?php if (!empty($featured_posts)): ?>
+                <?php foreach($featured_posts as $post): ?>
+                    <div class="blog-item padd-15">
+                        <div class="blog-item-inner shadow-dark">
+                            <div class="blog-img">
+                                <?php 
+                                    $imagePath = $post['featured_image'] ?? '';
+                                    $defaultImage = 'assets/images/default-blog.jpg';
+                                    
+                                    // Remove '../' if present
+                                    $imagePath = str_replace('../', '', $imagePath);
+                                    
+                                    // If image path is empty or file doesn't exist, use default
+                                    if (empty($imagePath) || !file_exists($imagePath)) {
+                                        $imagePath = $defaultImage;
+                                    }
+                                ?>
+                                <img src="<?php echo htmlspecialchars($imagePath); ?>" 
+                                     alt="<?php echo htmlspecialchars($post['title']); ?>">
+                            </div>
+                            <div class="blog-info">
+                                <div class="blog-meta">
+                                    <span class="date">
+                                        <?php echo date('F d, Y', strtotime($post['created_at'])); ?>
+                                    </span>
+                                    <span class="category">
+                                        <?php echo htmlspecialchars($post['category']); ?>
+                                    </span>
+                                </div>
+                                <h3 class="blog-title">
+                                    <?php echo htmlspecialchars($post['title']); ?>
+                                </h3>
+                                <p class="blog-description">
+                                    <?php echo substr(htmlspecialchars($post['content']), 0, 150) . '...'; ?>
+                                </p>
+                                <a href="pages/post.php?id=<?php echo $post['id']; ?>" class="read-more">
+                                    Read More <i class='bx bx-right-arrow-alt'></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div> <!-- End Blog-item -->
-                <div class="blog-item padd-15">
-                    <div class="blog-item-inner shadow-dark">
-                        <div class="blog-img">
-                            <img src="https://cdn.pixabay.com/photo/2023/06/30/10/19/man-8098085_1280.jpg" alt="Blog">
-                        </div>
-                        <div class="blog-info">
-                            <h3 class="blog-title">Power of Data-Driven Marketing in Business to Business</h3>
-                            <p class="blog-description">Learn how leveraging data analytics can transform your marketing campaigns and deliver measurable results for your clients.</p>
-                            <a href="#">Read More</a>
-                        </div>
-                    </div>
-                </div> <!-- End Blog-item -->
-                <div class="blog-item padd-15">
-                    <div class="blog-item-inner shadow-dark">
-                        <div class="blog-img">
-                            <img src="https://cdn.pixabay.com/photo/2023/06/30/10/19/man-8098085_1280.jpg" alt="Blog">
-                        </div>
-                        </div>
-                        <div class="blog-info">
-                            <h3 class="blog-title">Creating Compelling Content: A Key to Business to Business Engagement</h3>
-                            <p class="blog-description">Explore effective content strategies that resonate with your audience and drive engagement, leading to better business relationships.</p>
-                            <a href="#">Read More</a>
-                        </div>
-                    </div>
-                </div> <!-- End Blog-item -->
-            </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
-        <div class="section-button">
-            <a href="./pages/blog.php" class="btn">Load More...</a>
-        </div>
-    </section>
+    </div>
+    <div class="section-button">
+        <a href="pages/blog.php" class="btn">View All Posts</a>
+    </div>
+</section>
 
 <section class="contact-us contact" id="contact">
         <div class="contact-container main-wrapper">
