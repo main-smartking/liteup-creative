@@ -30,7 +30,7 @@ try {
 <main class="blog-page">
     <section class="blog-hero">
         <div class="title main-wrapper">
-            <h1>Our Latest Digital Marketing Insights</h1>
+            <h1>Stay Ahead with Our Latest Digital Marketing Insights, Expert Strategies, and Proven Tips to Elevate Your Brand and Achieve Outstanding Business Growth</h1>
             <p>
                 Stay up to date with the latest trends in digital marketing. Our blog features articles on SEO, social media marketing, web development, and more. This is your place and your resource for all things digital marketing.
             </p>

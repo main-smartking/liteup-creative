@@ -4,7 +4,7 @@
 
 .blog-hero {
     /* background: linear-gradient(135deg, var(--clr-white) 0%, var(--clr-sky-blue2) 100%); */
-    padding: 150px 40px 60px 40px;
+    padding: 130px 40px 60px 40px;
     text-align: left;
     margin: 0px;
 }
@@ -18,13 +18,14 @@
     color: var(--clr-sky-blue);
     font-size: 42px;
     margin-bottom: 30px;
+    max-width: 1100px;
 }
 
 .blog-hero p {
     color: var(--clr-dim-gray);
     font-size: 18px;
     margin-bottom: 30px;
-    max-width: 800px;
+    max-width: 900px;
 }
 
 .search-container {
@@ -68,7 +69,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
-    margin-bottom: 60px;
+    margin-bottom: 80px;
 }
 
 .blog-card {
@@ -77,6 +78,7 @@
     background: var(--clr-white);
     box-shadow: 0 10px 30px rgba(0,171,240,0.1);
     transition: all 0.3s ease;
+    margin-bottom: 30px;
 }
 
 .blog-card:hover {
