@@ -418,7 +418,7 @@ try {
                                 <p class="blog-description">
                                     <?php echo substr(htmlspecialchars($post['content']), 0, 150) . '...'; ?>
                                 </p>
-                                <a href="pages/post.php?id=<?php echo $post['id']; ?>" class="read-more">
+                                <a href="blog/post.php?id=<?php echo $post['id']; ?>" class="read-more">
                                     Read More <i class='bx bx-right-arrow-alt'></i>
                                 </a>
                             </div>

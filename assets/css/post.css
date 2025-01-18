@@ -7,6 +7,7 @@
     margin-right: auto;
     margin-top: 140px;
     padding-bottom: 80px;
+    /* max-width: 800px; */
 }
 
 .post-content {
@@ -88,9 +89,6 @@
 
 .related-posts {
     padding: 80px 20px;
-
-    /* max-width: 900px; */
-    /* background: linear-gradient(135deg, var(--clr-white) 0%, var(--clr-sky-blue2) 100%); */
 }
 
 .related-posts h2 {

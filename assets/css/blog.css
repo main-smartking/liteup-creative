@@ -48,7 +48,7 @@
 }
 
 .search-container button {
-    padding: 15px 20px;
+    padding: 15px 17px;
     border: none;
     border-radius: 50px;
     background: var(--clr-sky-blue);
@@ -57,7 +57,7 @@
     transition: all 0.3s ease;
 }
 
-.submit i {
+.search-container button i {
     font-size: 1.5rem;
 }
 
