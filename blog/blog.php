@@ -1,4 +1,4 @@
-<?php include '../includes/header.php'; 
+<?php include '../includes/blog_header.php'; 
 require_once '../includes/blog_function.php';
 
 // Add search functionality
@@ -31,6 +31,9 @@ try {
     <section class="blog-hero">
         <div class="title main-wrapper">
             <h1>Our Latest Digital Marketing Insights</h1>
+            <p>
+                Stay up to date with the latest trends in digital marketing. Our blog features articles on SEO, social media marketing, web development, and more. This is your place and your resource for all things digital marketing.
+            </p>
             <div class="search-container">
                 <form action="blog.php" method="GET">
                     <input type="text" name="search" placeholder="Search articles...">
@@ -97,7 +100,7 @@ try {
     </section>
 </main>
 
-<?php include '../includes/footer.php'; 
+<?php include '../includes/blog_footer.php'; 
 
 
 ?>

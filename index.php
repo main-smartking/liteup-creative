@@ -429,7 +429,7 @@ try {
         </div>
     </div>
     <div class="section-button">
-        <a href="pages/blog.php" class="btn">View All Posts</a>
+        <a href="blog/blog.php" class="btn">View All Posts</a>
     </div>
 </section>
 

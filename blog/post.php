@@ -1,6 +1,6 @@
 <?php 
 require_once '../includes/blog_function.php';
-include '../includes/header.php';
+include '../includes/blog_header.php';
 
 // Initialize post variable
 $post = null;
@@ -133,4 +133,4 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     </section>
 </main>
 
-<?php include '../includes/footer.php'; ?>
+<?php include '../includes/blog_footer.php'; ?>
