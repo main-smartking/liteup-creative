@@ -1,7 +1,7 @@
-/* FONTS */
+/* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
-/* SUPPORTING STYLES */
+/* Supporting style */
 @import url("./variables.css");
 @import url("./utilities.css");
 @import url("./components.css");

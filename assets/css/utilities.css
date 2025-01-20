@@ -22,15 +22,16 @@ body {
     line-height: normal;
   }
 
-h1 {
-  font-size: 30px;
-}
 section {
     margin: 0 auto;
     margin-bottom: 140px;
     padding-left: 10px;
     padding-right: 10px;
     scroll-margin-top: 100px;
+  }
+
+  h1 {
+    font-size: 28px;
   }
   
 .bx.bx-menu {

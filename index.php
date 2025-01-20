@@ -104,7 +104,7 @@ try {
     
             <div class="feature-image box-wrapper">
                 <div class="image">
-                    <img src="assets/images/mobile-marketting.png" alt="feature-image-one">
+                    <img src="assets/images/website.png" alt="feature-image-one">
                 </div>
             </div>
     
@@ -112,11 +112,11 @@ try {
                 <div class="details-wrapper">
                     <div class="details-content">
                         <div class="details-title mb10 font20">
-                            <h2>Content Management</h2>
+                            <h2>Conversion-Focused Web Design</h2>
                         </div>
     
                         <div class="details-description">
-                            <p>Transform your brand's voice with tailored content management. We optimize and distribute impactful narratives, aligning with your goals to build engagement, loyalty, and a strong online presence.</p>
+                            <p>Revolutionize your online presence with captivating, functional websites. Our designs don’t just attract attention—they convert visitors into customers, driving your business toward unparalleled success.</p>
                         </div>
     
                         <div class="cta-link">
@@ -132,7 +132,7 @@ try {
     
             <div class="feature-image box-wrapper">
                 <div class="image">
-                    <img src="assets/images/Holistic-marketing.png" alt="feature-image-one">
+                    <img src="assets/images/smm-campaign.png" alt="feature-image-one">
                 </div>
             </div>
     
@@ -140,11 +140,11 @@ try {
                 <div class="details-wrapper">
                     <div class="details-content">
                         <div class="details-title mb10 font20">
-                            <h2>The Holistic Marketing Approach</h2>
+                            <h2>Social Media Campaigns</h2>
                         </div>
     
                         <div class="details-description">
-                            <p>We offer a full-circle marketing experience, aligning all touchpoints from SEO to social media to ensure your brand story consistently reaches the right audience at every stage of the buyer journey.</p>
+                            <p>Dominate the social sphere with precision-targeted campaigns. We design, execute, and optimize strategies that turn clicks into loyal customers, building a vibrant community around your brand.</p>
                         </div>
     
                         <div class="cta-link">
@@ -160,7 +160,7 @@ try {
     
             <div class="feature-image box-wrapper">
                 <div class="image">
-                    <img src="assets/images/telecommuting-rafiki.png" alt="feature-image-one">
+                    <img src="assets/images/seo-amico.png" alt="feature-image-one">
                 </div>
             </div>
     
@@ -168,11 +168,11 @@ try {
                 <div class="details-wrapper">
                     <div class="details-content">
                         <div class="details-title mb10 font20">
-                            <h2>Relationship-Driven Success</h2>
+                            <h2>Search Engine Mastery Optimization (SEO)</h2>
                         </div>
     
                         <div class="details-description">
-                            <p>Our focus isn’t just on acquiring clients — it's about building lasting relationships. We foster brand loyalty by engaging with your audience in ways that build trust and long-term connections.</p>
+                            <p>Command the digital stage with expert SEO services. From dominating rankings to driving organic traffic, we ensure your brand is always seen, always relevant, and always growing.</p>
                         </div>
     
                         <div class="cta-link">
@@ -188,7 +188,7 @@ try {
     
             <div class="feature-image box-wrapper">
                 <div class="image">
-                    <img src="assets/images/client-focus.png" alt="feature-image-one">
+                    <img src="assets/images/data-driven.png" alt="feature-image-one">
                 </div>
             </div>
     
@@ -196,11 +196,11 @@ try {
                 <div class="details-wrapper">
                     <div class="details-content">
                         <div class="details-title mb10 font20">
-                            <h2>Targeted Audience Engagement</h2>
+                            <h2>Data-Driven Digital Strategies</h2>
                         </div>
     
                         <div class="details-description">
-                            <p>We specialize in identifying and connecting businesses with their perfect clients. Our tailored marketing strategies focus on reaching and engaging the audience that matters most to your brand.</p>
+                            <p>Harness the power of analytics to shape winning campaigns. We transform raw data into actionable insights, creating tailored strategies that amplify your brand’s reach and deliver measurable results.</p>
                         </div>
     
                         <div class="cta-link">
@@ -216,7 +216,7 @@ try {
     
             <div class="feature-image box-wrapper">
                 <div class="image">
-                    <img src="assets/images/Closed Stores-rafiki.png" alt="feature-image-one">
+                    <img src="assets/images/brand-construction.png" alt="feature-image-one">
                 </div>
             </div>
     
@@ -224,11 +224,11 @@ try {
                 <div class="details-wrapper">
                     <div class="details-content">
                         <div class="details-title mb10 font20">
-                            <h2>Brand Positioning</h2>
+                            <h2>Branding That Resonates</h2>
                         </div>
     
                         <div class="details-description">
-                            <p>We help you carve out a unique space in the market. Our approach focuses on positioning your brand in a way that attracts your ideal clients, making you stand out from competitors.</p>
+                            <p>Craft a lasting identity with expert branding services. We align every detail of your brand—logo, tone, and visuals—to create a magnetic presence that speaks directly to your target audience.</p>
                         </div>
     
                         <div class="cta-link">

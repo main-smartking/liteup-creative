@@ -81,6 +81,11 @@
 
 .section-header .header-subtitle {
   font-size: 18px;
+  color: var(--clr-dim-gray);
+}
+
+.header-box .header-title h1 {
+  color: var(--clr-sky-blue);
 }
 
 .header-label {
