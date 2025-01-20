@@ -3,7 +3,7 @@
 /* SUPPORTING STYLES */
 @import url("./variables.css");
 @import url("./utilities.css");
-@import url("./components.css");
+@import url("./component.css");
 @import url("./animations.css");
 
 /* Navbar Styles */

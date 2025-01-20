@@ -4,7 +4,7 @@
 /* Supporting style */
 @import url("./variables.css");
 @import url("./utilities.css");
-@import url("./components.css");
+@import url("./component.css");
 @import url("./animations.css");
 
 /* Navbar Styles */
@@ -145,12 +145,13 @@
 
 .hero-content p {
     font-size: 17.25px;
-    line-height: 1.30;
-    color: var(--clr-black);
+    line-height: 1.40;
+    color: var(--clr-dim-gray);
     animation: slideUp 0.8s ease-out 0.5s both;
 }
 
-/* FEATURE SECTION STYLES */
+/* feature style */
+
 .feature-content {
     margin-top: 100px;
     display: flex;
@@ -190,7 +191,7 @@
 }
 
 .feature-details p {
-    color: var(--clr-dark-gray);
+    color: var(--clr-dim-gray);
     font-size: 16.25px;
 }
 
@@ -263,7 +264,7 @@
 }
 
 .details-description p {
-    color: var(--clr-gray);
+    color: var(--clr-dim-gray);
     line-height: 1.5;
     font-size: 16px;
     margin-bottom: 30px;
@@ -288,7 +289,8 @@
     }
 }
 
-/* SERVICE CONTENT SECTION DESIGN */
+/* service content style */
+
 .services-main-container {
     margin-top: 110px;
     width: 100%;
@@ -583,7 +585,7 @@
 .about-details .main-text {
     font-size: .95rem;
     line-height: 1.65;
-    font-family: 'Raleway', sans-serif;
+    /* font-family: 'Raleway', sans-serif; */
     margin-bottom: 30px;
     color: var(--clr-dark-gray);
 }
@@ -609,7 +611,7 @@
 
 .feature-item span {
     font-size: .95rem;
-    font-family: 'Raleway', sans-serif;
+    /* font-family: 'Raleway', sans-serif; */
 }
 
 .feature-item:hover {

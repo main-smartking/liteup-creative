@@ -10,8 +10,8 @@ ini_set('error_log', 'errors.log');
 require_once 'includes/blog_function.php';
 
 try {
-    // Get latest 3 blog posts
-    $stmt = $pdo->query("SELECT * FROM blog_posts ORDER BY created_at DESC LIMIT 3");
+    // Get latest 3 blog posts for homepage
+    $stmt = $blog_pdo->query("SELECT * FROM blog_posts ORDER BY created_at DESC LIMIT 3");
     $featured_posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch(PDOException $e) {
     error_log("Database Error: " . $e->getMessage());
@@ -444,7 +444,7 @@ try {
                 <div class="col-md-4">
                     <div class="text">
                         <h4>Say Hello</h4>
-                        <p>Liteup Creative<br>B-NO16 Tashan Bama,<br>Borno,<br>Nigeria.</p>
+                        <p>Liteup Creative<br>Shop NO13 Block (B)<br>New Tashan Bama,<br>Maiduguri<br>Nigeria.</p>
                         <p>Tel: +234 701 129 9203 <br> E: <a class="mail-text" href="mailto:info@liteupcreative.com">info@liteupcreative.com</a>
                         </p>
                         <p>&nbsp;</p>
@@ -455,11 +455,11 @@ try {
                 <div class="col-md-4">
                     <div class="text gray">
                         <div>
-                            <h4>The News Letter</h4>
+                            <h4>Good News</h4>
                             <p>Contact us for any of your promotions and services, we are ready to pilots your brand to it brim</p>
                         </div>   
                         <div>
-                        <a class="btn" aria-label="Get Started" href="client_form.php">Join Us
+                        <a class="btn" aria-label="Get Started" href="client_form.php">Reach Out
                         </a>
                         </div>
                     </div>

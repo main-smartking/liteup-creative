@@ -1,5 +1,6 @@
-<?php include '../includes/blog_header.php'; 
+<?php 
 require_once '../includes/blog_function.php';
+include '../includes/blog_header.php';
 
 // Add search functionality
 $search = isset($_GET['search']) ? $_GET['search'] : '';
@@ -9,9 +10,9 @@ if ($search) {
 }
 
 try {
-    // Prepare and execute query
+    // Use $blog_pdo instead of $pdo
     $query = "SELECT * FROM blog_posts $where ORDER BY created_at DESC";
-    $stmt = $pdo->prepare($query);
+    $stmt = $blog_pdo->prepare($query);
     
     if ($search) {
         $searchTerm = "%$search%";

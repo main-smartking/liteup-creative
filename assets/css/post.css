@@ -1,13 +1,13 @@
 @import url("./variables.css");
 @import url("./utilities.css");
-@import url("./components.css");
+@import url("./component.css");
 
 .single-post-page {
     margin-left: auto;
     margin-right: auto;
     margin-top: 140px;
     padding-bottom: 80px;
-    /* max-width: 800px; */
+    max-width: 800px;
 }
 
 .post-content {
@@ -59,7 +59,8 @@
 
 .featured-image img {
     width: 100%;
-    height: 500px;
+    height: auto;
+    object-fit: cover;
     transition: transform 0.3s ease;
 }
 

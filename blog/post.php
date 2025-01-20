@@ -1,33 +1,32 @@
 <?php 
 require_once '../includes/blog_function.php';
-include '../includes/blog_header.php';
 
-// Initialize post variable
-$post = null;
+try {
+    // Get database connection
+    $blog_pdo = getBlogPDO();
 
-// Validate post ID
-if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-    $post_id = intval($_GET['id']);
-    
-    try {
-        $stmt = $pdo->prepare("SELECT * FROM blog_posts WHERE id = ?");
+    if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+        $post_id = intval($_GET['id']);
+        
+        $stmt = $blog_pdo->prepare("SELECT * FROM blog_posts WHERE id = ?");
         $stmt->execute([$post_id]);
         $post = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        // If no post found, redirect
+        
         if (!$post) {
             header("Location: blog.php");
             exit();
         }
-    } catch(PDOException $e) {
-        error_log("Database Error: " . $e->getMessage());
+    } else {
         header("Location: blog.php");
         exit();
     }
-} else {
+} catch(Exception $e) {
+    error_log("Post Error: " . $e->getMessage());
     header("Location: blog.php");
     exit();
 }
+
+include '../includes/blog_header.php';
 ?>
 
 <main class="single-post-page main-wrapper">
@@ -84,7 +83,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             <div class="related-grid">
                 <?php
                 try {
-                    $stmt = $pdo->prepare("
+                    $stmt = $blog_pdo->prepare("
                         SELECT id, title, content, category, featured_image 
                         FROM blog_posts 
                         WHERE category = ? AND id != ? 

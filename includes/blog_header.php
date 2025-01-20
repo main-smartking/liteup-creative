@@ -4,6 +4,11 @@ error_reporting(E_ALL);
 ini_set('display_errors', 0);
 ini_set('log_errors', 1);
 ini_set('error_log', 'errors.log');
+
+// Ensure this is at the very top
+if (!isset($blog_pdo)) {
+    require_once __DIR__ . '/blog_function.php';
+}
 ?>
 
 <!DOCTYPE html>
@@ -35,13 +40,37 @@ ini_set('error_log', 'errors.log');
             </a>
             
             <nav class="navbar-menu" aria-label="Main navigation">
-                <a href="blog.php" class="navbar-link active">All Posts</a>
-                <a href="#services" class="navbar-link">Categories</a>
-                <!-- <a href="#our-blog" class="navbar-link">Our Blog</a> -->
+                <a href="../blog/blog.php" class="navbar-link">All Posts</a>
+                <div class="dropdown">
+                    <button class="navbar-link dropdown-toggle">
+                        Categories <i class='bx bx-chevron-down'></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <?php
+                        try {
+                            if (verifyBlogConnection()) {
+                                $stmt = $blog_pdo->query("SELECT DISTINCT category FROM blog_posts ORDER BY category");
+                                $categories = $stmt->fetchAll(PDO::FETCH_COLUMN);
+                            } else {
+                                throw new Exception("Database connection not established");
+                            }
+                        } catch(Exception $e) {
+                            error_log("Category Query Error: " . $e->getMessage());
+                            $categories = [];
+                        }
+                        
+                        foreach($categories as $category): ?>
+                            <li>
+                                <a href="../blog/blog.php?category=<?php echo urlencode($category); ?>"
+                                   class="<?php echo (isset($_GET['category']) && $_GET['category'] === $category) ? 'active' : ''; ?>">
+                                    <?php echo htmlspecialchars($category); ?>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
                 <div class="nav-cta">
-                <a class="btn btn-sm menu" aria-label="Get Started" href="client_form.php">Contact Us
-                </a>
-
+                    <a class="btn btn-sm menu" href="../pages/client_form.php">Contact Us</a>
                 </div>
             </nav>
             

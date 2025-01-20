@@ -10,4 +10,4 @@
 </footer>
 
 <!-- Scripts -->
-<script src="<?php echo getAssetPath('assets/js/main.js'); ?>"></script>
+<script src="<?php echo getAssetPath('./assets/js/main.js'); ?>"></script>

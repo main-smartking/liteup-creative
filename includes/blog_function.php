@@ -1,13 +1,38 @@
 <?php
+// Database configuration
 $host = 'localhost';
 $dbname = 'blog_db';
 $username = 'root';
 $password = '';
 
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch(PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
+// Create PDO instance as global
+global $blog_pdo;
+
+if (!isset($blog_pdo)) {
+    try {
+        $blog_pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+        $blog_pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
+        // Test connection
+        $blog_pdo->query("SELECT 1");
+    } catch(PDOException $e) {
+        error_log("Database Connection Error: " . $e->getMessage());
+        die("Connection failed");
+    }
+}
+
+// Helper function to get PDO instance
+function getBlogPDO() {
+    global $blog_pdo;
+    if (!$blog_pdo) {
+        throw new Exception("Database connection not available");
+    }
+    return $blog_pdo;
+}
+
+// Connection verification
+function verifyBlogConnection() {
+    global $blog_pdo;
+    return isset($blog_pdo) && $blog_pdo instanceof PDO;
 }
 ?>
