@@ -23,15 +23,27 @@ include '../includes/blog_header.php';
         <section class="blog-hero">
             <div class="title main-wrapper">
                 <div class="large-device">
-                    <h1>Stay Ahead with Our Latest Digital Marketing Insights, Expert Strategies, and Proven Tips to Elevate Your Brand and Achieve Outstanding Business Growth</h1>
+                    <h1>Stay Ahead with Our Latest Digital Marketing Insights & Tips to Elevate Your Brand</h1>
                 </div>
                 <div class="mobile-device">
                     <h1>Stay Ahead with Our Latest Digital Marketing Insights</h1>
                 </div>
-                <p>Stay up to date with the latest trends in digital marketing...</p>
+                <p>Welcome to our blog, where we explore the latest trends in digital marketing and share best practices for promoting services and products to the right audience. Our goal is to keep you informed with fresh, actionable insights on digital strategies, technological advancements, and proven methods for success.</p>
             </div>
         </section>
     <?php endif; ?>
+
+    <div class="blog-header main-wrapper">
+        <form action="" method="GET" class="search-form">
+            <input type="text" 
+                   name="search" 
+                   placeholder="Search posts..." 
+                   value="<?php echo htmlspecialchars($_GET['search'] ?? ''); ?>">
+            <button type="submit" class="search-btn">
+                <i class='bx bx-search'></i>
+            </button>
+        </form>
+    </div>
     
     <section class="blog-grid main-wrapper">
         <div class="blog-posts">

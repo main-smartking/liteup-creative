@@ -161,7 +161,7 @@
                 Your submission has been received successfully. Our team will review your information 
                 and get back to you within 24 hours. We're excited to work with you!
             </p>
-            <a href="index.php" class="home-btn">Back to Home</a>
+            <a href="../index.php" class="home-btn">Back to Home</a>
         </div>
     </div>
 </body>

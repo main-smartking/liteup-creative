@@ -120,7 +120,7 @@ try {
                         </div>
     
                         <div class="cta-link">
-                            <a href="">Get Started<span class="cta-arrow"><i class='bx bx-right-arrow-alt'></i></span></a>
+                            <a href="./pages/client_form.php">Get Started<span class="cta-arrow"><i class='bx bx-right-arrow-alt'></i></span></a>
                         </div>
                     </div>
                 </div>
@@ -148,7 +148,7 @@ try {
                         </div>
     
                         <div class="cta-link">
-                            <a href="">Get Started<span class="cta-arrow"><i class='bx bx-right-arrow-alt'></i></span></a>
+                            <a href="./pages/client_form.php">Get Started<span class="cta-arrow"><i class='bx bx-right-arrow-alt'></i></span></a>
                         </div>
                     </div>
                 </div>
@@ -176,7 +176,7 @@ try {
                         </div>
     
                         <div class="cta-link">
-                            <a href="">Get Started <span class="cta-arrow"><i class='bx bx-right-arrow-alt'></i></span></a>
+                            <a href="./pages/client_form.php">Get Started <span class="cta-arrow"><i class='bx bx-right-arrow-alt'></i></span></a>
                         </div>
                     </div>
                 </div>
@@ -204,7 +204,7 @@ try {
                         </div>
     
                         <div class="cta-link">
-                            <a href="">Get Started <span class="cta-arrow"><i class='bx bx-right-arrow-alt'></i></span></a>
+                            <a href="./pages/client_form.php">Get Started <span class="cta-arrow"><i class='bx bx-right-arrow-alt'></i></span></a>
                         </div>
                     </div>
                 </div>
@@ -226,13 +226,11 @@ try {
                         <div class="details-title mb10 font20">
                             <h2>Branding That Resonates</h2>
                         </div>
-    
                         <div class="details-description">
                             <p>Craft a lasting identity with expert branding services. We align every detail of your brand—logo, tone, and visuals—to create a magnetic presence that speaks directly to your target audience.</p>
                         </div>
-    
                         <div class="cta-link">
-                            <a href="">Get Started <span class="cta-arrow"><i class='bx bx-right-arrow-alt'></i></span></a>
+                            <a href="./pages/client_form.php">Get Started <span class="cta-arrow"><i class='bx bx-right-arrow-alt'></i></span></a>
                         </div>
                     </div>
                 </div>
@@ -266,7 +264,7 @@ try {
                     <div class="boxes-container">
 
                         <div class="box">
-                              <a href="#" class="content">
+                              <a href="./pages/client_form.php" class="content">
                                     <div class="icon">
                                         <i class='bx bxl-html5'></i>
                                     </div>
@@ -276,7 +274,7 @@ try {
                         </div>
 
                         <div class="box">
-                                <a href="#" class="content">
+                                <a href="./pages/client_form.php" class="content">
                                     <div class="icon">
                                         <i class='bx bx-search-alt-2'></i>
                                     </div>
@@ -286,7 +284,7 @@ try {
                         </div>
 
                         <div class="box">
-                                <a href="#" class="content">
+                                <a href="./pages/client_form.php" class="content">
                                     <div class="icon">
                                         <i class='bx bx-store'></i>
                                     </div>
@@ -297,7 +295,7 @@ try {
                         
                         <div class="box">
 
-                                <a href="#" class="content">
+                                <a href="./pages/client_form.php" class="content">
                                     <div class="icon">
                                         <i class='bx bx-mail-send'></i>
                                     </div>
@@ -307,7 +305,7 @@ try {
                         </div>
 
                         <div class="box">
-                             <a href="#" class="content">
+                             <a href="./pages/client_form.php" class="content">
                                     <div class="icon">
                                         <i class='bx bxs-pen'></i>
                                     </div>
@@ -317,7 +315,7 @@ try {
                         </div>
 
                         <div class="box">
-                             <a href="#" class="content">
+                             <a href="./pages/client_form.php" class="content">
                                     <div class="icon">
                                         <i class='bx bxs-message-alt-check'></i>
                                     </div>
