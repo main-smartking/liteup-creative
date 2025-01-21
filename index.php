@@ -32,7 +32,7 @@ try {
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <meta name="description" content="Digital Marketing Agency specializing in business growth and customer engagement">
     <meta name="keywords" content="digital marketing, SEO, web development, social media marketing">
-    <meta name="author" content="LiteUp Creative">
+    <meta name="author" content="LiteUp Creative Concept">
     <meta property="og:title" content="Digital Marketing Agency">
     <meta property="og:description" content="Your digital marketing solution">
     <meta property="og:image" content="assets/images/logo.png">
@@ -51,7 +51,7 @@ try {
                 <a href="#about" class="navbar-link">Who we are</a>
                 <a href="#our-blog" class="navbar-link">Our Blog</a>
                 <div class="nav-cta">
-                <a class="btn btn-sm menu" aria-label="Get Started" href="client_form.php">
+                <a class="btn btn-sm menu" aria-label="Get Started" href="./pages/client_form.php">
     Get Started
                 </a>
 
@@ -79,7 +79,7 @@ try {
 
             <!-- CTA Button -->
             <div>
-                <a class="btn" href="client_form.php">Let's Get Started</a>
+                <a class="btn" href="./pages/client_form.php">Let's Get Started</a>
             </div>
         </div>
     </section>
