@@ -1,49 +1,38 @@
 <?php 
 require_once '../includes/blog_function.php';
-include '../includes/blog_header.php';
 
-// Add search functionality
-$search = isset($_GET['search']) ? $_GET['search'] : '';
-$where = '';
-if ($search) {
-    $where = "WHERE title LIKE :search OR content LIKE :search";
-}
+// Get category from URL
+$selected_category = isset($_GET['category']) ? $_GET['category'] : null;
 
 try {
-    // Use $blog_pdo instead of $pdo
-    $query = "SELECT * FROM blog_posts $where ORDER BY created_at DESC";
-    $stmt = $blog_pdo->prepare($query);
-    
-    if ($search) {
-        $searchTerm = "%$search%";
-        $stmt->bindParam(':search', $searchTerm);
-    }
-    
-    $stmt->execute();
-    $blog_posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
-} catch(PDOException $e) {
-    error_log("Database Error: " . $e->getMessage());
+    $blog_posts = getBlogPostsByCategory($selected_category);
+} catch(Exception $e) {
+    error_log("Error: " . $e->getMessage());
     $blog_posts = [];
 }
+
+include '../includes/blog_header.php';
 ?>
 
 <main class="blog-page">
-    <section class="blog-hero">
-        <div class="title main-wrapper">
-            <h1>Stay Ahead with Our Latest Digital Marketing Insights, Expert Strategies, and Proven Tips to Elevate Your Brand and Achieve Outstanding Business Growth</h1>
-            <p>
-                Stay up to date with the latest trends in digital marketing. Our blog features articles on SEO, social media marketing, web development, and more. This is your place and your resource for all things digital marketing.
-            </p>
-            <div class="search-container">
-                <form action="blog.php" method="GET">
-                    <input type="text" name="search" placeholder="Search articles...">
-                    <button type="submit"><i class='bx bx-search'></i></button>
-                </form>
-            </div>
+    <?php if ($selected_category): ?>
+        <div class="category-header main-wrapper">
+            <h2>Posts in <?php echo htmlspecialchars($selected_category); ?></h2>
         </div>
-    </section>
-
+    <?php else: ?>
+        <section class="blog-hero">
+            <div class="title main-wrapper">
+                <div class="large-device">
+                    <h1>Stay Ahead with Our Latest Digital Marketing Insights, Expert Strategies, and Proven Tips to Elevate Your Brand and Achieve Outstanding Business Growth</h1>
+                </div>
+                <div class="mobile-device">
+                    <h1>Stay Ahead with Our Latest Digital Marketing Insights</h1>
+                </div>
+                <p>Stay up to date with the latest trends in digital marketing...</p>
+            </div>
+        </section>
+    <?php endif; ?>
+    
     <section class="blog-grid main-wrapper">
         <div class="blog-posts">
             <?php if (!empty($blog_posts)): ?>
@@ -101,7 +90,4 @@ try {
     </section>
 </main>
 
-<?php include '../includes/blog_footer.php'; 
-
-
-?>
+<?php include '../includes/footer.php'; ?>

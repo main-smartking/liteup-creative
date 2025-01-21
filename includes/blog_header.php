@@ -51,22 +51,20 @@ if (!isset($blog_pdo)) {
                             if (verifyBlogConnection()) {
                                 $stmt = $blog_pdo->query("SELECT DISTINCT category FROM blog_posts ORDER BY category");
                                 $categories = $stmt->fetchAll(PDO::FETCH_COLUMN);
-                            } else {
-                                throw new Exception("Database connection not established");
+                                
+                                foreach($categories as $category): ?>
+                                    <li>
+                                        <a href="../blog/blog.php?category=<?php echo urlencode($category); ?>" 
+                                           class="category-link">
+                                            <?php echo htmlspecialchars($category); ?>
+                                        </a>
+                                    </li>
+                                <?php endforeach;
                             }
                         } catch(Exception $e) {
                             error_log("Category Query Error: " . $e->getMessage());
-                            $categories = [];
                         }
-                        
-                        foreach($categories as $category): ?>
-                            <li>
-                                <a href="../blog/blog.php?category=<?php echo urlencode($category); ?>"
-                                   class="<?php echo (isset($_GET['category']) && $_GET['category'] === $category) ? 'active' : ''; ?>">
-                                    <?php echo htmlspecialchars($category); ?>
-                                </a>
-                            </li>
-                        <?php endforeach; ?>
+                        ?>
                     </ul>
                 </div>
                 <div class="nav-cta">

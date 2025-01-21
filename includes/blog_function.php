@@ -35,4 +35,21 @@ function verifyBlogConnection() {
     global $blog_pdo;
     return isset($blog_pdo) && $blog_pdo instanceof PDO;
 }
+
+function getBlogPostsByCategory($category = null) {
+    global $blog_pdo;
+    
+    try {
+        if ($category) {
+            $stmt = $blog_pdo->prepare("SELECT * FROM blog_posts WHERE category = ? ORDER BY created_at DESC");
+            $stmt->execute([$category]);
+        } else {
+            $stmt = $blog_pdo->query("SELECT * FROM blog_posts ORDER BY created_at DESC");
+        }
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch(PDOException $e) {
+        error_log("Blog Query Error: " . $e->getMessage());
+        return [];
+    }
+}
 ?>

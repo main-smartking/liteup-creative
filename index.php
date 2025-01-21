@@ -343,7 +343,7 @@ try {
             <h3>About Us!</h3>
             <p class="main-text">
                 We are your growth companion. At Liteup Creative, we transform businesses through innovative digital solutions, we've also helped numerous brands achieve 
-                their digital transformation goals.
+                their digital transformation goals. Best of our habits are but not limited to;
             </p>
             <div class="about-features">
                 <div class="feature-item">

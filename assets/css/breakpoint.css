@@ -11,25 +11,29 @@
         }
 
         .navbar-menu {
-            display: none;
+            display: flex;
             flex-direction: column;
             position: fixed;
             top: 0;
-            left: 0;
+            left: -100%;
             width: 100%;
             height: 100vh;
             gap: 10px;
+            padding-bottom: 200px;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            transition: 0.5s ease;
             border-left: 1px solid rgba(0,171,240,0.1);
             box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+            transition: 0.5s ease;
             z-index: -1;
         }
 
+        .nav-cta {
+            margin-top: 20px;
+        }
+
         .navbar-menu.active {
-            display: flex;
-            right: 0;
+            left: 0;
         }
 
         .navbar-menu a {
@@ -216,6 +220,10 @@
 @media (max-width: 430px) {
     .navbar {
         position: absolute;
+    }
+
+    .navbar-logo {
+        font-size: 2rem;
     }
     
     .homepage {

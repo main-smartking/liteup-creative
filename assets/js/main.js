@@ -1,56 +1,77 @@
-// Initialize variables
-let lastScrollTop = 0;
-const navbar = document.getElementById("navbar-section");
-const menuIcon = document.getElementById("menu-icon");
-const menu = document.querySelector('.navbar-menu');
-const SCROLL_THRESHOLD = 150; // Increased threshold
-const SCROLL_DELAY = 200; // Delay in milliseconds
+document.addEventListener('DOMContentLoaded', () => {
+    const navbar = document.getElementById("navbar-section");
+    const menuIcon = document.getElementById("menu-icon");
+    const menu = document.querySelector('.navbar-menu');
+    const dropdowns = document.querySelectorAll('.dropdown-toggle');
+    const navLinks = document.querySelectorAll('.navbar-link:not(.dropdown-toggle)');
+    let lastScrollTop = 0;
 
-let scrollTimeout;
-
-// Menu toggle
-menuIcon.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    menu.classList.toggle('active');
-    menuIcon.classList.toggle('bx-x');
-});
-
-// Close menu when clicking outside
-document.addEventListener('click', (e) => {
-    const isMenuClick = menu.contains(e.target);
-    const isMenuIconClick = menuIcon.contains(e.target);
-    
-    if (!isMenuClick && !isMenuIconClick) {
-        menu.classList.remove('active');
-        menuIcon.classList.remove('bx-x');
+    // Mobile menu toggle
+    if (menuIcon) {
+        menuIcon.addEventListener('click', () => {
+            menu.classList.toggle('active');
+            menuIcon.classList.toggle('bx-x');
+        });
     }
-});
 
-// Scroll handler with throttling and delay
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    clearTimeout(scrollTimeout);
-    
-    scrollTimeout = setTimeout(() => {
-        if (currentScroll > lastScrollTop && currentScroll > SCROLL_THRESHOLD) {
-            // Scrolling down
-            navbar.classList.add("nav-hidden");
-        } else {
-            // Scrolling up
-            navbar.classList.remove("nav-hidden");
-        }
+    // Close menu when clicking links
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 991) {
+                menu.classList.remove('active');
+                menuIcon.classList.remove('bx-x');
+            }
+        });
+    });
+
+    // Dropdown toggles for mobile
+    dropdowns.forEach(dropdown => {
+        dropdown.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                const parent = dropdown.parentElement;
+                parent.classList.toggle('active');
+            }
+        });
+    });
+
+    // Handle category link clicks
+    const categoryLinks = document.querySelectorAll('.category-link');
+    categoryLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                menu.classList.remove('active');
+                menuIcon.classList.remove('bx-x');
+                dropdowns.forEach(dropdown => {
+                    dropdown.parentElement.classList.remove('active');
+                });
+            }
+        });
+    });
+
+    // Navbar scroll behavior
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
         
-        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-    }, SCROLL_DELAY);
-});
+        if (currentScroll > lastScrollTop && currentScroll > 100) {
+            navbar.classList.add('nav-hidden');
+        } else {
+            navbar.classList.remove('nav-hidden');
+        }
+        lastScrollTop = currentScroll;
+    });
 
-// Close menu when clicking links
-document.querySelectorAll('.navbar-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-        menu.classList.remove('active');
-        menuIcon.classList.remove('bx-x');
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+            const isMenuClick = menu.contains(e.target);
+            const isMenuIconClick = menuIcon.contains(e.target);
+            
+            if (!isMenuClick && !isMenuIconClick) {
+                menu.classList.remove('active');
+                menuIcon.classList.remove('bx-x');
+            }
+        }
     });
 });
 
