@@ -175,7 +175,6 @@
 
 .dropdown-menu li a:hover,
 .dropdown-menu li a.active {
-    background: var(--clr-sky-blue2);
     color: var(--clr-sky-blue);
 }
 
@@ -311,7 +310,6 @@
     }
 
     .category-link:hover {
-        background: var(--clr-sky-blue2);
         color: var(--clr-sky-blue);
     }
 

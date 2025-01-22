@@ -27,6 +27,7 @@ try {
     <title>Digital Marketing Agency</title>
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="stylesheet" href="assets/css/breakpoint.css">
+    <link rel="stylesheet" href="assets/css/modal.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="icon" href="assets/images/favicon.png" type="image/png">
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -457,8 +458,9 @@ try {
                             <p>Contact us for any of your promotions and services, we are ready to pilots your brand to it brim</p>
                         </div>   
                         <div>
-                        <a class="btn" aria-label="Get Started" href="client_form.php">Reach Out
-                        </a>
+                            <div>
+                                <a href="#" class="contact-trigger btn btn-sm">Contact Us</a>
+                            </div>
                         </div>
                     </div>
                 </div>

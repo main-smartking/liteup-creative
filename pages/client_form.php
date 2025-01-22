@@ -70,14 +70,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Client Form</title>
     <link rel="stylesheet" href="../assets/css/client.css">
-    <link rel="icon" href="assets/images/favicon.png" type="images/png">
+    <link rel="icon" href="../assets/images/favicon.png" type="images/png">
 </head>
 <body> 
     <main>
         <div class="main-container">
 
             <div class="form-container">
-                <h1 class="title-header mb10">Welcome to The Result Driven Agency</h1>
+                <h1 class="title-header mb10">Hi! You've Made the Right Choice</h1>
                 <p class="description mb20">Kindly fill your details below and 
                     select the appropriate service
                 </p>

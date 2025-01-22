@@ -8,6 +8,12 @@ main {
   max-width: 1440px;
   margin: 0 auto;
 }
+body {
+  color: var(--clr-dim-gray);
+}
+p {
+  color: var(--clr-dim-gray);
+}
 .main-container {
   min-height: 100vh;
   display: flex;
@@ -15,7 +21,6 @@ main {
   align-items: center;
   justify-content: center;
   padding: 40px 20px;
-  background: linear-gradient(135deg, var(--clr-white) 0%, var(--clr-sky-blue2) 100%);
 }
 
 .form-container {
@@ -25,15 +30,10 @@ main {
   padding: 40px;
   background: var(--clr-white);
   border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  border: .4px solid var(--clr-light-blue);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.09);
   animation: slideUp 0.8s ease-out;
-}
-
-/* .logo-container img {
-  max-width: 70px;
-  margin-bottom: 20px;
-} */
- 
+} 
 .description {
     margin-bottom: 10px;
     font-size: 1.025rem;
@@ -108,22 +108,53 @@ select {
     border-radius: 10px;
     font-size: 1rem;
     background: inherit;
+    color: var(--clr-dim-gray);
+    appearance: none;
+    cursor: pointer;
+}
+select:hover {
+    border-color: var(--clr-sky-blue);
 }
 select:focus {
-    border: 1px solid var(--clr-sky-blue);
-  }
-
+    border: 2px solid var(--clr-sky-blue);
+    outline: none;
+    box-shadow: 0 0 5px rgba(0,171,240,0.3);
+}
+option {
+    background: var(--clr-white);
+    color: var(--clr-dim-gray);
+    padding: 10px;
+}
+option:hover,
+option:focus,
+option:active,
+option:checked {
+    background: var(--clr-sky-blue2) !important;
+    color: var(--clr-sky-blue) !important;
+}
 option:not(:disabled) {
     color: var(--clr-sky-blue);
-  }
-
+}
 option:disabled {
     color: var(--clr-light-gray);
-  }
+}
 input[type="checkbox"], input[type="radio"] {
   width: 18px;
   height: 18px;
   margin-right: 10px;
+  /* accent-color: var(--clr-sky-blue); */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+input[type="checkbox"]:hover, 
+input[type="radio"]:hover,
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+    border-color: var(--clr-sky-blue);
+    box-shadow: 0 0 5px rgba(0,171,240,0.3);
+}
+.radio-checkbox-wrapper:hover {
+    color: var(--clr-sky-blue);
 }
 .radio-checkbox-wrapper {
     display: flex;
@@ -222,16 +253,6 @@ input[type="checkbox"], input[type="radio"] {
       }
   }
 
-/* Logo styles */
-.logo-container {
-    margin-bottom: 30px;
-    animation: slideDown 0.8s ease-out;
-}
-
-/* .logo-container img {
-    max-width: 180px;
-    height: auto;
-} */
 
 /* Form animations */
 @keyframes slideUp {

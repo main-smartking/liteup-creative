@@ -21,7 +21,7 @@ if (!isset($blog_pdo)) {
     <link rel="stylesheet" href="../assets/css/blog.css">
     <link rel="stylesheet" href="../assets/css/post.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
-    <!-- <link rel="stylesheet" href="../assets/css/breakpoint.css"> -->
+    <link rel="stylesheet" href="../assets/css/modal.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="icon" href="../assets/images/favicon.png" type="image/png">
     <meta name="description" content="Digital Marketing Agency specializing in business growth and customer engagement">
@@ -68,7 +68,7 @@ if (!isset($blog_pdo)) {
                     </ul>
                 </div>
                 <div class="nav-cta">
-                    <a class="btn btn-sm menu" href="../pages/client_form.php">Contact Us</a>
+                <a href="#" class="contact-trigger btn btn-sm">Contact Us</a>
                 </div>
             </nav>
             

@@ -16,7 +16,7 @@ ini_set('error_log', 'errors.log');
     <link rel="stylesheet" href="../assets/css/blog.css">
     <link rel="stylesheet" href="../assets/css/post.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
-    <!-- <link rel="stylesheet" href="../assets/css/breakpoint.css"> -->
+    <link rel="stylesheet" href="<?php echo getAssetPath('assets/css/modal.css'); ?>">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="icon" href="../assets/images/favicon.png" type="image/png">
     <meta name="description" content="Digital Marketing Agency specializing in business growth and customer engagement">
