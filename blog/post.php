@@ -132,4 +132,7 @@ include '../includes/blog_header.php';
     </section>
 </main>
 
-<?php include '../includes/blog_footer.php'; ?>
+<?php 
+// Include blog footer with contact modal
+require_once '../includes/blog_footer.php';
+?>
