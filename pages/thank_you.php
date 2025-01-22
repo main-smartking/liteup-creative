@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thank You - Liteup Creative</title>
-    <link rel="icon" href="assets/images/favicon.png" type="image/png">
+    <link rel="icon" href="../assets/images/favicon.png" type="image/png">
     <link rel="stylesheet" href="../assets/css/variables.css">
     <link rel="stylesheet" href="../assets/css/utilities.css">
     <style>
@@ -161,7 +161,7 @@
                 Your submission has been received successfully. Our team will review your information 
                 and get back to you within 24 hours. We're excited to work with you!
             </p>
-            <a href="../index.php" class="home-btn">Back to Home</a>
+            <a href="index.php" class="home-btn">Back to Home</a>
         </div>
     </div>
 </body>

@@ -19,9 +19,6 @@ try {
     );
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // Debug POST data
-        file_put_contents('debug.log', print_r($_POST, true));
-
         // Validate inputs
         if (empty($_POST['name']) || empty($_POST['email']) || empty($_POST['subject']) || empty($_POST['message'])) {
             throw new Exception('All fields are required');

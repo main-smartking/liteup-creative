@@ -3,6 +3,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeBtn = document.getElementById('closeModal');
     const contactBtns = document.querySelectorAll('.contact-trigger');
     const form = document.getElementById('contactForm');
+    const modalHeader = document.getElementById('modalHeader');
+    const responseMessage = modal.querySelector('.response-message');
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        resetModal();
+    };
+
+    const resetModal = () => {
+        // Clear any existing form messages
+        const existingMessages = form.querySelectorAll('.form-message');
+        existingMessages.forEach(msg => msg.remove());
+        
+        // Reset form display
+        form.style.display = 'block';
+        modalHeader.style.display = 'block';
+        responseMessage.style.display = 'none';
+        form.reset();
+    };
 
     if (!modal || !closeBtn || !contactBtns.length || !form) {
         console.error('Modal elements not found');
@@ -13,22 +33,19 @@ document.addEventListener('DOMContentLoaded', () => {
     contactBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
+            resetModal();
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         });
     });
 
     // Close modal
-    closeBtn.addEventListener('click', () => {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-    });
+    closeBtn.addEventListener('click', closeModal);
 
     // Close on outside click
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
+            closeModal();
         }
     });
 
@@ -73,10 +90,19 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (data.status === 'success') {
                 showMessage('success', 'Thank you! Your message has been sent successfully.');
-                form.reset();
+                form.style.display = 'none';
+                modalHeader.style.display = 'none';
+                responseMessage.style.display = 'block';
                 setTimeout(() => {
-                    document.getElementById('contactModal').classList.remove('active');
-                }, 2000);
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                    setTimeout(() => {
+                        form.style.display = 'block';
+                        modalHeader.style.display = 'block';
+                        responseMessage.style.display = 'none';
+                        form.reset();
+                    }, 500);
+                }, 10000);
             } else {
                 showMessage('error', data.message || 'Failed to send message');
             }
@@ -96,9 +122,5 @@ document.addEventListener('DOMContentLoaded', () => {
         existingMessages.forEach(msg => msg.remove());
         
         form.insertBefore(messageDiv, form.firstChild);
-        
-        setTimeout(() => {
-            messageDiv.remove();
-        }, 5000);
     }
 });

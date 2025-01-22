@@ -77,12 +77,16 @@
     color: var(--clr-sky-blue);
     font-size: 24px;
     margin-bottom: 15px;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
 }
 
 .blog-card p {
     color: var(--clr-dim-gray);
     margin-bottom: 20px;
     line-height: 1.6;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
 }
 
 .read-more {
@@ -249,7 +253,7 @@
 
     #menu-icon {
         display: block;
-        font-size: 28px;
+        font-size: 29.75px;
         cursor: pointer;
     }
 
