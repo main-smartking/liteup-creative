@@ -52,4 +52,35 @@ function getBlogPostsByCategory($category = null) {
         return [];
     }
 }
+
+function getBlogPostsBySearch($search = null, $category = null) {
+    global $blog_pdo;
+    
+    try {
+        $params = [];
+        $conditions = [];
+        
+        if ($search) {
+            $conditions[] = "(title LIKE ? OR content LIKE ?)";
+            $params[] = "%$search%";
+            $params[] = "%$search%";
+        }
+        
+        if ($category) {
+            $conditions[] = "category = ?";
+            $params[] = $category;
+        }
+        
+        $where = !empty($conditions) ? "WHERE " . implode(" AND ", $conditions) : "";
+        
+        $sql = "SELECT * FROM blog_posts $where ORDER BY created_at DESC";
+        $stmt = $blog_pdo->prepare($sql);
+        $stmt->execute($params);
+        
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch(PDOException $e) {
+        error_log("Search Query Error: " . $e->getMessage());
+        return [];
+    }
+}
 ?>

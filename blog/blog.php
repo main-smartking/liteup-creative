@@ -1,11 +1,11 @@
 <?php 
 require_once '../includes/blog_function.php';
 
-// Get category from URL
 $selected_category = isset($_GET['category']) ? $_GET['category'] : null;
+$search = isset($_GET['search']) ? $_GET['search'] : null;
 
 try {
-    $blog_posts = getBlogPostsByCategory($selected_category);
+    $blog_posts = getBlogPostsBySearch($search, $selected_category);
 } catch(Exception $e) {
     error_log("Error: " . $e->getMessage());
     $blog_posts = [];
@@ -22,6 +22,7 @@ include '../includes/blog_header.php';
     <?php else: ?>
         <section class="blog-hero">
             <div class="title main-wrapper">
+               
                 <div class="large-device">
                     <h1>Stay Ahead with Our Latest Digital Marketing Insights & Tips to Elevate Your Brand</h1>
                 </div>
@@ -29,21 +30,21 @@ include '../includes/blog_header.php';
                     <h1>Stay Ahead with Our Latest Digital Marketing Insights</h1>
                 </div>
                 <p>Welcome to our blog, where we explore the latest trends in digital marketing and share best practices for promoting services and products to the right audience. Our goal is to keep you informed with fresh, actionable insights on digital strategies, technological advancements, and proven methods for success.</p>
+                <div class="blog-header main-wrapper">
+                    <form action="" method="GET" class="search-form">
+                        <input type="text" 
+                            name="search" 
+                            placeholder="Search posts..." 
+                            value="<?php echo htmlspecialchars($_GET['search'] ?? ''); ?>">
+                        <button type="submit" class="search-btn">
+                            <i class='bx bx-search'></i>
+                        </button>
+                    </form>
+                </div>
             </div>
+            
         </section>
     <?php endif; ?>
-
-    <div class="blog-header main-wrapper">
-        <form action="" method="GET" class="search-form">
-            <input type="text" 
-                   name="search" 
-                   placeholder="Search posts..." 
-                   value="<?php echo htmlspecialchars($_GET['search'] ?? ''); ?>">
-            <button type="submit" class="search-btn">
-                <i class='bx bx-search'></i>
-            </button>
-        </form>
-    </div>
     
     <section class="blog-grid main-wrapper">
         <div class="blog-posts">
