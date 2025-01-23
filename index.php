@@ -358,7 +358,7 @@ try {
                     <span>Dedicated Support</span>
                 </div>
             </div>
-            <a class="btn" href="#about.php">Learn More
+            <a class="btn" href="pages/about.php">Learn More
 </a>
         </div>
     </div>

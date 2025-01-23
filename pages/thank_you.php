@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="/liteup-creative/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thank You - Liteup Creative</title>
-    <link rel="icon" href="../assets/images/favicon.png" type="image/png">
-    <link rel="stylesheet" href="../assets/css/variables.css">
-    <link rel="stylesheet" href="../assets/css/utilities.css">
+    <link rel="icon" href="assets/images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/utilities.css">
     <style>
         @keyframes slideUp {
             from { transform: translateY(30px); opacity: 0; }
