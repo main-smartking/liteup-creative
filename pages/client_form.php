@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         ':gender' => $gender
                     ])) {
                         // Redirect to thank you page after successful submission
-                        header("Location: thank_you.php");
+                        header("Location: pages/thank_you.php");
                         exit();
                     } else {
                         $error_message = "Error submitting form. Please try again.";
@@ -67,13 +67,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 <head>
     <base href="/liteup-creative/">
+    <link rel="icon" href="assets/images/favicon.png" type="image/png">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/client.css">
 </head>
 <body> 
     <main>
-        <div class="main-container">
-
             <div class="form-container">
                 <h1 class="title-header mb10">Hi! You've Made the Right Choice</h1>
                 <p class="description mb20">Kindly fill your details below and 
@@ -158,7 +157,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                 </form>
             </div>
-        </div>
     </main>
     <script src="assets/js/scripts.js"></script>  <!-- JavaScript file -->
 </body>

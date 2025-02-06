@@ -5,7 +5,7 @@ input {
     font-size: 1.025rem;
   }
 main {
-  max-width: 1440px;
+    /* max-width: 1440px; */
   margin: 0 auto;
 }
 body {
@@ -41,10 +41,13 @@ p {
 }
 form {
     background: inherit;
+    display: flex;
+    flex-wrap: wrap;
 }
 .input-group {
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
     gap: 10px;
     justify-content: space-between;
     align-items: center;
@@ -103,6 +106,7 @@ textarea {
 }
 select {
     width: 100%;
+    max-width: 100%;
     height: 50px;
     border: 1px solid var(--clr-light-gray);
     border-radius: 10px;
@@ -142,7 +146,6 @@ input[type="checkbox"], input[type="radio"] {
   width: 18px;
   height: 18px;
   margin-right: 10px;
-  /* accent-color: var(--clr-sky-blue); */
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -218,41 +221,31 @@ input[type="radio"]:checked {
     color: var(--secondary-color);
   }
 
-  @media (max-width: 1200px) {
-    .container {
-      max-width: 650px;
-    }
-  }
-  
   @media (max-width: 992px) {
-    .container {
-      max-width: 768px;
+    .form-container {
+      max-width: 630px;
     }
   }
+
   
   @media (max-width: 768px) {
-    .container {
-      max-width: 567px;
-    }
-  }
-  
-  @media (max-width: 576px) {
-    .container {
-      width: 100%;
-    }
-  }
-  
-
-@media (max-width: 467px) {
     .form-container {
-      width: 100%;
+      max-width: 100%;
+    }
+    .main-container {
+      max-width: 100%;
+    }
+  }
+  
+  @media (max-width: 467px) {
+    .form-container {
       padding: 40px;
     }
     .input-wrapper {
-        width: 100%;
-      }
+      width: 100%;
+    }
   }
-
+  
 
 /* Form animations */
 @keyframes slideUp {
@@ -265,21 +258,22 @@ input[type="radio"]:checked {
     to { transform: translateY(0); opacity: 1; }
 }
 
+
 .title-header {
-    color: var(--clr-sky-blue);
-    font-size: 32px;
-    margin-bottom: 20px;
-    position: relative;
-    animation: slideUp 0.8s ease-out 0.3s both;
+  color: var(--clr-sky-blue);
+  font-size: 32px;
+  margin-bottom: 20px;
+  position: relative;
+  animation: slideUp 0.8s ease-out 0.3s both;
 }
 
 .title-header::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    width: 60px;
-    height: 3px;
-    background: var(--clr-sky-blue);
-    border-radius: 2px;
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--clr-sky-blue);
+  border-radius: 2px;
 }

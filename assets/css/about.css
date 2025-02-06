@@ -1,6 +1,6 @@
 /* About Page Styles */
 .about-page {
-    background: linear-gradient(45deg, rgba(3, 0, 20, 0.952), rgb(7, 0, 14)), url('../images/about-hero.jpg');
+    /* background: linear-gradient(45deg, rgba(3, 0, 20, 0.952), rgb(7, 0, 14)), url('../images/about-hero.jpg'); */
     background-size: cover;
     background-position: center;
     padding: 200px 0 0px;
@@ -17,51 +17,50 @@
 .about-page h1 {
     font-size: 52px;
     margin-bottom: 25px;
-    color: var(--clr-white);
+    color: var(--clr-sky-blue);
     font-weight: 700;
     line-height: 1.15;
     animation: slideInLeft 0.8s ease;
 }
 
 .about-page .subtitle {
-    font-size: 26px;
-    color: var(--clr-sky-blue);
-    font-weight: 500;
+    font-size: 18px;
+    color: var(--clr-light-gray);
     animation: slideInLeft 1s ease;
     margin-left: 2px;
+    max-width: 969.5px;
 }
+
+
+.mission-vision-section {
+    background: linear-gradient(24deg, var(--clr-sky-blue), var(--clr-sky-blue2));
+    padding: 70px 20px;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 100px;
+}
+
+.mission-vision-section .mission,
+.mission-vision-section .vision {
+    color: var(--clr-white);
+    font-size: 36px;
+}
+
+.mission-vision-section  p {
+    color: var(--clr-white);
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
 
 .about-content {
-    padding: 120px 0;
-    /* background: var(--clr-white); */
-}
-
-.mission-vision {
-    text-align: left;
-    max-width: 900px;
-    padding: 0 30px;
-}
-
-.mission-vision h2 {
-    color: var(--clr-sky-blue);
-    font-size: 38px;
-    max-width: 900px;
-    margin-bottom: 20px;
-    font-weight: 600;
-}
-
-.mission-vision p {
-    color: var(--clr-light-gray);
-    font-size: 18px;
-    line-height: 1.8;
-    margin-bottom: 40px;
-    letter-spacing: 0.3px;
+    padding: 40px 0;
 }
 
 .expertise-section {
     margin-bottom: 120px;
-    padding: 0 30px;
-    color: var(--clr-light-gray);
+    padding: 0 20px;
+    color: var(--clr-white);
 }
 
 .expertise-section h2 {
@@ -73,7 +72,7 @@
 }
 
 .expertise-section p {
-    color: var(--clr-light-gray);
+    color: var(--clr-white);
     max-width: 900px;
     font-size: 18px;
     line-height: 1.8;
@@ -112,16 +111,14 @@
 }
 
 .expertise-card p {
-    color: var(--clr-dim-gray);
+    color: var(--clr-white);
     line-height: 1.8;
     font-size: 16px;
     letter-spacing: 0.2px;
 }
 
 .approach-section {
-    background: var(--clr-sky-blue2);
     padding: 80px 0;
-    margin: 100px 0;
 }
 
 .approach-section h2 {
@@ -132,16 +129,19 @@
 }
 
 .approach-list {
-    max-width: 900px;
+    display: flex;
     margin: 0 auto;
     padding: 0 20px;
     list-style: none;
+
 }
 
 .approach-list li {
     background: var(--clr-white);
     padding: 30px;
     border-radius: 15px;
+    width: 33.3333%;
+    margin: 5px;
     margin-bottom: 30px;
     box-shadow: 0 10px 20px rgba(0,171,240,0.08);
     transition: all 0.3s ease;
@@ -164,46 +164,8 @@
     line-height: 1.7;
 }
 
-.industry-expertise {
-    text-align: center;
-    padding: 80px 0;
-}
-
-.industry-expertise h2 {
-    color: var(--clr-sky-blue);
-    font-size: 36px;
-    margin-bottom: 40px;
-}
-
-.industry-expertise ul {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 20px;
-    list-style: none;
-}
-
-.industry-expertise li {
-    background: var(--clr-white);
-    padding: 20px;
-    border-radius: 10px;
-    color: var(--clr-dim-gray);
-    font-weight: 500;
-    box-shadow: 0 5px 15px rgba(0,171,240,0.08);
-    transition: all 0.3s ease;
-}
-
-.industry-expertise li:hover {
-    background: var(--clr-sky-blue);
-    color: var(--clr-white);
-    transform: translateY(-5px);
-}
-
 .why-choose-us {
     padding: 100px 0;
-    background: var (--clr-white);
 }
 
 .why-choose-us h2 {
@@ -211,6 +173,11 @@
     color: var(--clr-sky-blue);
     font-size: 36px;
     margin-bottom: 60px;
+}
+
+.benefits-grid {
+    gap: 20px;
+    display: grid;
 }
 
 .benefit-card {
@@ -241,16 +208,15 @@
 }
 
 .benefit-card p {
-    color: var(--clr-dim-gray);
+    color: var(--clr-white);
     line-height: 1.7;
 }
 
 .cta-section {
-    background: linear-gradient(45deg, var(--clr-sky-blue), var(--clr-sky-blue2));
+    background: linear-gradient(24deg, var(--clr-sky-blue), var(--clr-sky-blue2));
     padding: 80px 20px;
     text-align: center;
     border-radius: 30px;
-    margin: 0 20px;
 }
 
 .cta-section h2 {

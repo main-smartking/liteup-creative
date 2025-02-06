@@ -40,7 +40,6 @@ include '../includes/blog_header.php';
             </div>
             <h1><?php echo htmlspecialchars($post['title'] ?? ''); ?></h1>
             <div class="author-info">
-                <img src="../assets/images/author.jpg" alt="<?php echo htmlspecialchars($post['author'] ?? ''); ?>">
                 <div class="author-details">
                     <span class="author-name"><?php echo htmlspecialchars($post['author'] ?? ''); ?></span>
                     <span class="author-role"><?php echo htmlspecialchars($post['author_role'] ?? ''); ?></span>
