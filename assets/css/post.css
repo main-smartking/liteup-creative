@@ -43,8 +43,9 @@
     gap: 15px;
 }
 
+/* Featured image styling */
 .featured-image {
-    margin: 40px 0;
+    margin: 20px 0; /* Remove extra space */
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 20px 40px rgba(0,171,240,0.1);
@@ -53,11 +54,13 @@
 .featured-image img {
     width: 100%;
     height: auto;
+    display: block;
     object-fit: cover;
     transition: transform 0.3s ease;
 }
 
-.featured-image:hover img {
+/* Hover effect */
+.featured-image img:hover {
     transform: scale(1.05);
 }
 

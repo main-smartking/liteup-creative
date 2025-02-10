@@ -137,10 +137,9 @@
     font-size: 70px;
     color: var(--clr-sky-blue);
     font-family: 'Outfit', sans-serif;
-    letter-spacing: normal;
+    letter-spacing: -1px;
     line-height: 1.05;
     font-weight: 500;
-    letter-spacing: .5px;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     animation: slideUp 0.8s ease-out 0.3s both;
