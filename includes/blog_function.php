@@ -127,29 +127,17 @@ function insertBlogPost($data) {
     try {
         $pdo = getBlogPDO();
         
-        // Debug
-        error_log("Attempting to insert post: " . print_r($data, true));
+        $stmt = $pdo->prepare("
+            INSERT INTO blog_posts 
+            (title, slug, category, author, author_role, content, featured_image, read_time, excerpt) 
+            VALUES 
+            (:title, :slug, :category, :author, :author_role, :content, :featured_image, :read_time, :excerpt)
+        ");
         
-        $sql = "INSERT INTO blog_posts (
-            title, slug, category, author, author_role,
-            content, featured_image, read_time, excerpt
-        ) VALUES (
-            :title, :slug, :category, :author, :author_role,
-            :content, :featured_image, :read_time, :excerpt
-        )";
-        
-        $stmt = $pdo->prepare($sql);
-        $result = $stmt->execute($data);
-        
-        if (!$result) {
-            error_log("Insert failed: " . print_r($stmt->errorInfo(), true));
-            return false;
-        }
-        
-        return true;
+        return $stmt->execute($data);
     } catch(PDOException $e) {
-        error_log("Database Error: " . $e->getMessage());
-        throw new Exception("Failed to create post: " . $e->getMessage());
+        error_log("Insert Error: " . $e->getMessage());
+        throw new Exception("Failed to create post");
     }
 }
 ?>

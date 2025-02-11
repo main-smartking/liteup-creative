@@ -398,7 +398,7 @@
     background: var(--clr-white);
     border-radius: 5px;
     overflow: hidden;
-    border: solid 1px var(--clr-light-gray);
+    border: solid 1px var(--clr-sky-blue);
 }
 
 .search-form input {
@@ -411,7 +411,7 @@
 
 .search-btn {
     padding: 0 20px;
-    background: var(--clr-light-gray);
+    background: var(--clr-sky-blue);
     color: var(--clr-white);
     border: none;
     cursor: pointer;

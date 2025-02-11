@@ -30,7 +30,7 @@
 }
 
 .post-header h1 {
-    font-size: 48px;
+    font-size: 40px;
     color: var(--clr-sky-blue);
     margin-bottom: 30px;
     line-height: 1.2;
@@ -46,9 +46,9 @@
 /* Featured image styling */
 .featured-image {
     margin: 20px 0; /* Remove extra space */
-    border-radius: 20px;
+    border-radius: 0px;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0,171,240,0.1);
+    box-shadow: 0 10px 20px rgba(0,171,240,0.1);
 }
 
 .featured-image img {
