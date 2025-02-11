@@ -10,6 +10,24 @@ if (!verifyBlogConnection()) {
 
 $error = '';
 $success = '';
+$post_id = $_GET['id'] ?? null;
+
+if (!$post_id) {
+    die("Post ID is required");
+}
+
+try {
+    $stmt = $blog_pdo->prepare("SELECT * FROM blog_posts WHERE id = ?");
+    $stmt->execute([$post_id]);
+    $post = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$post) {
+        die("Post not found");
+    }
+} catch (PDOException $e) {
+    error_log("Database Error: " . $e->getMessage());
+    die("Database error");
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
@@ -19,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         // Prepare data
         $data = [
+            ':id' => $post_id,
             ':title' => trim($_POST['title']),
             ':slug' => createSlug($_POST['title']),
             ':category' => trim($_POST['category']),
@@ -27,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ':content' => $_POST['content'],
             ':read_time' => trim($_POST['read_time']),
             ':excerpt' => trim($_POST['excerpt']),
-            ':featured_image' => ''
+            ':featured_image' => $post['featured_image']
         ];
         
         // Handle image
@@ -46,13 +65,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
         
-        // Insert post
-        if (insertBlogPost($data)) {
-            $_SESSION['success'] = 'Post created successfully!';
+        // Update post
+        $sql = "UPDATE blog_posts SET 
+                    title = :title, 
+                    slug = :slug, 
+                    category = :category, 
+                    author = :author, 
+                    author_role = :author_role, 
+                    content = :content, 
+                    read_time = :read_time, 
+                    excerpt = :excerpt, 
+                    featured_image = :featured_image 
+                WHERE id = :id";
+        
+        $stmt = $blog_pdo->prepare($sql);
+        
+        if ($stmt->execute($data)) {
+            $_SESSION['success'] = 'Post updated successfully!';
             header('Location: ../blog/blog.php');
             exit();
         } else {
-            throw new Exception("Failed to insert post");
+            throw new Exception("Failed to update post");
         }
         
     } catch(Exception $e) {
@@ -67,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <base href="/liteup-creative/">
     <meta charset="UTF-8">
-    <title>Create Blog Post</title>
+    <title>Edit Blog Post</title>
     <link rel="stylesheet" href="assets/css/variables.css">
     <link rel="stylesheet" href="assets/css/utilities.css">
     <link rel="stylesheet" href="assets/css/admin.css">
@@ -76,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <div class="admin-container">
-        <h1>Create New Blog Post</h1>
+        <h1>Edit Blog Post</h1>
         <?php if ($error): ?>
             <div class="error-message"><?php echo htmlspecialchars($error); ?></div>
         <?php endif; ?>
@@ -87,54 +120,57 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="success-message"><?php echo htmlspecialchars($_SESSION['success']); unset($_SESSION['success']); ?></div>
         <?php endif; ?>
 
-        <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data" class="blog-form" id="postForm">
+        <form method="POST" action="<?php echo $_SERVER['PHP_SELF'] . '?id=' . $post_id; ?>" enctype="multipart/form-data" class="blog-form" id="postForm">
             <div class="form-group">
                 <label>Title</label>
-                <input type="text" name="title" required>
+                <input type="text" name="title" value="<?php echo htmlspecialchars($post['title']); ?>" required>
             </div>
             
             <div class="form-group">
                 <label>Category</label>
                 <select name="category" required>
-                    <option value="Digital Marketing">Digital Marketing</option>
-                    <option value="Social Media">Social Media</option>
-                    <option value="SEO">SEO</option>
-                    <option value="Content Strategy">Content Strategy</option>
-                    <option value="Graphic Design">Graphic Design</option>
+                    <option value="Digital Marketing" <?php echo $post['category'] == 'Digital Marketing' ? 'selected' : ''; ?>>Digital Marketing</option>
+                    <option value="Social Media" <?php echo $post['category'] == 'Social Media' ? 'selected' : ''; ?>>Social Media</option>
+                    <option value="SEO" <?php echo $post['category'] == 'SEO' ? 'selected' : ''; ?>>SEO</option>
+                    <option value="Content Strategy" <?php echo $post['category'] == 'Content Strategy' ? 'selected' : ''; ?>>Content Strategy</option>
+                    <option value="Graphic Design" <?php echo $post['category'] == 'Graphic Design' ? 'selected' : ''; ?>>Graphic Design</option>
                 </select>
             </div>
             
             <div class="form-group">
                 <label>Author</label>
-                <input type="text" name="author" required>
+                <input type="text" name="author" value="<?php echo htmlspecialchars($post['author']); ?>" required>
             </div>
             
             <div class="form-group">
                 <label>Author Role</label>
-                <input type="text" name="author_role" required>
+                <input type="text" name="author_role" value="<?php echo htmlspecialchars($post['author_role']); ?>" required>
             </div>
             
             <div class="form-group">
                 <label>Featured Image</label>
-                <input type="file" name="featured_image" accept="image/*" required>
+                <input type="file" name="featured_image" accept="image/*">
+                <?php if ($post['featured_image']): ?>
+                    <img src="<?php echo htmlspecialchars($post['featured_image']); ?>" alt="Featured Image" style="max-width: 200px;">
+                <?php endif; ?>
             </div>
             
             <div class="form-group">
                 <label>Content</label>
-                <textarea name="content" rows="20" required></textarea>
+                <textarea name="content" rows="20" required><?php echo htmlspecialchars($post['content']); ?></textarea>
             </div>
             
             <div class="form-group">
                 <label>Excerpt</label>
-                <textarea name="excerpt" rows="3" required></textarea>
+                <textarea name="excerpt" rows="3" required><?php echo htmlspecialchars($post['excerpt']); ?></textarea>
             </div>
             
             <div class="form-group">
                 <label>Read Time</label>
-                <input type="text" name="read_time" required>
+                <input type="text" name="read_time" value="<?php echo htmlspecialchars($post['read_time']); ?>" required>
             </div>
             
-            <button type="submit" class="btn btn-primary">Publish Post</button>
+            <button type="submit" class="btn btn-primary">Update Post</button>
         </form>
     </div>
     <script>

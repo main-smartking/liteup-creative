@@ -34,7 +34,7 @@ include '../includes/blog_header.php';
                     <form action="" method="GET" class="search-form">
                         <input type="text" 
                             name="search" 
-                            placeholder="Search posts..." 
+                            placeholder="Search blogs..." 
                             value="<?php echo htmlspecialchars($_GET['search'] ?? ''); ?>">
                         <button type="submit" class="search-btn">
                             <i class='bx bx-search'></i>

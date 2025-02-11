@@ -5,7 +5,7 @@
         <li>&copy; 2024 LiteUp Creative Concept. All rights reserved.</li>
         <li><a href="docs/terms-of-service.pdf" download="terms-of-service.pdf">Terms & Conditions</a></li>
         <li><a href="docs/privacy-policy.pdf" download="privacy-policy.pdf" >Privacy Policy</a></li>
-        <li><a href="">Compliances</a></li>
+        <li><a href="docs/compliance.pdf" download="compliance.pdf">Compliances</a></li>
     </ul>
 
     <!-- Contact Modal -->
