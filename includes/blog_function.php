@@ -140,4 +140,17 @@ function insertBlogPost($data) {
         throw new Exception("Failed to create post");
     }
 }
+
+function getExcerpt($content, $length = 150) {
+    // Strip HTML tags
+    $text = strip_tags($content);
+    
+    // Trim to length
+    if (strlen($text) > $length) {
+        $text = substr($text, 0, $length);
+        $text = substr($text, 0, strrpos($text, ' ')) . '...';
+    }
+    
+    return $text;
+}
 ?>

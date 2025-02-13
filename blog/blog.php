@@ -79,7 +79,7 @@ include '../includes/blog_header.php';
                                 </span>
                             </div>
                             <h2><?php echo htmlspecialchars($post['title']); ?></h2>
-                            <p><?php echo substr(htmlspecialchars($post['content']), 0, 150) . '...'; ?></p>
+                            <p><?php echo getExcerpt($post['content']); ?></p>
                             <a href="post.php?id=<?php echo $post['id']; ?>" class="read-more">
                                 Read More <i class='bx bx-right-arrow-alt'></i>
                             </a>

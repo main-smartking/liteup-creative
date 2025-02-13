@@ -71,8 +71,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="assets/css/variables.css">
     <link rel="stylesheet" href="assets/css/utilities.css">
     <link rel="stylesheet" href="assets/css/admin.css">
+    <link rel="icon" href="assets/images/favicon.png" type="image/png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+    <script src="https://cdn.tiny.cloud/1/smp2kx4wun6db0qfcsqkak5qrbsiw2zew5787odzgts18rqt/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <body>
     <div class="admin-container">
@@ -121,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             <div class="form-group">
                 <label>Content</label>
-                <textarea name="content" rows="20" required></textarea>
+                <textarea name="content" id="editor" rows="20" required></textarea>
             </div>
             
             <div class="form-group">
@@ -138,7 +139,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
     </div>
     <script>
-        CKEDITOR.replace('content');
+        tinymce.init({
+            selector: '#editor',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+            setup: function (editor) {
+                editor.on('change', function () {
+                    editor.save();
+                });
+            }
+        });
     </script>
 </body>
 </html>

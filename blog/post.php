@@ -66,7 +66,7 @@ include '../includes/blog_header.php';
         </div>
 
         <div class="post-body">
-            <?php echo nl2br(htmlspecialchars($post['content'] ?? '')); ?>
+            <?php echo html_entity_decode($post['content']); ?>
         </div>
     </article>
     <?php else: ?>
