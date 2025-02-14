@@ -459,7 +459,7 @@ try {
                         </div>   
                         <div>
                             <div>
-                                <a href="#" class="contact-trigger btn btn-sm">Contact Us</a>
+                                <a href="client" class="contact-trigger btn btn-sm"> Get Started</a>
                             </div>
                         </div>
                     </div>

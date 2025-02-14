@@ -1,7 +1,6 @@
 RewriteEngine On
-Options -Indexes
 
-# Set base path
+# If in subdirectory (development)
 RewriteBase /liteup-creative/
 
 # Add base path for assets
@@ -27,22 +26,28 @@ RewriteRule ^ blog/blog.php [L,QSA]
 RewriteRule ^blog/category/([^/]+)/?$ blog/blog.php?category=$1 [L,QSA]
 
 # Redirect /pages/client_form.php to /client
-# RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/liteup-creative/pages/client_form\.php [NC]
-# RewriteRule ^ /liteup-creative/client [R=301,L]
-
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/liteup-creative/pages/client_form\.php [NC]
+RewriteRule ^ /liteup-creative/client [R=301,L]
 
 # Internally forward /client to pages/client_form.php
-# RewriteCond %{REQUEST_URI} ^/liteup-creative/client/?$
-# RewriteRule ^ pages/client_form.php [L,QSA]
+RewriteCond %{REQUEST_URI} ^/liteup-creative/client/?$
+RewriteRule ^ pages/client_form.php [L,QSA]
 
-# RewriteCond %{REQUEST_URI} ^/liteup-creative/about/?$
-# RewriteRule ^ pages/about.php [L,QSA]
+# Rewrite blog post URLs
+RewriteRule ^blog/([a-zA-Z0-9-]+)/?$ blog/post.php?slug=$1 [L,QSA]
 
-# RewriteCond %{REQUEST_URI} ^/liteup-creative/thank/?$
-# RewriteRule ^ pages/thank_you.php [L,QSA]
+# Remove .php extension
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
 
-# Handle clean URLs while preserving asset paths
-# RewriteCond %{REQUEST_FILENAME} !-f
-# RewriteCond %{REQUEST_FILENAME} !-d
-# RewriteCond %{REQUEST_URI} !^/liteup-creative/assets/
-# RewriteRule ^client/?$ pages/client_form.php [L,QSA]
+# Rewrite thank-you URL
+RewriteRule ^pages/thank-you$ pages/thank_you.php [L]
+
+# Redirect /pages/thank_you.php to /thank-you
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/liteup-creative/pages/thank_you\.php [NC]
+RewriteRule ^ /liteup-creative/thank-you [R=301,L]
+
+# Internally forward /thank-you to pages/thank_you.php
+RewriteCond %{REQUEST_URI} ^/liteup-creative/thank-you/?$
+RewriteRule ^ pages/thank_you.php [L,QSA]

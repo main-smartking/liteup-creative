@@ -1,13 +1,27 @@
+<?php
+session_start();
+
+// Check if form was actually submitted
+if (!isset($_SESSION['form_submitted'])) {
+    header("Location: client_form.php");
+    exit();
+}
+
+// Clear the session variable after checking
+unset($_SESSION['form_submitted']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <base href="/liteup-creative/">
+    <!-- rest of the head section -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thank You - Liteup Creative</title>
     <link rel="icon" href="assets/images/favicon.png" type="image/png">
     <link rel="stylesheet" href="assets/css/variables.css">
     <link rel="stylesheet" href="assets/css/utilities.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <style>
         @keyframes slideUp {
             from { transform: translateY(30px); opacity: 0; }
@@ -162,7 +176,7 @@
                 Your submission has been received successfully. Our team will review your information 
                 and get back to you within 24 hours. We're excited to work with you!
             </p>
-            <a href="index.php" class="home-btn">Back to Home</a>
+            <a href="./index.php" class="home-btn">Back to Home</a>
         </div>
     </div>
 </body>

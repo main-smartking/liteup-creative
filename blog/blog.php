@@ -80,7 +80,7 @@ include '../includes/blog_header.php';
                             </div>
                             <h2><?php echo htmlspecialchars($post['title']); ?></h2>
                             <p><?php echo getExcerpt($post['content']); ?></p>
-                            <a href="post.php?id=<?php echo $post['id']; ?>" class="read-more">
+                            <a href="<?php echo htmlspecialchars($post['slug']); ?>" class="read-more">
                                 Read More <i class='bx bx-right-arrow-alt'></i>
                             </a>
                         </div>

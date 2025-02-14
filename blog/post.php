@@ -5,11 +5,11 @@ try {
     // Get database connection
     $blog_pdo = getBlogPDO();
 
-    if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-        $post_id = intval($_GET['id']);
+    if (isset($_GET['slug'])) {
+        $slug = trim($_GET['slug']);
         
-        $stmt = $blog_pdo->prepare("SELECT * FROM blog_posts WHERE id = ?");
-        $stmt->execute([$post_id]);
+        $stmt = $blog_pdo->prepare("SELECT * FROM blog_posts WHERE slug = ?");
+        $stmt->execute([$slug]);
         $post = $stmt->fetch(PDO::FETCH_ASSOC);
         
         if (!$post) {

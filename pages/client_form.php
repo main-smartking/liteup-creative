@@ -1,5 +1,9 @@
 <?php
+session_start(); // Add this at the top
+require_once '../config/config.php';
 require_once '../includes/db.php';
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 // Initialize variables
 $success_message = '';
@@ -7,13 +11,13 @@ $error_message = '';
 
 // Process form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get form data and sanitize inputs
-    $firstname = filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_STRING);
-    $lastname = filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_STRING);
-    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-    $phone = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_STRING);
-    $service = filter_input(INPUT_POST, 'services', FILTER_SANITIZE_STRING);
-    $gender = filter_input(INPUT_POST, 'gender', FILTER_SANITIZE_STRING);
+    // Get form data and sanitize inputs using newer methods
+    $firstname = htmlspecialchars(trim($_POST['firstname'] ?? ''));
+    $lastname = htmlspecialchars(trim($_POST['lastname'] ?? ''));
+    $email = filter_var(trim($_POST['email'] ?? ''), FILTER_SANITIZE_EMAIL);
+    $phone = htmlspecialchars(trim($_POST['phone'] ?? ''));
+    $service = htmlspecialchars(trim($_POST['services'] ?? ''));
+    $gender = htmlspecialchars(trim($_POST['gender'] ?? ''));
 
     // Validate inputs
     if (empty($firstname) || empty($lastname) || empty($email) || empty($phone) || empty($service) || empty($gender)) {
@@ -22,42 +26,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error_message = "Invalid email format";
     } else {
         try {
-            // Check for existing email
-            $stmt = $pdo->prepare("SELECT email FROM clients WHERE email = ?");
-            $stmt->execute([$email]);
-            if ($stmt->rowCount() > 0) {
-                $error_message = "Email already exists";
+            $sql = "INSERT INTO clients (firstname, lastname, email, phone, service, gender, created_at) 
+                   VALUES (:firstname, :lastname, :email, :phone, :service, :gender, NOW())";
+            
+            $stmt = $pdo->prepare($sql);
+            
+            if ($stmt->execute([
+                ':firstname' => $firstname,
+                ':lastname' => $lastname,
+                ':email' => $email,
+                ':phone' => $phone,
+                ':service' => $service,
+                ':gender' => $gender
+            ])) {
+                $_SESSION['form_submitted'] = true; // Set session variable
+                header("Location: thank-you"); // Changed from ../thank-you
+                exit();
             } else {
-                // Check for existing phone
-                $stmt = $pdo->prepare("SELECT phone FROM clients WHERE phone = ?");
-                $stmt->execute([$phone]);
-                if ($stmt->rowCount() > 0) {
-                    $error_message = "Phone number already exists";
-                } else {
-                    // Insert new client
-                    $sql = "INSERT INTO clients (firstname, lastname, email, phone, service, gender) 
-                           VALUES (:firstname, :lastname, :email, :phone, :service, :gender)";
-                    
-                    $stmt = $pdo->prepare($sql);
-                    
-                    if ($stmt->execute([
-                        ':firstname' => $firstname,
-                        ':lastname' => $lastname,
-                        ':email' => $email,
-                        ':phone' => $phone,
-                        ':service' => $service,
-                        ':gender' => $gender
-                    ])) {
-                        // Redirect to thank you page after successful submission
-                        header("Location: ../pages/thank_you.php");
-                        exit();
-                    } else {
-                        $error_message = "Error submitting form. Please try again.";
-                    }
-                }
+                $error_message = "Error submitting form. Please try again.";
             }
         } catch(PDOException $e) {
-            $error_message = "Database error. Please try again.";
+            $error_message = "Database error: " . $e->getMessage();
+            error_log("Client Form Error: " . $e->getMessage());
         }
     }
 }
@@ -93,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                 <?php endif; ?>
 
-                <form method="post">
+                <form method="post" action="">
                     <div class="input-group mb10">
                         <div class="input-wrapper">
                             <input class="input-field" type="text" name="firstname" placeholder autocomplete="given-name" autocapitalize="word" required>
