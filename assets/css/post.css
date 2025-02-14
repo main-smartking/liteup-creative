@@ -40,13 +40,20 @@
     display: flex;
     align-items: center;
     justify-content: left;
-    gap: 15px;
+    gap: 30px;
+}
+
+.author-details {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    color: var(--clr-dim-gray);
 }
 
 /* Featured image styling */
 .featured-image {
     margin: 20px 0; /* Remove extra space */
-    border-radius: 0px;
+    border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 10px 20px rgba(0,171,240,0.1);
 }

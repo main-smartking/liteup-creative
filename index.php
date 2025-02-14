@@ -415,7 +415,7 @@ try {
                                     <?php echo htmlspecialchars($post['title']); ?>
                                 </h3>
                                 <p class="blog-description">
-                                    <?php echo substr(htmlspecialchars($post['content']), 0, 150) . '...'; ?>
+                                    <?php echo getExcerpt($post['content']); ?>
                                 </p>
                                 <a href="blog/post.php?id=<?php echo $post['id']; ?>" class="read-more">
                                     Read More <i class='bx bx-right-arrow-alt'></i>

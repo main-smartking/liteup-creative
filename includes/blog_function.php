@@ -142,16 +142,15 @@ function insertBlogPost($data) {
 }
 
 function getExcerpt($content, $length = 150) {
-    // Strip HTML tags
-    $text = strip_tags($content);
+    $content = html_entity_decode($content);
+    $content = strip_tags($content);
     
-    // Trim to length
-    if (strlen($text) > $length) {
-        $text = substr($text, 0, $length);
-        $text = substr($text, 0, strrpos($text, ' ')) . '...';
+    if (strlen($content) > $length) {
+        $content = substr($content, 0, $length);
+        $content = substr($content, 0, strrpos($content, ' ')) . '...';
     }
     
-    return $text;
+    return $content;
 }
 
 function verifyAdmin($username, $password) {
