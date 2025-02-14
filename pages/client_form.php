@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body> 
     <main>
             <div class="form-container">
-                <h1 class="title-header mb10">Hi! You've Made the Right Choice</h1>
+                <h1 class="title-header mb10">Hey! You've Made the Right Choice</h1>
                 <p class="description mb20">Kindly fill your details below and 
                     select the appropriate service
                 </p>

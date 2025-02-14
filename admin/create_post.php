@@ -1,5 +1,12 @@
 <?php
 session_start();
+
+// Check if user is logged in
+if (!isset($_SESSION['admin'])) {
+    header('Location: login.php');
+    exit();
+}
+
 require_once '../includes/blog_function.php';
 ini_set('display_errors', 1);
 error_reporting(E_ALL);

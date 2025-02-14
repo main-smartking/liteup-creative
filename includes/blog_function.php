@@ -153,4 +153,48 @@ function getExcerpt($content, $length = 150) {
     
     return $text;
 }
+
+function verifyAdmin($username, $password) {
+    global $blog_pdo;
+    
+    try {
+        $stmt = $blog_pdo->prepare("SELECT password FROM admin_users WHERE username = ?");
+        $stmt->execute([$username]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if ($user && password_verify($password, $user['password'])) {
+            return true;
+        }
+        return false;
+    } catch(PDOException $e) {
+        error_log("Admin verification error: " . $e->getMessage());
+        return false;
+    }
+}
+
+function changeAdminPassword($username, $currentPassword, $newPassword) {
+    global $blog_pdo;
+    
+    try {
+        // Verify current password
+        if (!verifyAdmin($username, $currentPassword)) {
+            return false;
+        }
+        
+        // Hash new password
+        $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+        
+        // Update password
+        $stmt = $blog_pdo->prepare("UPDATE admin_users SET password = ? WHERE username = ?");
+        return $stmt->execute([$hashedPassword, $username]);
+        
+    } catch(PDOException $e) {
+        error_log("Password change error: " . $e->getMessage());
+        return false;
+    }
+}
+
+function isAdmin() {
+    return isset($_SESSION['admin']) && $_SESSION['admin'] === true;
+}
 ?>
