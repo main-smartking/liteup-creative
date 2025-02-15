@@ -1,64 +1,51 @@
 <?php
 header('Content-Type: application/json');
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+require_once 'db.php';
 
-$contact_db_config = [
-    'host' => 'localhost',
-    'dbname' => 'contact_msg_db',
-    'username' => 'root',
-    'password' => ''
-];
-
-try {
-    $contact_pdo = new PDO(
-        "mysql:host={$contact_db_config['host']};dbname={$contact_db_config['dbname']}",
-        $contact_db_config['username'],
-        $contact_db_config['password'],
-        array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
-    );
-
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $response = ['success' => false, 'message' => ''];
+    
+    try {
         // Validate inputs
         if (empty($_POST['name']) || empty($_POST['email']) || empty($_POST['subject']) || empty($_POST['message'])) {
             throw new Exception('All fields are required');
         }
-
-        // Check if table exists
-        $tableCheck = $contact_pdo->query("SHOW TABLES LIKE 'messages'");
-        if ($tableCheck->rowCount() == 0) {
-            throw new Exception('Database table not found');
+        
+        if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+            throw new Exception('Invalid email format');
         }
+        
+        $name = htmlspecialchars(trim($_POST['name']));
+        $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
+        $subject = htmlspecialchars(trim($_POST['subject']));
+        $message = htmlspecialchars(trim($_POST['message']));
 
-        $stmt = $contact_pdo->prepare("
-            INSERT INTO messages (name, email, subject, message, ip_address) 
-            VALUES (:name, :email, :subject, :message, :ip)
-        ");
-
-        $params = [
-            ':name' => $_POST['name'],
-            ':email' => $_POST['email'],
-            ':subject' => $_POST['subject'],
-            ':message' => $_POST['message'],
-            ':ip' => $_SERVER['REMOTE_ADDR']
-        ];
-
-        $result = $stmt->execute($params);
-
-        if ($result) {
-            echo json_encode([
-                'status' => 'success',
-                'message' => 'Thank you! Your message has been sent successfully.'
-            ]);
+        // Make sure you have this table in your database
+        $sql = "INSERT INTO contacts (name, email, subject, message, created_at) 
+                VALUES (:name, :email, :subject, :message, NOW())";
+        
+        $stmt = $pdo->prepare($sql);
+        if ($stmt->execute([
+            ':name' => $name,
+            ':email' => $email,
+            ':subject' => $subject,
+            ':message' => $message
+        ])) {
+            $response['success'] = true;
+            $response['message'] = 'Message sent successfully!';
         } else {
-            throw new Exception('Failed to save message');
+            throw new Exception('Failed to send message');
         }
+    } catch(Exception $e) {
+        error_log("Contact Form Error: " . $e->getMessage());
+        $response['message'] = $e->getMessage();
     }
-} catch(Exception $e) {
-    error_log("Contact Form Error: " . $e->getMessage());
-    echo json_encode([
-        'status' => 'error',
-        'message' => $e->getMessage()
-    ]);
+    
+    echo json_encode($response);
+    exit;
 }
+
+http_response_code(400);
+echo json_encode(['success' => false, 'message' => 'Invalid request method']);
+exit;
 ?>

@@ -417,7 +417,7 @@ try {
                                 <p class="blog-description">
                                     <?php echo getExcerpt($post['content']); ?>
                                 </p>
-                                <a href="blog/post.php?id=<?php echo $post['id']; ?>" class="read-more">
+                                <a href="blog/<?php echo urlencode($post['slug']); ?>" class="read-more">
                                     Read More <i class='bx bx-right-arrow-alt'></i>
                                 </a>
                             </div>
@@ -459,7 +459,7 @@ try {
                         </div>   
                         <div>
                             <div>
-                                <a href="client" class="contact-trigger btn btn-sm"> Get Started</a>
+                                <a href="#" class="contact-trigger btn btn-sm">Get Started</a>
                             </div>
                         </div>
                     </div>

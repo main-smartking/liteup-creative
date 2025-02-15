@@ -25,7 +25,7 @@
 
 .blog-hero p {
     color: var(--clr-dim-gray);
-    font-size: 20px;
+    font-size: 19px;
     line-height: 30px;
     margin-bottom: 15px;
     max-width: 1200px;
@@ -445,13 +445,26 @@
 }
 
 @media (max-width: 430px) {
-    
+
+        
+    .blog-hero p {
+        letter-spacing: normal;
+        font-size: 16.5px;
+        line-height: 23px;
+    }
+
+    .blog-hero .mobile-device h1 {
+        font-size: 34px;
+        line-height: 34px;
+    }
+        
     .blog-hero .title .large-device {
         display: none;
     }
 
     .blog-hero .title .mobile-device {
         display: flex;
+        
     }
 
     .blog-hero .title {

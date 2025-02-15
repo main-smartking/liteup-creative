@@ -5,19 +5,25 @@ try {
     // Get database connection
     $blog_pdo = getBlogPDO();
 
-    if (isset($_GET['slug'])) {
-        $slug = trim($_GET['slug']);
-        
+    $slug = isset($_GET['slug']) ? $_GET['slug'] : null;
+
+    if (!$slug) {
+        header('Location: blog.php');
+        exit();
+    }
+
+    try {
         $stmt = $blog_pdo->prepare("SELECT * FROM blog_posts WHERE slug = ?");
         $stmt->execute([$slug]);
         $post = $stmt->fetch(PDO::FETCH_ASSOC);
-        
+
         if (!$post) {
-            header("Location: blog.php");
+            header('Location: blog.php');
             exit();
         }
-    } else {
-        header("Location: blog.php");
+    } catch(PDOException $e) {
+        error_log("Database Error: " . $e->getMessage());
+        header('Location: blog.php');
         exit();
     }
 } catch(Exception $e) {
@@ -83,7 +89,7 @@ include '../includes/blog_header.php';
                 <?php
                 try {
                     $stmt = $blog_pdo->prepare("
-                        SELECT id, title, content, category, featured_image 
+                        SELECT id, title, content, category, featured_image, slug 
                         FROM blog_posts 
                         WHERE category = ? AND id != ? 
                         ORDER BY RAND() 
@@ -114,8 +120,13 @@ include '../includes/blog_header.php';
                                     <?php echo htmlspecialchars($related['category']); ?>
                                 </span>
                                 <h3><?php echo htmlspecialchars($related['title']); ?></h3>
-                                <p><?php echo substr(htmlspecialchars($related['content']), 0, 100) . '...'; ?></p>
-                                <a href="post.php?id=<?php echo $related['id']; ?>" class="read-more">
+                                <?php 
+                                // Clean the content and get excerpt
+                                $clean_content = strip_tags(html_entity_decode($related['content']));
+                                $excerpt = substr($clean_content, 0, 100) . '...';
+                                ?>
+                                <p><?php echo $excerpt; ?></p>
+                                <a href="<?php echo $related['slug']; ?>" class="read-more">
                                     Read Article <i class='bx bx-right-arrow-alt'></i>
                                 </a>
                             </div>

@@ -44,9 +44,7 @@ require_once __DIR__ . '/path_helper.php';
                 <a href="#about" class="navbar-link">Who we are</a>
                 <a href="#our-blog" class="navbar-link">Our Blog</a>
                 <div class="nav-cta">
-                <a class="btn btn-sm menu" aria-label="Get Started" href="client_form.php">
-    Get Started
-                </a>
+                <a class="btn btn-sm menu" aria-label="Get Started" href="client">Get Started</a>
 
                 </div>
             </nav>

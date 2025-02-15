@@ -39,15 +39,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 ':service' => $service,
                 ':gender' => $gender
             ])) {
-                $_SESSION['form_submitted'] = true; // Set session variable
-                header("Location: thank-you"); // Changed from ../thank-you
+                // Add debugging
+                error_log("Form submitted successfully, redirecting to thank you page");
+                
+                // Set the session
+                $_SESSION['form_submitted'] = true;
+                
+                // Absolute path to thank you page
+                header("Location: thank_you.php");
                 exit();
-            } else {
-                $error_message = "Error submitting form. Please try again.";
             }
         } catch(PDOException $e) {
-            $error_message = "Database error: " . $e->getMessage();
-            error_log("Client Form Error: " . $e->getMessage());
+            if ($e->getCode() == 23000) {
+                if (strpos($e->getMessage(), 'phone')) {
+                    $error_message = "This phone number is already registered.";
+                } elseif (strpos($e->getMessage(), 'email')) {
+                    $error_message = "This email address is already registered.";
+                } else {
+                    $error_message = "This information has already been submitted.";
+                }
+            } else {
+                error_log("Client Form Error: " . $e->getMessage());
+                $error_message = "An error occurred. Please try again.";
+            }
         }
     }
 }

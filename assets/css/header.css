@@ -160,6 +160,12 @@
       transform: rotate(180deg);
   }
 
+  @media (max-width: 450px) { 
+    .navbar-container {
+        box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
+        } 
+    }
+
   @keyframes slideUp {
     from {
         transform: translateY(20px);

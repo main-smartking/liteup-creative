@@ -19,10 +19,8 @@
                 <p>We'd love to hear from you!</p>
             </div>
             <div class="response-message" style="display: none;">
-                <div class="success-icon"></div>
                 <h3>Thank You!</h3>
                 <p>Your message has been sent successfully.</p>
-                <p>We'll get back to you soon!</p>
             </div>
             <form class="contact-form" id="contactForm">
                 <div class="form-group">
@@ -37,7 +35,9 @@
                 <div class="form-group">
                     <textarea name="message" required placeholder="Your Message" rows="5"></textarea>
                 </div>
-                <button type="submit" class="submit-btn">Send Message</button>
+                <button type="submit" class="submit-btn">
+                    <span class="btn-text">Send Message</span>
+                </button>
             </form>
         </div>
     </div>
@@ -47,6 +47,7 @@
 <script src="<?php echo getAssetPath('assets/js/main.js'); ?>"></script>
 <script src="<?php echo getAssetPath('assets/js/particles.js'); ?>"></script>
 <script src="<?php echo getAssetPath('assets/js/modal.js'); ?>"></script>
+<script src="<?php echo getAssetPath('assets/js/contact.js'); ?>"></script>
 
 </body>
 </html>

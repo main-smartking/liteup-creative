@@ -60,7 +60,7 @@
 
 .featured-image img {
     width: 100%;
-    height: auto;
+    height: 470px;
     display: block;
     object-fit: cover;
     transition: transform 0.3s ease;
@@ -105,7 +105,7 @@
 .related-grid {
     display: grid;
     margin: 0 5px;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
 }
 

@@ -1,0 +1,60 @@
+.thank-you-container {
+    max-width: 600px;
+    margin: 100px auto;
+    text-align: center;
+    padding: 40px;
+    background: var(--clr-white);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.thank-you-container h1 {
+    color: var(--clr-sky-blue);
+    margin-bottom: 20px;
+}
+
+.thank-you-container p {
+    margin-bottom: 30px;
+    color: var(--clr-dim-gray);
+}
+
+.thank-you-container .btn {
+    display: inline-block;
+    padding: 10px 30px;
+}
+
+.contact-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.contact-modal.active {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    position: relative;
+    background: #fff;
+    width: 90%;
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 10px;
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+}
+
+.contact-modal.active .modal-content {
+    transform: translateY(0);
+}
