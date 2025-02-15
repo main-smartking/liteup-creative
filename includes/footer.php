@@ -21,6 +21,7 @@
             <div class="response-message" style="display: none;">
                 <h3>Thank You!</h3>
                 <p>Your message has been sent successfully.</p>
+                <p>We'll get back to you soon!</p>
             </div>
             <form class="contact-form" id="contactForm">
                 <div class="form-group">

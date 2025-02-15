@@ -20,10 +20,14 @@ RewriteRule ^pages/thank_you/?$ pages/thank_you.php [L,QSA]
     Deny from all
 </FilesMatch>
 
-# Protect includes directory
-<IfModule mod_rewrite.c>
-    RewriteRule ^includes/ - [F,L]
-</IfModule>
+# Remove the specific Files and LocationMatch directives for process_contact.php
+# And use this simpler rule:
+RewriteCond %{REQUEST_URI} ^/liteup-creative/includes/process_contact\.php$
+RewriteRule ^ - [L]
+
+# Protect includes directory but allow process_contact.php
+RewriteCond %{REQUEST_URI} !process_contact\.php
+RewriteRule ^includes/ - [F,L]
 
 # Enable GZIP compression
 <IfModule mod_deflate.c>

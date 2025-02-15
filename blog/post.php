@@ -35,6 +35,20 @@ try {
 include '../includes/blog_header.php';
 ?>
 
+<head>
+    <!-- ...existing code... -->
+    <title><?php echo generateMetaTitle($post['title']); ?></title>
+    <meta name="description" content="<?php echo generateMetaDescription($post['content']); ?>">
+    
+    <!-- Open Graph Tags for Blog Posts -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="<?php echo htmlspecialchars($post['title']); ?>">
+    <meta property="og:description" content="<?php echo generateMetaDescription($post['content']); ?>">
+    <meta property="og:image" content="<?php echo getAssetPath($post['featured_image']); ?>">
+    <meta property="article:published_time" content="<?php echo $post['created_at']; ?>">
+    <!-- ...existing code... -->
+</head>
+
 <main class="single-post-page main-wrapper">
     <?php if ($post): ?>
     <article class="post-content">

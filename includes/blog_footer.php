@@ -37,13 +37,15 @@
                 <div class="form-group">
                     <textarea name="message" required placeholder="Your Message" rows="5"></textarea>
                 </div>
-                <button type="submit" class="submit-btn">Send Message</button>
+                <button type="submit" class="submit-btn">
+                    <span class="btn-text">Send Message</span>
+                </button>
             </form>
         </div>
     </div>
 </footer>
 
 <!-- Scripts -->
-<script src="<?php echo getAssetPath('./assets/js/main.js'); ?>"></script>
-<!-- Add before closing body tag -->
-<script src="<?php echo getAssetPath('assets/js/modal.js'); ?>"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/modal.js"></script>
+<script src="../assets/js/contact.js"></script>

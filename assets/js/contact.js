@@ -12,8 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 const submitBtn = this.querySelector('.submit-btn');
                 submitBtn.disabled = true;
                 
-                // Use the correct path to process_contact.php
-                const response = await fetch('includes/process_contact.php', {
+                // Get base URL from meta tag or default to /liteup-creative/
+                const baseUrl = document.querySelector('base')?.href || '/liteup-creative/';
+                const response = await fetch(`${baseUrl}includes/process_contact.php`, {
                     method: 'POST',
                     body: formData
                 });
@@ -28,12 +29,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     contactForm.style.display = 'none';
                     modalHeader.style.display = 'none';
                     responseMessage.style.display = 'block';
+                    contactForm.reset();
                 } else {
                     throw new Error(data.message || 'Failed to send message');
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('An error occurred. Please try again.');
+                // Show error in a more user-friendly way
+                const errorMessage = error.message || 'An error occurred. Please try again.';
+                alert(errorMessage);
             } finally {
                 submitBtn.disabled = false;
             }

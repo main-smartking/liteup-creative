@@ -6,17 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalHeader = document.getElementById('modalHeader');
     const responseMessage = modal.querySelector('.response-message');
 
-    // For direct success message (non-blog pages)
-    const showDirectSuccess = (e) => {
-        e.preventDefault();
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        form.style.display = 'none';
-        modalHeader.style.display = 'none';
-        responseMessage.style.display = 'block';
-    };
-
-    // For blog post contact form
+    // Show contact form for all cases
     const showContactForm = (e) => {
         e.preventDefault();
         modal.classList.add('active');
@@ -26,19 +16,22 @@ document.addEventListener('DOMContentLoaded', () => {
         responseMessage.style.display = 'none';
     };
 
-    // Assign different behaviors based on page
+    // Add click event to all contact trigger buttons
     contactBtns.forEach(btn => {
-        if (window.location.pathname.includes('/blog/')) {
-            btn.addEventListener('click', showContactForm);
-        } else {
-            btn.addEventListener('click', showDirectSuccess);
-        }
+        btn.addEventListener('click', showContactForm);
     });
 
     // Close modal handlers
     const closeModal = () => {
         modal.classList.remove('active');
         document.body.style.overflow = '';
+        // Reset form
+        if (form) {
+            form.reset();
+            form.style.display = 'block';
+            modalHeader.style.display = 'block';
+            responseMessage.style.display = 'none';
+        }
     };
 
     closeBtn.addEventListener('click', closeModal);
@@ -46,31 +39,5 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === modal) closeModal();
     });
 
-    // Form submission handler for blog pages
-    if (form) {
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const formData = new FormData(form);
-
-            try {
-                const response = await fetch('includes/process_contact.php', {
-                    method: 'POST',
-                    body: formData
-                });
-
-                const data = await response.json();
-                
-                if (data.success) {
-                    form.style.display = 'none';
-                    modalHeader.style.display = 'none';
-                    responseMessage.style.display = 'block';
-                } else {
-                    alert(data.message || 'Failed to send message');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('An error occurred. Please try again.');
-            }
-        });
-    }
+   
 });
