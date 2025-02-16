@@ -77,22 +77,24 @@
     box-shadow: 0 5px 15px rgba(0,171,240,0.2);
 }
 
+.error-message,
+.success-message {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    text-align: center;
+}
+
 .error-message {
-    color: #ff3b3b;
-    background: #fff2f2;
-    padding: 12px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    border-left: 4px solid #ff3b3b;
+    background-color: #fff3f3;
+    color: #dc3545;
+    border: 1px solid #dc3545;
 }
 
 .success-message {
-    color: #00b894;
-    background: #f0fff4;
-    padding: 12px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    border-left: 4px solid #00b894;
+    background-color: #f0fff4;
+    color: #28a745;
+    border: 1px solid #28a745;
 }
 
 .admin-login-container {

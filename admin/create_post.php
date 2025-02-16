@@ -1,17 +1,16 @@
 <?php
-session_start();
-
-// Check if user is logged in
-if (!isset($_SESSION['admin'])) {
-    header('Location: login.php');
-    exit();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
 }
 
-require_once '../includes/blog_function.php';
-ini_set('display_errors', 1);
+require_once '../includes/db.php';
+require_once '../includes/functions.php';
+// require_once 'auth_check.php';
+
+ini_set('display_errors', 0); // Disable display errors
 error_reporting(E_ALL);
 
-if (!verifyBlogConnection()) {
+if (!verifyConnection()) {
     die("Database connection failed");
 }
 
@@ -85,17 +84,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="admin-container">
         <h1>Create New Blog Post</h1>
-        <?php if ($error): ?>
-            <div class="error-message"><?php echo htmlspecialchars($error); ?></div>
-        <?php endif; ?>
-        <?php if (isset($_SESSION['error'])): ?>
-            <div class="error-message"><?php echo htmlspecialchars($_SESSION['error']); unset($_SESSION['error']); ?></div>
-        <?php endif; ?>
-        <?php if (isset($_SESSION['success'])): ?>
-            <div class="success-message"><?php echo htmlspecialchars($_SESSION['success']); unset($_SESSION['success']); ?></div>
-        <?php endif; ?>
-
+        
         <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data" class="blog-form" id="postForm">
+            <?php if ($error): ?>
+                <div class="error-message"><?php echo htmlspecialchars($error); ?></div>
+            <?php endif; ?>
+            <?php if (isset($_SESSION['error'])): ?>
+                <div class="error-message"><?php echo htmlspecialchars($_SESSION['error']); unset($_SESSION['error']); ?></div>
+            <?php endif; ?>
+            <?php if (isset($_SESSION['success'])): ?>
+                <div class="success-message"><?php echo htmlspecialchars($_SESSION['success']); unset($_SESSION['success']); ?></div>
+            <?php endif; ?>
+
             <div class="form-group">
                 <label>Title</label>
                 <input type="text" name="title" required>

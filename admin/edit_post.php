@@ -1,10 +1,10 @@
 <?php
 session_start();
-require_once '../includes/blog_function.php';
+require_once '../includes/functions.php';
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-if (!verifyBlogConnection()) {
+if (!verifyConnection()) {
     die("Database connection failed");
 }
 

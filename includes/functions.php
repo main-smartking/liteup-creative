@@ -1,50 +1,50 @@
 <?php
-// Database configuration
-$host = 'localhost';
-$dbname = 'blog_db';
-$username = 'root';
-$password = '';
+require_once __DIR__ . '/db.php';
 
-// Create PDO instance as global
-global $blog_pdo;
-
-if (!isset($blog_pdo)) {
-    try {
-        $blog_pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-        $blog_pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        
-        // Test connection
-        $blog_pdo->query("SELECT 1");
-    } catch(PDOException $e) {
-        error_log("Database Connection Error: " . $e->getMessage());
-        die("Connection failed");
-    }
-}
-
-// Helper function to get PDO instance
 function getBlogPDO() {
+    global $pdo;
+    return $pdo;
+}
+
+// Blog functions
+function getBlogPosts($limit = null) {
+    global $pdo;
     try {
-        $pdo = new PDO(
-            "mysql:host=localhost;dbname=blog_db;charset=utf8mb4",
-            "root",
-            "",
-            [
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-                PDO::ATTR_EMULATE_PREPARES => false
-            ]
-        );
-        return $pdo;
+        $sql = "SELECT * FROM blog_posts ORDER BY created_at DESC";
+        if ($limit) {
+            $sql .= " LIMIT " . (int)$limit;
+        }
+        $stmt = $pdo->query($sql);
+        return $stmt->fetchAll();
     } catch(PDOException $e) {
-        error_log("PDO Error: " . $e->getMessage());
-        throw new Exception("Database connection failed");
+        error_log("Error: " . $e->getMessage());
+        return [];
     }
 }
 
-// Connection verification
-function verifyBlogConnection() {
+function createSlug($string) {
+    return strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $string)));
+}
+
+// Admin functions
+function verifyAdmin($username, $password) {
+    global $pdo;
     try {
-        $pdo = getBlogPDO();
+        $stmt = $pdo->prepare("SELECT password FROM admin_users WHERE username = ?");
+        $stmt->execute([$username]);
+        $user = $stmt->fetch();
+        
+        return $user && password_verify($password, $user['password']);
+    } catch(PDOException $e) {
+        error_log("Admin verification error: " . $e->getMessage());
+        return false;
+    }
+}
+
+// Database verification
+function verifyConnection() {
+    global $pdo;
+    try {
         $pdo->query("SELECT 1");
         return true;
     } catch(Exception $e) {
@@ -71,38 +71,32 @@ function getBlogPostsByCategory($category = null) {
 }
 
 function getBlogPostsBySearch($search = null, $category = null) {
-    global $blog_pdo;
+    global $pdo;
     
     try {
         $params = [];
-        $conditions = [];
+        $sql = "SELECT * FROM blog_posts WHERE 1=1";
         
         if ($search) {
-            $conditions[] = "(title LIKE ? OR content LIKE ?)";
-            $params[] = "%$search%";
-            $params[] = "%$search%";
+            $sql .= " AND (title LIKE :search OR content LIKE :search)";
+            $params[':search'] = '%' . $search . '%';
         }
         
         if ($category) {
-            $conditions[] = "category = ?";
-            $params[] = $category;
+            $sql .= " AND category = :category";
+            $params[':category'] = $category;
         }
         
-        $where = !empty($conditions) ? "WHERE " . implode(" AND ", $conditions) : "";
+        $sql .= " ORDER BY created_at DESC";
         
-        $sql = "SELECT * FROM blog_posts $where ORDER BY created_at DESC";
-        $stmt = $blog_pdo->prepare($sql);
+        $stmt = $pdo->prepare($sql);
         $stmt->execute($params);
         
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll();
     } catch(PDOException $e) {
         error_log("Search Query Error: " . $e->getMessage());
         return [];
     }
-}
-
-function createSlug($string) {
-    return strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $string)));
 }
 
 function cleanContent($content) {
@@ -153,24 +147,6 @@ function getExcerpt($content, $length = 150) {
     return $content;
 }
 
-function verifyAdmin($username, $password) {
-    global $blog_pdo;
-    
-    try {
-        $stmt = $blog_pdo->prepare("SELECT password FROM admin_users WHERE username = ?");
-        $stmt->execute([$username]);
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
-        
-        if ($user && password_verify($password, $user['password'])) {
-            return true;
-        }
-        return false;
-    } catch(PDOException $e) {
-        error_log("Admin verification error: " . $e->getMessage());
-        return false;
-    }
-}
-
 function changeAdminPassword($username, $currentPassword, $newPassword) {
     global $blog_pdo;
     
@@ -195,5 +171,27 @@ function changeAdminPassword($username, $currentPassword, $newPassword) {
 
 function isAdmin() {
     return isset($_SESSION['admin']) && $_SESSION['admin'] === true;
+}
+
+function getBlogURL($slug = '') {
+    if (!empty($slug)) {
+        return "/liteup-creative/blog/{$slug}";
+    }
+    return "/liteup-creative/blog";
+}
+
+function generateMetaTitle($title = '') {
+    $base = 'Liteup Creative';
+    if (!empty($title)) {
+        return htmlspecialchars($title . ' - ' . $base);
+    }
+    return htmlspecialchars($base . ' - Brand Design & Digital Marketing Agency');
+}
+
+function generateMetaDescription($content = '') {
+    if (empty($content)) {
+        return 'Professional Brand Design and Digital Marketing Agency in Nigeria. We specialize in brand identity, digital marketing, and creative solutions.';
+    }
+    return htmlspecialchars(substr(strip_tags($content), 0, 160));
 }
 ?>

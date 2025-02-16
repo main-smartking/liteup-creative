@@ -7,11 +7,12 @@ ini_set('error_log', 'errors.log');
 ?>
 
 <?php
-require_once 'includes/blog_function.php';
+require_once 'includes/db.php';
+require_once 'includes/functions.php';
 
 try {
     // Get latest 3 blog posts for homepage
-    $stmt = $blog_pdo->query("SELECT * FROM blog_posts ORDER BY created_at DESC LIMIT 3");
+    $stmt = $pdo->query("SELECT * FROM blog_posts ORDER BY created_at DESC LIMIT 3");
     $featured_posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch(PDOException $e) {
     error_log("Database Error: " . $e->getMessage());

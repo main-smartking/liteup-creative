@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../includes/blog_function.php';
+require_once '../includes/functions.php';
 
 if (!isset($_SESSION['admin'])) {
     header('Location: login.php');

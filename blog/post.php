@@ -1,52 +1,50 @@
-<?php 
-require_once '../includes/blog_function.php';
+<?php
+require_once '../includes/db.php';
+require_once '../includes/functions.php';
+
+// Get slug from URL and sanitize it
+$slug = isset($_GET['slug']) ? trim($_GET['slug']) : '';
 
 try {
-    // Get database connection
-    $blog_pdo = getBlogPDO();
-
-    $slug = isset($_GET['slug']) ? $_GET['slug'] : null;
-
-    if (!$slug) {
-        header('Location: blog.php');
-        exit();
+    global $pdo;
+    
+    if (empty($slug)) {
+        throw new Exception("No post specified");
     }
 
-    try {
-        $stmt = $blog_pdo->prepare("SELECT * FROM blog_posts WHERE slug = ?");
-        $stmt->execute([$slug]);
-        $post = $stmt->fetch(PDO::FETCH_ASSOC);
+    // Fetch the post
+    $stmt = $pdo->prepare("SELECT * FROM blog_posts WHERE slug = ?");
+    $stmt->execute([$slug]);
+    $post = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if (!$post) {
-            header('Location: blog.php');
-            exit();
-        }
-    } catch(PDOException $e) {
-        error_log("Database Error: " . $e->getMessage());
-        header('Location: blog.php');
-        exit();
+    if (!$post) {
+        throw new Exception("Post not found");
     }
+
 } catch(Exception $e) {
-    error_log("Post Error: " . $e->getMessage());
-    header("Location: blog.php");
+    error_log("Blog Error: " . $e->getMessage());
+    header('Location: /liteup-creative/blog');
     exit();
 }
 
+// Include header after getting post data
 include '../includes/blog_header.php';
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <!-- ...existing code... -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo generateMetaTitle($post['title']); ?></title>
     <meta name="description" content="<?php echo generateMetaDescription($post['content']); ?>">
     
-    <!-- Open Graph Tags for Blog Posts -->
+    <!-- Open Graph Tags -->
     <meta property="og:type" content="article">
     <meta property="og:title" content="<?php echo htmlspecialchars($post['title']); ?>">
     <meta property="og:description" content="<?php echo generateMetaDescription($post['content']); ?>">
-    <meta property="og:image" content="<?php echo getAssetPath($post['featured_image']); ?>">
+    <meta property="og:image" content="<?php echo htmlspecialchars($post['featured_image']); ?>">
     <meta property="article:published_time" content="<?php echo $post['created_at']; ?>">
-    <!-- ...existing code... -->
 </head>
 
 <main class="single-post-page main-wrapper">
@@ -102,7 +100,7 @@ include '../includes/blog_header.php';
             <div class="related-grid">
                 <?php
                 try {
-                    $stmt = $blog_pdo->prepare("
+                    $stmt = $pdo->prepare("
                         SELECT id, title, content, category, featured_image, slug 
                         FROM blog_posts 
                         WHERE category = ? AND id != ? 
@@ -140,7 +138,7 @@ include '../includes/blog_header.php';
                                 $excerpt = substr($clean_content, 0, 100) . '...';
                                 ?>
                                 <p><?php echo $excerpt; ?></p>
-                                <a href="<?php echo $related['slug']; ?>" class="read-more">
+                                <a href="<?php echo '/liteup-creative/blog/' . urlencode($related['slug']); ?>" class="read-more">
                                     Read Article <i class='bx bx-right-arrow-alt'></i>
                                 </a>
                             </div>

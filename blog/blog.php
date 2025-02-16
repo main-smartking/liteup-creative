@@ -1,5 +1,15 @@
-<?php 
-require_once '../includes/blog_function.php';
+<?php
+require_once '../includes/db.php';
+require_once '../includes/functions.php';
+
+// Initialize error reporting
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Use verifyConnection instead of verifyBlogConnection
+if (!verifyConnection()) {
+    die("Database connection failed");
+}
 
 $selected_category = isset($_GET['category']) ? $_GET['category'] : null;
 $search = isset($_GET['search']) ? $_GET['search'] : null;
@@ -80,7 +90,7 @@ include '../includes/blog_header.php';
                             </div>
                             <h2><?php echo htmlspecialchars($post['title']); ?></h2>
                             <p><?php echo getExcerpt($post['content']); ?></p>
-                            <a href="<?php echo htmlspecialchars($post['slug']); ?>" class="read-more">
+                            <a href="<?php echo '/liteup-creative/blog/' . urlencode($post['slug']); ?>" class="read-more">
                                 Read More <i class='bx bx-right-arrow-alt'></i>
                             </a>
                         </div>

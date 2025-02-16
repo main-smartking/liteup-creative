@@ -6,8 +6,21 @@ ini_set('log_errors', 1);
 ini_set('error_log', 'errors.log');
 
 // Ensure this is at the very top
-if (!isset($blog_pdo)) {
-    require_once __DIR__ . '/blog_function.php';
+require_once __DIR__ . '/db.php';
+require_once __DIR__ . '/functions.php';
+
+// Verify database connection
+if (!verifyConnection()) {
+    die("Database connection failed. Please try again later.");
+}
+
+try {
+    // Get categories for navigation
+    $stmt = $pdo->query("SELECT DISTINCT category FROM blog_posts ORDER BY category");
+    $categories = $stmt->fetchAll(PDO::FETCH_COLUMN);
+} catch(PDOException $e) {
+    error_log("Error fetching categories: " . $e->getMessage());
+    $categories = [];
 }
 ?>
 
@@ -48,8 +61,8 @@ if (!isset($blog_pdo)) {
                     <ul class="dropdown-menu">
                         <?php
                         try {
-                            if (verifyBlogConnection()) {
-                                $stmt = $blog_pdo->query("SELECT DISTINCT category FROM blog_posts ORDER BY category");
+                            if (verifyConnection()) {
+                                $stmt = $pdo->query("SELECT DISTINCT category FROM blog_posts ORDER BY category");
                                 $categories = $stmt->fetchAll(PDO::FETCH_COLUMN);
                                 
                                 foreach($categories as $category): ?>

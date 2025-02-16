@@ -24,8 +24,8 @@ unset($_SESSION['form_submitted']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thank You - Liteup Creative</title>
-    <link rel="icon" href="assets/images/favicon.png" type="image/png">
-    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="icon" href="./assets/images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="./assets/css/variables.css">
     <style>
         .thank-you-container {
             min-height: 100vh;
@@ -52,7 +52,7 @@ unset($_SESSION['form_submitted']);
 
         .title {
             color: var(--clr-sky-blue);
-            font-size: 52px;
+            font-size: 58px;
             margin-bottom: 20px;
             font-weight: 700;
             max-width: 400px;
@@ -91,7 +91,7 @@ unset($_SESSION['form_submitted']);
             <p class="message">
                 Your submission has been received. Our team is working on it and will get back to you soon. Thank you for choosing Liteup Creative.
             </p>
-            <a href="index.php" class="home-btn">Back to Home</a>
+            <a href="/index.php" class="home-btn">Back to Home</a>
         </div>
     </div>
 </body>
