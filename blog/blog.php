@@ -2,23 +2,21 @@
 require_once '../includes/db.php';
 require_once '../includes/functions.php';
 
-// Initialize error reporting
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// Basic error handling without logging
+error_reporting(0);
+ini_set('display_errors', 0);
 
-// Use verifyConnection instead of verifyBlogConnection
-if (!verifyConnection()) {
-    die("Database connection failed");
-}
-
-$selected_category = isset($_GET['category']) ? $_GET['category'] : null;
-$search = isset($_GET['search']) ? $_GET['search'] : null;
+$search = isset($_GET['search']) ? trim($_GET['search']) : null;
+$selected_category = isset($_GET['category']) ? trim($_GET['category']) : null;
 
 try {
-    $blog_posts = getBlogPostsBySearch($search, $selected_category);
+    if (!empty($search)) {
+        $blog_posts = getBlogPostsBySearch($search, $selected_category);
+    } else {
+        $blog_posts = getBlogPosts();
+    }
 } catch(Exception $e) {
-    error_log("Error: " . $e->getMessage());
-    $blog_posts = [];
+    $blog_posts = array();
 }
 
 include '../includes/blog_header.php';
@@ -41,11 +39,12 @@ include '../includes/blog_header.php';
                 </div>
                 <p>Welcome to our blog, where we explore the latest trends in digital marketing and share best practices for promoting services and products to the right audience. Our goal is to keep you informed with fresh, actionable insights on digital strategies, technological advancements, and proven methods for success.</p>
                 <div class="blog-header main-wrapper">
-                    <form action="" method="GET" class="search-form">
+                    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="GET" class="search-form">
                         <input type="text" 
                             name="search" 
                             placeholder="Search blogs..." 
-                            value="<?php echo htmlspecialchars($_GET['search'] ?? ''); ?>">
+                            value="<?php echo htmlspecialchars($search ?? ''); ?>"
+                            minlength="2">
                         <button type="submit" class="search-btn">
                             <i class='bx bx-search'></i>
                         </button>
@@ -63,27 +62,22 @@ include '../includes/blog_header.php';
                     <article class="blog-card">
                         <div class="blog-image">
                             <?php 
-                                // Fix image path handling
-                                $imagePath = $post['featured_image'] ?? '';
-                                $defaultImage = '../assets/images/default-blog.jpg';
-                                
-                                // Clean path - remove any existing '../' and add it back properly
-                                $imagePath = trim($imagePath, '/');
-                                $imagePath = str_replace('../', '', $imagePath);
-                                $imagePath = '../' . $imagePath;
-                                
-                                if (empty($imagePath) || !file_exists($imagePath)) {
-                                    $imagePath = $defaultImage;
-                                }
+                            $imagePath = $post['featured_image'] ?? '';
+                            $defaultImage = '../assets/images/default-blog.jpg';
+                            
+                            // Clean path
+                            $imagePath = str_replace('../', '', $imagePath);
+                            $imagePath = '../' . $imagePath;
+                            
+                            if (empty($imagePath) || !file_exists($imagePath)) {
+                                $imagePath = $defaultImage;
+                            }
                             ?>
                             <img src="<?php echo htmlspecialchars($imagePath); ?>" 
                                  alt="<?php echo htmlspecialchars($post['title']); ?>">
                         </div>
                         <div class="blog-content">
                             <div class="blog-meta">
-                                <span class="date">
-                                    <?php echo date('F d, Y', strtotime($post['created_at'])); ?>
-                                </span>
                                 <span class="category">
                                     <?php echo htmlspecialchars($post['category']); ?>
                                 </span>

@@ -28,7 +28,7 @@ unset($_SESSION['form_submitted']);
     <link rel="stylesheet" href="./assets/css/variables.css">
     <style>
         .thank-you-container {
-            min-height: 100vh;
+            min-height: 70vh;
             display: flex;
             align-items: center;
             justify-content: center;

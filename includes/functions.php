@@ -10,15 +10,11 @@ function getBlogPDO() {
 function getBlogPosts($limit = null) {
     global $pdo;
     try {
-        $sql = "SELECT * FROM blog_posts ORDER BY created_at DESC";
-        if ($limit) {
-            $sql .= " LIMIT " . (int)$limit;
-        }
-        $stmt = $pdo->query($sql);
-        return $stmt->fetchAll();
+        $stmt = $pdo->query("SELECT * FROM blog_posts ORDER BY created_at DESC");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch(PDOException $e) {
-        error_log("Error: " . $e->getMessage());
-        return [];
+        error_log("Error getting blog posts: " . $e->getMessage());
+        return array();
     }
 }
 
@@ -74,15 +70,21 @@ function getBlogPostsBySearch($search = null, $category = null) {
     global $pdo;
     
     try {
-        $params = [];
         $sql = "SELECT * FROM blog_posts WHERE 1=1";
+        $params = array();
         
-        if ($search) {
-            $sql .= " AND (title LIKE :search OR content LIKE :search)";
-            $params[':search'] = '%' . $search . '%';
+        if (!empty($search)) {
+            $sql .= " AND (
+                title LIKE :search1 
+                OR content LIKE :search2 
+                OR category LIKE :search3
+            )";
+            $params[':search1'] = '%' . trim($search) . '%';
+            $params[':search2'] = '%' . trim($search) . '%';
+            $params[':search3'] = '%' . trim($search) . '%';
         }
         
-        if ($category) {
+        if (!empty($category)) {
             $sql .= " AND category = :category";
             $params[':category'] = $category;
         }
@@ -92,10 +94,9 @@ function getBlogPostsBySearch($search = null, $category = null) {
         $stmt = $pdo->prepare($sql);
         $stmt->execute($params);
         
-        return $stmt->fetchAll();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch(PDOException $e) {
-        error_log("Search Query Error: " . $e->getMessage());
-        return [];
+        return array();
     }
 }
 
